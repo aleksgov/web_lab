@@ -8,11 +8,10 @@ function App() {
   ]);
   const [theoryContent, setTheoryContent] = useState('');
 
-  // Загрузка теории для каждой лабораторной работы
   useEffect(() => {
     if (activeTab !== 0 && tabs[activeTab]?.title.startsWith('Лабораторная работа')) {
-      const labNumber = tabs[activeTab]?.title.split('№')[1]; // Извлекаем номер лабораторной работы
-      const theoryFilePath = `/theory_lab${labNumber}.html`; // Формируем путь к файлу теории
+      const labNumber = tabs[activeTab]?.title.split('№')[1];
+      const theoryFilePath = `/theory_lab${labNumber}.html`;
 
       fetch(theoryFilePath)
           .then((response) => response.text())
@@ -50,15 +49,15 @@ function App() {
   };
 
   const handleTheoryClick = () => {
-    addTab("Теория", ""); // Добавляем вкладку "Теория" с пустым контентом
+    addTab("Теория", "");
   };
 
   const handleExampleClick = () => {
-    addTab("Пример", ""); // Добавляем вкладку "Пример" с пустым контентом
+    addTab("Пример", "");
   };
 
   const handleTasksClick = () => {
-    addTab("Задачи", ""); // Добавляем вкладку "Задачи" с пустым контентом
+    addTab("Задачи", "");
   };
 
   return (
