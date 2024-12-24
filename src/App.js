@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -6,8 +6,24 @@ function App() {
   const [tabs, setTabs] = useState([
     { title: 'Главная', content: 'Контент главной страницы' },
   ]);
+  const [theoryContent, setTheoryContent] = useState('');
 
-  const addTab = (title) => {
+  // Загрузка теории для каждой лабораторной работы
+  useEffect(() => {
+    if (activeTab !== 0 && tabs[activeTab]?.title.startsWith('Лабораторная работа')) {
+      const labNumber = tabs[activeTab]?.title.split('№')[1]; // Извлекаем номер лабораторной работы
+      const theoryFilePath = `/theory_lab${labNumber}.html`; // Формируем путь к файлу теории
+
+      fetch(theoryFilePath)
+          .then((response) => response.text())
+          .then((data) => {
+            setTheoryContent(data);
+          })
+          .catch((error) => console.error('Ошибка при загрузке теории:', error));
+    }
+  }, [activeTab, tabs]);
+
+  const addTab = (title, content = '') => {
     const existingTabIndex = tabs.findIndex((tab) => tab.title === title);
 
     if (existingTabIndex !== -1) {
@@ -15,16 +31,14 @@ function App() {
     } else {
       setTabs([
         ...tabs,
-        { title, content: '' },
+        { title, content },
       ]);
       setActiveTab(tabs.length);
     }
   };
 
   const closeOtherTabs = (index) => {
-    if (index === 0) {
-      setTabs([{ title: 'Главная', content: 'Контент главной страницы' }]);
-    }
+    setTabs((prevTabs) => prevTabs.slice(0, index + 1));
     setActiveTab(index);
   };
 
@@ -33,6 +47,18 @@ function App() {
       return { width: '1098px', height: '612px' };
     }
     return {};
+  };
+
+  const handleTheoryClick = () => {
+    addTab("Теория", ""); // Добавляем вкладку "Теория" с пустым контентом
+  };
+
+  const handleExampleClick = () => {
+    addTab("Пример", ""); // Добавляем вкладку "Пример" с пустым контентом
+  };
+
+  const handleTasksClick = () => {
+    addTab("Задачи", ""); // Добавляем вкладку "Задачи" с пустым контентом
   };
 
   return (
@@ -79,7 +105,7 @@ function App() {
             </div>
         )}
 
-        {activeTab !== 0 && (
+        {activeTab !== 0 && tabs[activeTab]?.title.startsWith("Лабораторная работа") && (
             <div className="content-box" style={getContentBoxStyle(tabs[activeTab]?.title)}>
               <div className="tab-content">
                 <div className="lab-work-title">
@@ -87,14 +113,19 @@ function App() {
                 </div>
                 <p>{tabs[activeTab]?.content}</p>
                 <div className="lab-buttons-container">
-                  <button className="lab-button">Теория</button>
-                  <button className="lab-button">Пример</button>
+                  <button className="lab-button" onClick={handleTheoryClick}>Теория</button>
+                  <button className="lab-button" onClick={handleExampleClick}>Пример</button>
                 </div>
-                <button className="lab-button lab-button-variants">Варианты заданий</button>
+                <button className="lab-button lab-button-variants" onClick={handleTasksClick}>Варианты заданий</button>
               </div>
             </div>
         )}
 
+        {activeTab !== 0 && tabs[activeTab]?.title === 'Теория' && (
+            <div className="theory-container">
+              <div className="theory-content" dangerouslySetInnerHTML={{__html: theoryContent}}/>
+            </div>
+        )}
       </div>
   );
 }
