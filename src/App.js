@@ -15,69 +15,87 @@ function App() {
     } else {
       setTabs([
         ...tabs,
-        { title, content: '' }, 
+        { title, content: '' },
       ]);
-      setActiveTab(tabs.length); 
+      setActiveTab(tabs.length);
     }
   };
 
   const closeOtherTabs = (index) => {
     if (index === 0) {
-      setTabs([{ title: 'Главная', content: 'Контент главной страницы' }]); // Оставляем только главную вкладку
+      setTabs([{ title: 'Главная', content: 'Контент главной страницы' }]);
     }
-    setActiveTab(index); 
+    setActiveTab(index);
+  };
+
+  const getContentBoxStyle = (tabTitle) => {
+    if (tabTitle.startsWith("Лабораторная работа")) {
+      return { width: '1098px', height: '612px' };
+    }
+    return {};
   };
 
   return (
-    <div className="App">
-      <div className="background"></div>
+      <div className="App">
+        <div className="background"></div>
 
-      <div className="tabs-container">
-        {tabs.map((tab, index) => (
-          <React.Fragment key={index}>
-            <div
-              className={`tab ${activeTab === index ? 'active' : ''}`}
-              onClick={() => closeOtherTabs(index)}
-            >
-              {tab.title}
-            </div>
-            {index !== tabs.length - 1 && <div className="arrow">→</div>}
-          </React.Fragment>
-        ))}
-      </div>
+        <div className="tabs-container">
+          {tabs.map((tab, index) => (
+              <React.Fragment key={index}>
+                <div
+                    className={`tab ${activeTab === index ? 'active' : ''}`}
+                    onClick={() => closeOtherTabs(index)}
+                >
+                  {tab.title}
+                </div>
+                {index !== tabs.length - 1 && <div className="arrow">→</div>}
+              </React.Fragment>
+          ))}
+        </div>
 
-      {activeTab === 0 && (
-        <div className="content-box">
-          <div className="tab-content">
-            <div className="main-tab-content">
-              <div className="header-text">
-                Лабораторный практикум<br />по предмету “Управление данными”
-              </div>
-              <div className="buttons-container">
-                {[1, 2, 3, 4].map((number) => (
-                  <div key={number} className="button" onClick={() => addTab(`Лабораторная работа №${number}`)}>
-                    <div className="button-background"></div>
-                    <div className="button-text">
-                      Лабораторная <br /> работа
-                    </div>
-                    <div className="button-number">{number}</div>
+        {activeTab === 0 && (
+            <div className="content-box">
+              <div className="tab-content">
+                <div className="main-tab-content">
+                  <div className="header-text">
+                    Лабораторный практикум<br />по предмету “Управление данными”
                   </div>
-                ))}
+                  <div className="main-buttons-container">
+                    {[1, 2, 3, 4].map((number) => (
+                        <button
+                            key={number}
+                            className="main-button"
+                            onClick={() => addTab(`Лабораторная работа №${number}`)}
+                        >
+                          <div className="main-button-text">
+                            Лабораторная <br /> работа
+                          </div>
+                          <div className="main-button-number">{number}</div>
+                        </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+        )}
 
-      {activeTab !== 0 && (
-        <div className="content-box">
-          <div className="tab-content">
-            <h2>{tabs[activeTab]?.title}</h2>
-            <p>{tabs[activeTab]?.content}</p>
-          </div>
-        </div>
-      )}
-    </div>
+        {activeTab !== 0 && (
+            <div className="content-box" style={getContentBoxStyle(tabs[activeTab]?.title)}>
+              <div className="tab-content">
+                <div className="lab-work-title">
+                  {tabs[activeTab]?.title}
+                </div>
+                <p>{tabs[activeTab]?.content}</p>
+                <div className="lab-buttons-container">
+                  <button className="lab-button">Теория</button>
+                  <button className="lab-button">Пример</button>
+                </div>
+                <button className="lab-button lab-button-variants">Варианты заданий</button>
+              </div>
+            </div>
+        )}
+
+      </div>
   );
 }
 
