@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { labFiles } from './Globals';
 
 function App() {
   const [activeTab, setActiveTab] = useState(0);
@@ -10,15 +11,19 @@ function App() {
 
   useEffect(() => {
     if (activeTab !== 0 && tabs[activeTab]?.title.startsWith('Лабораторная работа')) {
-      const labNumber = tabs[activeTab]?.title.split('№')[1];
-      const theoryFilePath = `/theory_lab${labNumber}.html`;
+      const labNumber = tabs[activeTab]?.title.split('№')[1].trim();
+      const theoryFilePath = labFiles[labNumber]?.theory;
 
-      fetch(theoryFilePath)
-          .then((response) => response.text())
-          .then((data) => {
-            setTheoryContent(data);
-          })
-          .catch((error) => console.error('Ошибка при загрузке теории:', error));
+      if (theoryFilePath) {
+        fetch(theoryFilePath)
+            .then((response) => response.text())
+            .then((data) => {
+              setTheoryContent(data);
+            })
+            .catch((error) => console.error('Ошибка при загрузке теории:', error));
+      } else {
+        console.error(`Файл для лабораторной работы №${labNumber} не найден`);
+      }
     }
   }, [activeTab, tabs]);
 

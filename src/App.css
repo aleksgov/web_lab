@@ -32,15 +32,19 @@
 }
 
 .tabs-container {
+  position: absolute;
+  top: 1.6vh;
+  left: 2vw;
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 2vw;
+  z-index: 2;
 }
 
 .tab {
-  padding: 10px 20px;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 1.5vw;
   font-family: 'Century Gothic', sans-serif;
+  line-height: 1.42857143;
   font-weight: 500;
   transition: background-color 0.3s;
 }
@@ -50,26 +54,13 @@
 }
 
 .arrow {
-  font-size: 36px;
+  font-family: 'Century Gothic', sans-serif;
+  line-height: 1.42857143;
+  font-size: 1.5vw;
+  margin: 0;
+  padding-left: 1vw;
+  padding-right: 1vw;
   color: #333;
-}
-
-.tabs-container {
-  position: absolute;
-  top: 2px;
-  left: 10px;
-  display: flex;
-  z-index: 2;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-p {
-  font-size: 18px;
-  line-height: 1.5;
-  max-width: 800px;
 }
 
 .main-tab-content {
@@ -194,25 +185,28 @@ p {
 
 .theory-container {
   position: absolute;
-  top: 100px;
-  width: 1250px;
-  height: 750px;
+  top: 10vh;
+  left: 12.5vw;
+  width: 75vw;
+  height: 90vh;
   background-color: white;
   border-radius: 60px 60px 0 0;
 }
 
 .theory-content {
   position: absolute;
-  padding-left: 5%;
-  padding-right: 2%;
-  margin-top: 20px;
-  width: 1190px;
-  height: 690px;
+  margin-left: 3%;
+  margin-top: 2.5%;
+  padding-left: 2%;
+  padding-right: 4%;
+  padding-bottom: 4%;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
   align-items: center;
+  box-sizing: border-box;
   background-color: transparent;
 }
-
 
 .App-logo {
   height: 40vmin;
