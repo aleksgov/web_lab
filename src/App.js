@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { labFiles } from './Globals';
+import Accordion from './Accordion'; // Импорт компонента аккордеона
 
 function App() {
   const [activeTab, setActiveTab] = useState(0);
@@ -62,7 +63,7 @@ function App() {
   };
 
   const handleTasksClick = () => {
-    addTab("Задачи", "");
+    addTab("Задания", "");
   };
 
   return (
@@ -125,11 +126,31 @@ function App() {
             </div>
         )}
 
-        {activeTab !== 0 && tabs[activeTab]?.title === 'Теория' && (
-            <div className="theory-container">
-              <div className="theory-content" dangerouslySetInnerHTML={{__html: theoryContent}}/>
+        {activeTab !== 0 && tabs[activeTab]?.title === 'Задания' && (
+            <div className="task-variants-container">
+              <div className="task-buttons">
+                {Array.from({ length: 30 }, (_, index) => (
+                    <button key={index} className="task-button">
+                      <span className="task-button-number">{index + 1}</span>
+                      <span className="task-button-text">Вариант</span>
+                    </button>
+                ))}
+              </div>
             </div>
         )}
+
+        {activeTab !== 0 && tabs[activeTab]?.title === 'Пример' && (
+            <div className="accordion-container">
+              <Accordion labNumber={1} />
+            </div>
+        )}
+
+        {activeTab !== 0 && tabs[activeTab]?.title === 'Теория' && (
+            <div className="theory-container">
+              <div className="theory-content" dangerouslySetInnerHTML={{ __html: theoryContent }} />
+            </div>
+        )}
+
       </div>
   );
 }

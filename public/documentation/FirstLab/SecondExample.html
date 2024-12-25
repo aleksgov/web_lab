@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаг 2: Создание модели СМО на GPSS</title>
+    <style>
+        body {
+            font-family: Century Gothic, sans-serif;
+            font-size: 1.625rem;
+            line-height: 1.42857143;
+            margin: 0;
+            color: #333;
+            padding-top: 0;
+        }
+
+        ol {
+            margin: 10px 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin: 5px 0 10px 20px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Courier, monospace;
+            white-space: pre-wrap;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .img-container img {
+            width: 45%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <li>
+            <p>Определение единиц измерения:</p>
+            <p>В GPSS одна единица времени равна одной минуте.</p>
+        </li>
+        <li>
+            <p>Написание кода модели:</p>
+            <p>Создайте новую модель «File &gt; New &gt; Model»</p>
+            <img src="../assets/PictureExample1.png" alt="image" width="386" height="264">
+            <p>Используйте следующие команды GPSS для описания работы парикмахерской:</p>
+            <img src="../assets/PictureExample2.png" alt="image">
+            <pre>
+GENERATE 25,7    ; Имитация случайного интервала между прибытием
+                   клиентов 25 ± 7 минут
+QUEUE barberq    ; Учет очереди, в которой клиенты ожидают
+SEIZE barber     ; Если парикмахер свободен, клиент занимает
+                   кресло
+DEPART barber    ; Клиент покидает очередь и занимает парикмахера
+ADVANCE 18,5     ; Имитация времени стрижки 18&nbsp;±&nbsp;5&nbsp;минут
+TERMINATE 0      ; Завершение транзакции
+RELEASE barber   ; Освобождение парикмахера после завершения обслуживания
+TERMINATE 0      ; Завершение транзакции
+GENERATE 600     ; Завершение работы парикмахерской после
+                   10&nbsp;часов&nbsp;(600 минут)
+TERMINATE 1      ; Остановка симуляции после завершения последнего
+                   события
+            </pre>
+        </li>
+        <li>
+            <p>Пояснения к коду:</p>
+            <ul>
+                <li><strong>GENERATE 25,7:</strong> Имитация случайного интервала между прибытием клиентов 25 ± 7 минут.</li>
+                <li><strong>QUEUE barberq:</strong> Учет очереди, в которой клиенты ожидают.</li>
+                <li><strong>SEIZE barber:</strong> Если парикмахер свободен, клиент занимает кресло.</li>
+                <li><strong>DEPART barber:</strong> Клиент покидает очередь и занимает парикмахера.</li>
+                <li><strong>ADVANCE 18,5:</strong> Имитация времени стрижки 18 ± 5 минут.</li>
+                <li><strong>TERMINATE 0:</strong> Завершение транзакции.</li>
+                <li><strong>RELEASE barber:</strong> Освобождение парикмахера после завершения обслуживания.</li>
+                <li><strong>TERMINATE 0:</strong> Завершение транзакции.</li>
+                <li><strong>GENERATE 600:</strong> Завершение работы парикмахерской после 10 часов (600 минут).</li>
+                <li><strong>TERMINATE 1:</strong> Остановка симуляции после завершения последнего события.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Запуск программы:</p>
+            <p>После написания модели запустите её действием «Command &gt; Create Simulation»</p>
+            <div class="img-container">
+                <img src="../assets/PictureExample3.png" alt="image">
+                <img src="../assets/PictureExample4.png" alt="image">
+            </div>
+        </li>
+    </ol>
+</body>
+</html>

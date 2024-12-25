@@ -1,0 +1,38 @@
+.accordion {
+    width: 100%;
+    margin-top: 4%;
+}
+
+.accordion-item {
+    width: 1150px;
+    border-radius: 30px;
+    background-color: white;
+    padding-right: 40px;
+    margin-bottom: 75px;
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.25);
+}
+
+.accordion-title {
+    height: 130px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Century Gothic', serif;
+    font-size: 40px;
+    color: #333;
+    font-weight: bold;
+    padding-left: 10%;
+}
+
+.accordion-title.active {
+    border-radius: 30px 30px 0 0;
+}
+
+.accordion-toggle {
+    font-size: 1.2em;
+}
+
+.accordion-content {
+    padding: 0px 15px;
+}
