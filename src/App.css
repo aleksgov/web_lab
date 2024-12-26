@@ -288,6 +288,10 @@
   background-color: rgba(255, 255, 255, 0.7);
 }
 
+.task-button:active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
 .task-variants-container::-webkit-scrollbar {
   width: 0.5vw;
   background-color: transparent;

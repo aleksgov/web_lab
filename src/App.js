@@ -66,6 +66,11 @@ function App() {
     addTab("Задания", "");
   };
 
+  // Обработчик клика по кнопкам варианта
+  const handleVariantClick = (index) => {
+    addTab(`Вариант №${index + 1}`);
+  };
+
   return (
       <div className="App">
         <div className="background"></div>
@@ -132,14 +137,15 @@ function App() {
                 {Array.from({length: 30}, (_, index) => (
                     <button
                         key={index}
-                        className={`task-button ${index + 1 >= 10 ? 'two-digit' : ''}`}>
+                        className={`task-button ${index + 1 >= 10 ? 'two-digit' : ''}`}
+                        onClick={() => handleVariantClick(index)}
+                    >
                       <span className="task-button-number">{index + 1}</span>
                       <span className="task-button-text">Вариант</span>
                     </button>
                 ))}
               </div>
             </div>
-
         )}
 
         {activeTab !== 0 && tabs[activeTab]?.title === 'Пример' && (
