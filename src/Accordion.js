@@ -61,10 +61,13 @@ const Accordion = ({ labNumber }) => {
                         </span>
                     </div>
                     {activeIndexes.includes(index) && (
-                        <div
-                            className="accordion-content"
-                            dangerouslySetInnerHTML={{__html: contents[index]}}
-                        />
+                        <>
+                            <div className="accordion-line"></div>
+                            <div
+                                className="accordion-content"
+                                dangerouslySetInnerHTML={{ __html: contents[index] }}
+                            />
+                        </>
                     )}
                 </div>
             ))}

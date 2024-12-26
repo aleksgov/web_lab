@@ -16,12 +16,11 @@ function App() {
     return match ? match[1] : null;
   };
 
-  // Объединяем оба useEffect в один
   useEffect(() => {
     if (activeTab !== 0 && tabs[activeTab]?.title.startsWith('Лабораторная работа')) {
       const labNumberFromTitle = getLabNumberFromTitle(tabs[activeTab]?.title);
       if (labNumberFromTitle) {
-        setLabNumber(labNumberFromTitle); // Обновляем номер лабораторной работы
+        setLabNumber(labNumberFromTitle);
 
         const theoryFilePath = labFiles[labNumberFromTitle]?.theory;
         if (theoryFilePath) {
@@ -73,7 +72,6 @@ function App() {
     addTab("Задания", "");
   };
 
-  // Обработчик клика по кнопкам варианта
   const handleVariantClick = (index) => {
     addTab(`Вариант №${index + 1}`);
   };
