@@ -129,25 +129,28 @@ function App() {
         {activeTab !== 0 && tabs[activeTab]?.title === 'Задания' && (
             <div className="task-variants-container">
               <div className="task-buttons">
-                {Array.from({ length: 30 }, (_, index) => (
-                    <button key={index} className="task-button">
+                {Array.from({length: 30}, (_, index) => (
+                    <button
+                        key={index}
+                        className={`task-button ${index + 1 >= 10 ? 'two-digit' : ''}`}>
                       <span className="task-button-number">{index + 1}</span>
                       <span className="task-button-text">Вариант</span>
                     </button>
                 ))}
               </div>
             </div>
+
         )}
 
         {activeTab !== 0 && tabs[activeTab]?.title === 'Пример' && (
             <div className="accordion-container">
-              <Accordion labNumber={1} />
+              <Accordion labNumber={1}/>
             </div>
         )}
 
         {activeTab !== 0 && tabs[activeTab]?.title === 'Теория' && (
             <div className="theory-container">
-              <div className="theory-content" dangerouslySetInnerHTML={{ __html: theoryContent }} />
+              <div className="theory-content" dangerouslySetInnerHTML={{__html: theoryContent }} />
             </div>
         )}
 
