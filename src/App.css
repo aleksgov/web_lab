@@ -189,7 +189,7 @@
   padding-left: 10px;
   padding-right: 40px;
   height: 90vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .accordion-container::-webkit-scrollbar {
