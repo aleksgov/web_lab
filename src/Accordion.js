@@ -8,6 +8,8 @@ const Accordion = ({ labNumber }) => {
 
     // Получаем шаги для выбранной лабораторной работы
     const steps = labFiles[labNumber]?.example?.steps_paths || [];
+    const stepTitles = labFiles[labNumber]?.example?.steps_counters || [];
+    const stepHeaders = labFiles[labNumber]?.example?.steps_headers || [];
 
     // Загрузка HTML содержимого для каждой вкладки
     useEffect(() => {
@@ -39,8 +41,6 @@ const Accordion = ({ labNumber }) => {
         }
     };
 
-    const stepTitles = labFiles[labNumber]?.example?.steps_counters || [];
-
     return (
         <div className="accordion">
             {steps.map((step, index) => (
@@ -49,15 +49,21 @@ const Accordion = ({ labNumber }) => {
                         className={`accordion-title ${activeIndexes.includes(index) ? 'active' : ''}`}
                         onClick={() => toggleAccordion(index)}
                     >
-                        {stepTitles[index] || `Шаг ${index + 1}`}
+                        <span className="step-counter">{stepTitles[index] || `Шаг ${index + 1}`}</span>
+                        <span className="step-header">{stepHeaders[index]}</span>
                         <span className="accordion-toggle">
-                            {activeIndexes.includes(index) ? '-' : '+'}
+                            <img
+                                src={activeIndexes.includes(index) ? 'assets/up_arrow.png' : 'assets/down_arrow.png'}
+                                alt={activeIndexes.includes(index) ? 'Minus' : 'Plus'}
+                                width="40"
+                                height="40"
+                            />
                         </span>
                     </div>
                     {activeIndexes.includes(index) && (
                         <div
                             className="accordion-content"
-                            dangerouslySetInnerHTML={{ __html: contents[index] }}
+                            dangerouslySetInnerHTML={{__html: contents[index]}}
                         />
                     )}
                 </div>

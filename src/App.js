@@ -9,28 +9,35 @@ function App() {
     { title: 'Главная', content: 'Контент главной страницы' },
   ]);
   const [theoryContent, setTheoryContent] = useState('');
+  const [labNumber, setLabNumber] = useState(null); // Состояние для хранения номера лабораторной работы
 
+  const getLabNumberFromTitle = (title) => {
+    const match = title.match(/Лабораторная работа №\s*(\d+)/);
+    return match ? match[1] : null;
+  };
+
+  // Объединяем оба useEffect в один
   useEffect(() => {
     if (activeTab !== 0 && tabs[activeTab]?.title.startsWith('Лабораторная работа')) {
-      const labNumber = tabs[activeTab]?.title.split('№')[1].trim();
-      const theoryFilePath = labFiles[labNumber]?.theory;
+      const labNumberFromTitle = getLabNumberFromTitle(tabs[activeTab]?.title);
+      if (labNumberFromTitle) {
+        setLabNumber(labNumberFromTitle); // Обновляем номер лабораторной работы
 
-      if (theoryFilePath) {
-        fetch(theoryFilePath)
-            .then((response) => response.text())
-            .then((data) => {
-              setTheoryContent(data);
-            })
-            .catch((error) => console.error('Ошибка при загрузке теории:', error));
-      } else {
-        console.error(`Файл для лабораторной работы №${labNumber} не найден`);
+        const theoryFilePath = labFiles[labNumberFromTitle]?.theory;
+        if (theoryFilePath) {
+          fetch(theoryFilePath)
+              .then((response) => response.text())
+              .then((data) => setTheoryContent(data))
+              .catch((error) => console.error('Ошибка при загрузке теории:', error));
+        } else {
+          console.error(`Файл теории для лабораторной работы №${labNumberFromTitle} не найден`);
+        }
       }
     }
   }, [activeTab, tabs]);
 
   const addTab = (title, content = '') => {
     const existingTabIndex = tabs.findIndex((tab) => tab.title === title);
-
     if (existingTabIndex !== -1) {
       setActiveTab(existingTabIndex);
     } else {
@@ -74,7 +81,6 @@ function App() {
   return (
       <div className="App">
         <div className="background"></div>
-
         <div className="tabs-container">
           {tabs.map((tab, index) => (
               <React.Fragment key={index}>
@@ -89,6 +95,7 @@ function App() {
           ))}
         </div>
 
+        {/* Вкладка "Главная" */}
         {activeTab === 0 && (
             <div className="content-box">
               <div className="tab-content">
@@ -115,6 +122,7 @@ function App() {
             </div>
         )}
 
+        {/* Вкладка "Лабораторная работа" */}
         {activeTab !== 0 && tabs[activeTab]?.title.startsWith("Лабораторная работа") && (
             <div className="content-box" style={getContentBoxStyle(tabs[activeTab]?.title)}>
               <div className="tab-content">
@@ -131,6 +139,7 @@ function App() {
             </div>
         )}
 
+        {/* Вкладка "Задания" */}
         {activeTab !== 0 && tabs[activeTab]?.title === 'Задания' && (
             <div className="task-variants-container">
               <div className="task-buttons">
@@ -148,18 +157,19 @@ function App() {
             </div>
         )}
 
+        {/* Вкладка "Пример" */}
         {activeTab !== 0 && tabs[activeTab]?.title === 'Пример' && (
             <div className="accordion-container">
-              <Accordion labNumber={1}/>
+              <Accordion labNumber={labNumber} />
             </div>
         )}
 
+        {/* Вкладка "Теория" */}
         {activeTab !== 0 && tabs[activeTab]?.title === 'Теория' && (
             <div className="theory-container">
               <div className="theory-content" dangerouslySetInnerHTML={{__html: theoryContent }} />
             </div>
         )}
-
       </div>
   );
 }
