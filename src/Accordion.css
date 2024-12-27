@@ -20,6 +20,7 @@
     justify-content: flex-start;
     align-items: center;
     font-family: 'Century Gothic', serif;
+    user-select: none;
 }
 
 .accordion-line {
@@ -38,12 +39,14 @@
     font-weight: bold;
     padding-left: 7%;
     white-space: nowrap;
+    line-height: 0;
 }
 
 .step-header {
     font-size: 30px;
     margin-left: 25px;
     margin-top: 7px;
+    line-height: 1.42857143;
 }
 
 .accordion-content {
@@ -53,6 +56,8 @@
 
 .accordion-toggle {
     margin-left: auto;
+    line-height: 0;
+    border: none;
 }
 
 .accordion-toggle img {
