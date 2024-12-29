@@ -25,7 +25,7 @@ export const labFiles = {
         example: {
             steps_count: 2,
             steps_counters: ["Часть 1", "Часть 2"],
-            steps_headers: ["Разработка XML-документа для иерархической базы данных", ""],
+            steps_headers: ["Разработка XML-документа для иерархической базы данных", "Изучение языка запросов XPath"],
             steps_paths: [
                 'documentation/SecondLab/SecondLab_Example1.html',
                 'documentation/SecondLab/SecondLab_Example2.html'
