@@ -14,6 +14,10 @@ export const labFiles = {
                 'documentation/FirstLab/FirstLab_Example2.html',
                 'documentation/FirstLab/FirstLab_Example3.html'
             ]
+        },
+        tasks: {
+            count: 19,
+            path: 'documentation/FirstLab/FirstLabVariants.html'
         }
     },
     2: {
@@ -26,6 +30,10 @@ export const labFiles = {
                 'documentation/SecondLab/SecondLab_Example1.html',
                 'documentation/SecondLab/SecondLab_Example2.html'
             ]
+        },
+        tasks: {
+            count: 30,
+            path: 'documentation/SecondLab/SecondLabVariants.html'
         }
     },
     3: {

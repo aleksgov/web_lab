@@ -13,8 +13,6 @@ const Accordion = ({ labNumber }) => {
 
     // Загрузка HTML содержимого для каждой вкладки
     useEffect(() => {
-        console.log('step_paths:', steps);
-
         const loadContent = async () => {
             const fetchedContents = [];
             for (let i = 0; i < steps.length; i++) {
