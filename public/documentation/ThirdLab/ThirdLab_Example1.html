@@ -21,19 +21,43 @@
             margin-bottom: 10px;
         }
 
-        ul {
-            margin: 5px 0 10px 20px;
-            list-style-type: circle;
-        }
-
         p {
             line-height: 36px;
+        }
+
+        .isolated-container img {
+            display: block;
+            border: 5px solid #f0f0f0;
+            max-width: 90%;
+            height: auto;
+            margin: 20px auto;
         }
     </style>
 </head>
 <body>
     <p>В данном примере рассмотрим создание шаблона для автоматического парсинга списка тем с первой страницы форума https://www.cyberforum.ru/pc-problem/. Пример основан на использовании инструмента ZennoPoster, который предоставляет возможности автоматизации действий с веб-ресурсами, включая парсинг данных.</p>
-
-
+    <p>Для начала, создадим отдельную папку и сохраним туда наш проект под именем <strong>TestParsing</strong>.</p>
+    <ol>
+        <li>Выполним следующие действия – отключим плагины, отключим JavaScript (это необходимо сделать для того, чтобы страница быстрее загрузилась) и перейдём на страницу форума. Результат выполнения шаблона будет выглядеть так:</li>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_template.png" alt="image"></div>
+        <li>Кликнем правой кнопкой мыши по одной из тем и нажмём кнопку «парсить данные». ZennoPoster на основе заложенных в него алгоритмов предложит несколько вариантов парсинга, однако вы всегда можете самостоятельно изменить атрибуты поиска. </li>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_forum.png" alt="image"></div>
+        <p>На скриншоте выше показан наиболее удачный вариант парсинга данных, с использованием стандартного парсера ZennoPoster. Нажимаем кнопку «добавить в проект». В вашем шаблоне должен появиться «кубик» с действием по парсингу страницы. Если нажать на него, то можно увидеть его свойства:</p>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_settings.png" alt="image"></div>
+        <p>При выполнении этого действия будет совершен парсинг страницы по заданному шаблону, а результат парсинга будет записан в автоматически созданный список <strong>List0</strong>.</p>
+        <li>В результате парсинга данные были сохранены в список. Для того чтобы проверить содержимое данного списка, необходимо перейти в режим расширенного редактора, нажав следующую кнопку:</li>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_editor.png" alt="image"></div>
+        <p>После этого мы можем увидеть наш список и посмотреть его содержимое:</p>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_list.png" alt="image"></div>
+        <li>Как видим, в результате парсинга в список попала лишняя ссылка. Чтобы привести список к нормальному виду, необходимо удалить её. Для этого выполним следующее:<p style="margin-bottom: 10px; margin-top: 10px"><strong>Добавить действие → Списки → Операции над списком.</strong></p>Остальные настройки задаём следующим образом:</li>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_operation.png" alt="image"></div>
+        <p>Выполним действие и посмотрим, как будет выглядеть новый список:</p>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_new_list.png" alt="image"></div>
+        <p>Поскольку теперь лишних данных в списке нет, то можно записать его в файл, добавив в проект соответствующее действие:</p>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_save_file.png" alt="image"></div>
+        <p>После успешного выполнения в папке с проектом должен появиться файл с данными, которые мы парсили:</p>
+        <div class="isolated-container"><img src="/assets/ThirdLab/Example/1/zenno_notepad.png" alt="image"></div>
+        <p>Стоит заметить, что такой подход к парсингу данных крайне неэффективен ввиду того, что был использован браузер. При использовании браузера происходит значительное потребление ресурсов ПК, что будет отображаться на его производительности (в особенности, если подобные проекты будут запускаться в многопоточном режиме).</p>
+    </ol>
 </body>
 </html>

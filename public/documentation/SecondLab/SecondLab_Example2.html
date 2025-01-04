@@ -26,14 +26,6 @@
             list-style-type: circle;
         }
 
-        #isolated-container img {
-            display: block;
-            margin: 0;
-            border: 10px solid #f0f0f0;
-            max-width: 90%;
-            height: auto;
-        }
-
         h2, h3 {
             font-family: Century Gothic, sans-serif;
             color: #2c3e50;
@@ -218,7 +210,6 @@
         </ul>
 
         <h2>Практическая часть</h2>
-
         <h3>1. Установка инструментов для работы с XPath</h3>
         <p>Для выполнения лабораторной работы потребуется среда, поддерживающая XPath. Рассмотрим несколько вариантов:</p>
         <ol>
@@ -244,10 +235,8 @@
 
             </li>
         </ol>
-
         <h3>2. Основные запросы XPath</h3>
         <span class="starred">* Все дальнейшие запросы выполняются над XML-кодом первого примера.</span>
-
         <h4>Пример 1: Получение всех фамилий судей с татами A</h4>
         <pre>//tatami[@id='A']//judge/name/lastName</pre>
         <p><strong>Результат:</strong></p>
@@ -261,7 +250,6 @@
         <pre>//kumite[decision="победа красного"]//participant[@side="красный"]</pre>
         <p><strong>Результат:</strong></p>
         <pre>Самойлов Евгений 14-15 лет 65-70 кг м Нижегородская область</pre>
-
         <h4>Пример 3: Баллы участников за выполнение ката на татами B</h4>
         <pre>//tatami[@id='B']//kata/participant/name/lastName | //tatami[@id='B']//kata/participant/score</pre>
         <p><strong>Результат:</strong></p>
@@ -272,6 +260,5 @@
 
         <h2>Заключение</h2>
         <p>На этой лабораторной работе вы познакомились с XPath, научились составлять запросы к XML-документам и извлекать нужные данные. Эти навыки пригодятся для работы с XML-файлами в различных IT-задачах.</p>
-
 </body>
 </html>
