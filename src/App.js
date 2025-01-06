@@ -34,6 +34,22 @@ function App() {
         }
     }, [activeTab, tabs]);
 
+    useEffect(() => {
+        if (tabs[activeTab]?.title === 'Задание' && labNumber === '3') {
+            loadTaskContentForLab3();
+        }
+    }, [activeTab, labNumber]);
+
+    const loadTaskContentForLab3 = () => {
+        const taskFilePath = labFiles[3]?.tasks?.path;
+        if (taskFilePath) {
+            fetch(taskFilePath)
+                .then((response) => response.text())
+                .then(setTaskContent)
+                .catch((error) => console.error('Ошибка при загрузке задания:', error));
+        }
+    };
+
     // Загрузка задания при изменении содержимого задания или варианта
     useEffect(() => {
         if (taskContent && taskContentRef.current) {
@@ -107,9 +123,13 @@ function App() {
     const handleTheoryClick = () => addTab("Теория", "");
     const handleExampleClick = () => addTab("Пример", "");
     const handleTasksClick = () => {
-        const variantsCount = labFiles[labNumber]?.tasks?.count;
-        if (variantsCount) setVariantsCount(variantsCount);
-        addTab("Задания", "");
+        if (labNumber === "3") {
+            addTab("Задание", "");
+        } else {
+            const variantsCount = labFiles[labNumber]?.tasks?.count;
+            if (variantsCount) setVariantsCount(variantsCount);
+            addTab("Задания", "");
+        }
     };
 
     const handleVariantClick = (index) => {
@@ -196,6 +216,14 @@ function App() {
                             </button>
                         ))}
                     </div>
+                </div>
+            );
+        }
+
+        if (tabs[activeTab]?.title === 'Задание' && labNumber === '3') {
+            return (
+                <div className="theory-container">
+                    <div className="theory-content" dangerouslySetInnerHTML={{ __html: taskContent }} />
                 </div>
             );
         }

@@ -47,6 +47,9 @@ export const labFiles = {
                 'documentation/ThirdLab/ThirdLab_Example1.html',
                 'documentation/ThirdLab/ThirdLab_Example2.html',
             ]
+        },
+        tasks: {
+            path: 'documentation/ThirdLab/ThirdLabVariants.html'
         }
     },
 };
