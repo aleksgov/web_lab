@@ -38,12 +38,7 @@
         }
 
         pre {
-            background-color: #f4f4f4;
-            padding: 15px;
-            font-family: monospace;
-            overflow-x: auto;
-            max-width: 100%;
-            word-wrap: break-word;
+            padding: none;
         }
 
         ::-webkit-scrollbar {
@@ -99,24 +94,6 @@
             font-style: italic;
         }
 
-        .xml-code {
-            padding: 15px;
-            border-radius: 4px;
-            font-family: monospace;
-            line-height: 1.5;
-        }
-
-        .xml-code .tag {
-            color: #cc342b;
-        }
-
-        .xml-code .attribute {
-            color: #f96a38;
-        }
-
-        .xml-code .value {
-            color: #198844;
-        }
     </style>
     <title>Пример использования языка запросов XPath</title>
 </head>
@@ -167,35 +144,31 @@
 
         <h3>Примеры XPath-запросов</h3>
         <p>Выберем код-фрагмент для примера</p>
-        <pre class="xml-code">
-&lt;<span class="tag">judges</span>&gt;
-   &lt;<span class="tag">judge</span> <span class="attribute">id</span>=<span class="value">"1"</span> <span class="attribute">category</span>=<span class="value">"1-ая категория"</span>&gt;
-       &lt;<span class="tag">name</span>&gt;Станислав&lt;/<span class="tag">name</span>&gt;
-   &lt;/<span class="tag">judge</span>&gt;
-   &lt;<span class="tag">judge</span> <span class="attribute">id</span>=<span class="value">"2"</span> <span class="attribute">category</span>=<span class="value">"2-ая категория"</span>&gt;
-       &lt;<span class="tag">name</span>&gt;Артур&lt;/<span class="tag">name</span>&gt;
-   &lt;/<span class="tag">judge</span>&gt;
-&lt;/<span class="tag">judges</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;judges&gt;
+    &lt;judge id="1" category="1-ая категория"&gt;
+        &lt;name&gt;Станислав&lt;/name&gt;
+    &lt;/judge&gt;
+    &lt;judge id="2" category="2-ая категория"&gt;
+        &lt;name&gt;Артур&lt;/name&gt;
+    &lt;/judge&gt;
+&lt;/judges&gt;</code></pre>
         <ul>
             <li>Запрос <code>//judge</code> — выбирает все узлы <code>&lt;judge&gt; (судей)</code>.</li>
         </ul>
-        <pre class="xml-code">
-&lt;<span class="tag">judge</span> <span class="attribute">id</span>=<span class="value">"1"</span> <span class="attribute">category</span>=<span class="value">"1:ая категория"</span>&gt;
-    &lt;<span class="tag">name</span>&gt;Станислав&lt;/<span class="tag">name</span>&gt;
-&lt;/<span class="tag">judge</span>&gt;
-&lt;<span class="tag">judge</span> <span class="attribute">id</span>=<span class="value">"2"</span> <span class="attribute">category</span>=<span class="value">"2:ая категория"</span>&gt;
-    &lt;<span class="tag">name</span>&gt;Артур&lt;/<span class="tag">name</span>&gt;
-&lt;/<span class="tag">judge</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;judge id="1" category="1:ая категория"&gt;
+    &lt;name&gt;Станислав&lt;/name&gt;
+&lt;/judge&gt;
+&lt;judge id="2" category="2:ая категория"&gt;
+    &lt;name&gt;Артур&lt;/name&gt;
+&lt;/judge&gt;
+</code></pre>
         <ul>
             <li><code>Запрос //judge[@category='1-ая категория']</code> — выбирает узлы судей с 1-й категорией.</li>
         </ul>
-        <pre class="xml-code">
-&lt;<span class="tag">judge</span> <span class="attribute">id</span>=<span class="value">"1"</span> <span class="attribute">category</span>=<span class="value">"1:ая категория"</span>&gt;
-    &lt;<span class="tag">name</span>&gt;Станислав&lt;/<span class="tag">name</span>&gt;
-&lt;/<span class="tag">judge</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;judge id="1" category="1:ая категория"&gt;
+    &lt;name&gt;Станислав&lt;/name&gt;
+&lt;/judge&gt;
+</code></pre>
         <ul>
             <li><code>Запрос //judge/name/text()</code> — позволяет посмотреть текстовые значения имён судей.</li>
         </ul>
@@ -229,7 +202,7 @@
                 <ul>
                     <li>Python с библиотекой <code>lxml</code>. Установка:</li>
                 </ul>
-                <pre class="xml-code">pip install lxml</pre>
+                <code>pip install lxml</code>
                 <ul>
                     <li>Java со стандартными библиотеками <code>DocumentBuilderFactory</code> и <code>DocumentBuilder</code>.</li>
                 </ul>

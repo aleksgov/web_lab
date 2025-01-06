@@ -1,0 +1,8 @@
+.language-xml {
+    background-color: #f4f4f4;
+    padding: 15px;
+    font-family: monospace;
+    overflow-x: auto;
+    max-width: 100%;
+    word-wrap: break-word;
+}

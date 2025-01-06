@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { labFiles } from './Globals';
 import Accordion from './Accordion';
+import SyntaxHighlighter from './SyntaxHighlighter';
 
 function App() {
     const taskContentRef = useRef(null);
@@ -35,27 +36,15 @@ function App() {
     }, [activeTab, tabs]);
 
     useEffect(() => {
-        if (tabs[activeTab]?.title === 'Задание' && labNumber === '3') {
-            loadTaskContentForLab3();
-        }
+        loadTaskContent();
     }, [activeTab, labNumber]);
-
-    const loadTaskContentForLab3 = () => {
-        const taskFilePath = labFiles[3]?.tasks?.path;
-        if (taskFilePath) {
-            fetch(taskFilePath)
-                .then((response) => response.text())
-                .then(setTaskContent)
-                .catch((error) => console.error('Ошибка при загрузке задания:', error));
-        }
-    };
 
     // Загрузка задания при изменении содержимого задания или варианта
     useEffect(() => {
         if (taskContent && taskContentRef.current) {
             showVariant(activeVariant);
         }
-    }, [taskContent, activeVariant]);
+    }, [taskContent, activeVariant, taskContentRef, forceUpdate]);
 
     // Функция для добавления вкладки
     const addTab = (title, content = '') => {
@@ -83,6 +72,10 @@ function App() {
 
     // Загрузка задания
     const loadTaskContent = () => {
+        if (labNumber == null) {
+            return;
+        }
+
         const taskFilePath = labFiles[labNumber]?.tasks?.path;
         if (taskFilePath) {
             fetch(taskFilePath)
@@ -123,11 +116,13 @@ function App() {
     const handleTheoryClick = () => addTab("Теория", "");
     const handleExampleClick = () => addTab("Пример", "");
     const handleTasksClick = () => {
-        if (labNumber === "3") {
+        const variantsCount = labFiles[labNumber]?.tasks?.count;
+        if (variantsCount == null) {
             addTab("Задание", "");
         } else {
-            const variantsCount = labFiles[labNumber]?.tasks?.count;
-            if (variantsCount) setVariantsCount(variantsCount);
+            if (variantsCount) {
+                setVariantsCount(variantsCount);
+            }
             addTab("Задания", "");
         }
     };
@@ -136,7 +131,6 @@ function App() {
         const variantIndex = index + 1;
         setActiveVariant(variantIndex);
         causeAnUpdate();
-        loadTaskContent();
         addTab(`Вариант №${variantIndex}`, "");
     };
 
@@ -201,7 +195,15 @@ function App() {
             );
         }
 
-        if (tabs[activeTab]?.title === 'Задания') {
+        if (tabs[activeTab]?.title.startsWith('Задани')) {
+            if (labNumber === '3') {
+                return (
+                    <div className="theory-container">
+                        <SyntaxHighlighter className="theory-content" htmlContent={taskContent} />
+                    </div>
+                );
+            }
+
             return (
                 <div className="task-variants-container">
                     <div className="task-buttons">
@@ -220,14 +222,6 @@ function App() {
             );
         }
 
-        if (tabs[activeTab]?.title === 'Задание' && labNumber === '3') {
-            return (
-                <div className="theory-container">
-                    <div className="theory-content" dangerouslySetInnerHTML={{ __html: taskContent }} />
-                </div>
-            );
-        }
-
         if (tabs[activeTab]?.title === 'Пример') {
             return <div className="accordion-container"><Accordion labNumber={labNumber} /></div>;
         }
@@ -235,7 +229,7 @@ function App() {
         if (tabs[activeTab]?.title === 'Теория') {
             return (
                 <div className="theory-container">
-                    <div className="theory-content" dangerouslySetInnerHTML={{ __html: theoryContent }} />
+                     <SyntaxHighlighter className="theory-content" htmlContent={theoryContent} />
                 </div>
             );
         }
@@ -243,7 +237,7 @@ function App() {
         if (tabs[activeTab]?.title.startsWith("Вариант №")) {
             return (
                 <div className="theory-container">
-                    <div ref={taskContentRef} className="theory-content" dangerouslySetInnerHTML={{ __html: taskContent }} />
+                    <SyntaxHighlighter ref={taskContentRef} className="theory-content" htmlContent={taskContent} />
                 </div>
             );
         }

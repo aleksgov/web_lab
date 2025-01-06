@@ -46,34 +46,7 @@
         }
 
         pre {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            padding: 10px;
-            font-family: monospace;
-            overflow-x: auto;
-        }
-
-         .xml-code {
-             padding: 15px;
-             border-radius: 4px;
-             font-family: monospace;
-             line-height: 1.5;
-         }
-
-        .xml-code .notation {
-            color: #3971ed;
-        }
-
-        .xml-code .tag {
-            color: #cc342b;
-        }
-
-        .xml-code .attribute {
-            color: #f96a38;
-        }
-
-        .xml-code .value {
-            color: #198844;
+            padding: none;
         }
     </style>
     <title>Пример разработки XML документа</title>
@@ -107,90 +80,78 @@
 
         <h3>1. Корневой элемент</h3>
         <p>Документ начинается с корневого элемента <code>&lt;karateCompetitions&gt;</code>, который включает в себя все данные, описывающие соревнования.</p>
-        <pre class="xml-code">
-  &lt;<span class="tag">karateCompetitions</span>&gt;
-  &lt;<span class="tag">/karateCompetitions</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;karateCompetitions&gt;
+&lt;/karateCompetitions&gt;</code></pre>
         <p>Все остальные элементы будут находиться внутри этого корневого.</p>
 
         <h3>2. Элементы татами</h3>
         <p>Каждое татами, используемое для проведения соревнований, представлено вложенным элементом <code>&lt;tatami&gt;</code>. Для идентификации татами используются уникальные атрибуты <code>id</code> (например, "A", "B").</p>
-        <pre class="xml-code">
-&lt;<span class="tag">karateCompetitions</span>&gt;
-    &lt;<span class="tag">tatami</span> <span class="attribute">id</span>=<span class="value">"A"</span>&gt;
-    &lt;/<span class="tag">tatami</span>&gt;
-    &lt;<span class="tag">tatami</span> <span class="attribute">id</span>=<span class="value">"B"</span>&gt;
-    &lt;/<span class="tag">tatami</span>&gt;
-&lt;/<span class="tag">karateCompetitions</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;karateCompetitions&gt;
+    &lt;tatami id="A"&gt;
+    &lt;/tatami&gt;
+    &lt;tatami id="B"&gt;
+    &lt;/tatami&gt;
+&lt;/karateCompetitions&gt;</code></pre>
 
         <h3>3. Судейская команда</h3>
         <p>Каждое татами включает элемент <code>&lt;judgingTeam&gt;</code>, содержащий данные о судейской команде. Вложенные элементы <code>&lt;judge&gt;</code> описывают каждого судью, включая уникальный идентификатор, категорию судейства и текстовые значения имени.</p>
-        <pre class="xml-code">
-&lt;<span class="tag">tatami</span> <span class="attribute">id</span>=<span class="value">"A"</span>&gt;
-    &lt;<span class="tag">judgingTeam</span> <span class="attribute">id</span>=<span class="value">"1"</span>&gt;
-        &lt;<span class="tag">judge</span> <span class="attribute">id</span>=<span class="value">"1"</span> <span class="attribute">category</span>=<span class="value">"1-ая категория"</span>&gt;
-            &lt;<span class="tag">name</span>&gt;
-                &lt;<span class="tag">lastName</span>&gt;Данилов&lt;/<span class="tag">lastName</span>&gt;
-                &lt;<span class="tag">firstName</span>&gt;Станислав&lt;/<span class="tag">firstName</span>&gt;
-            &lt;/<span class="tag">name</span>&gt;
-        &lt;/<span class="tag">judge</span>&gt;
-    &lt;/<span class="tag">judgingTeam</span>&gt;
-&lt;/<span class="tag">tatami</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;tatami id="A"&gt;
+    &lt;judgingTeam id="1"&gt;
+        &lt;judge id="1" category="1-ая категория"&gt;
+            &lt;name&gt;
+                &lt;lastName&gt;Данилов&lt;/lastName&gt;
+                &lt;firstName&gt;Станислав&lt;/firstName&gt;
+            &lt;/name&gt;
+        &lt;/judge&gt;
+    &lt;/judgingTeam&gt;
+&lt;/tatami&gt;</code></pre>
 
         <h3>4. Секретариат</h3>
         <p>Элемент <code>&lt;secretariat&gt;</code> содержит сведения о членах секретариата, включая их идентификаторы и текстовые значения имени.</p>
-        <pre class="xml-code">
-&lt;<span class="tag">secretariat</span>&gt;
-   &lt;<span class="tag">member</span> <span class="attribute">id</span>=<span class="value">"1"</span>&gt;
-       &lt;<span class="tag">name</span>&gt;
-           &lt;<span class="tag">lastName</span>&gt;Носов&lt;/<span class="tag">lastName</span>&gt;
-           &lt;<span class="tag">firstName</span>&gt;Егор&lt;/<span class="tag">firstName</span>&gt;
-       &lt;/<span class="tag">name</span>&gt;
-   &lt;/<span class="tag">member</span>&gt;
-&lt;/<span class="tag">secretariat</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;secretariat&gt;
+   &lt;member id="1"&gt;
+       &lt;name&gt;
+           &lt;lastName&gt;Носов&lt;/lastName&gt;
+           &lt;firstName&gt;Егор&lt;/firstName&gt;
+       &lt;/name&gt;
+   &lt;/member&gt;
+&lt;/secretariat&gt;</code></pre>
 
         <h3>5. Бои (кумите)</h3>
         <p>Элемент <code>&lt;kumites&gt;</code> включает данные о боях. Каждый бой представлен элементом <code>&lt;kumite&gt;</code> с уникальным идентификатором, результатом и списком участников. Участники описываются вложенными элементами <code>&lt;participant&gt;</code> с информацией о категории, возрасте, весе и регионе.</p>
-        <pre class="xml-code">
-&lt;<span class="tag">kumites</span>&gt;
-   &lt;<span class="tag">kumite</span> <span class="attribute">id</span>=<span class="value">"24"</span>&gt;
-       &lt;<span class="tag">decision</span>&gt;победа красного&lt;/<span class="tag">decision</span>&gt;
-       &lt;<span class="tag">participants</span>&gt;
-           &lt;<span class="tag">participant</span> <span class="attribute">id</span>=<span class="value">"327"</span> <span class="attribute">side</span>=<span class="value">"белый"</span>&gt;
-               &lt;<span class="tag">name</span>&gt;
-                   &lt;<span class="tag">lastName</span>&gt;Моргунов&lt;/<span class="tag">lastName</span>&gt;
-                   &lt;<span class="tag">firstName</span>&gt;Дмитрий&lt;/<span class="tag">firstName</span>&gt;
-               &lt;/<span class="tag">name</span>&gt;
-               &lt;<span class="tag">category</span>&gt;
-                   &lt;<span class="tag">age</span>&gt;14-15 лет&lt;/<span class="tag">age</span>&gt;
-                   &lt;<span class="tag">weight</span>&gt;65-70 кг&lt;/<span class="tag">weight</span>&gt;
-                   &lt;<span class="tag">gender</span>&gt;м&lt;/<span class="tag">gender</span>&gt;
-               &lt;/<span class="tag">category</span>&gt;
-               &lt;<span class="tag">region</span>&gt;Нижегородская область&lt;/<span class="tag">region</span>&gt;
-           &lt;/<span class="tag">participant</span>&gt;
-       &lt;/<span class="tag">participants</span>&gt;
-   &lt;/<span class="tag">kumite</span>&gt;
-&lt;/<span class="tag">kumites</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;kumites&gt;
+   &lt;kumite id="24"&gt;
+       &lt;decision&gt;победа красного&lt;/decision&gt;
+       &lt;participants&gt;
+           &lt;participant id="327" side="белый"&gt;
+               &lt;name&gt;
+                   &lt;lastName&gt;Моргунов&lt;/lastName&gt;
+                   &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
+               &lt;/name&gt;
+               &lt;category&gt;
+                   &lt;age&gt;14-15 лет&lt;/age&gt;
+                   &lt;weight&gt;65-70 кг&lt;/weight&gt;
+                   &lt;gender&gt;м&lt;/gender&gt;
+               &lt;/category&gt;
+               &lt;region&gt;Нижегородская область&lt;/region&gt;
+           &lt;/participant&gt;
+       &lt;/participants&gt;
+   &lt;/kumite&gt;
+&lt;/kumites&gt;</code></pre>
 
         <h3>6. Выступления (ката)</h3>
         <p>Элемент <code>&lt;kataPerformances&gt;</code> описывает выступления участников. Каждый элемент <code>&lt;kata&gt;</code> содержит данные об участнике и его оценке.</p>
-        <pre class="xml-code">
-&lt;<span class="tag">kataPerformances</span>&gt;
-   &lt;<span class="tag">kata</span> <span class="attribute">id</span>=<span class="value">"12"</span>&gt;
-       &lt;<span class="tag">participant</span> <span class="attribute">id</span>=<span class="value">"327"</span>&gt;
-           &lt;<span class="tag">name</span>&gt;
-               &lt;<span class="tag">lastName</span>&gt;Моргунов&lt;/<span class="tag">lastName</span>&gt;
-               &lt;<span class="tag">firstName</span>&gt;Дмитрий&lt;/<span class="tag">firstName</span>&gt;
-           &lt;/<span class="tag">name</span>&gt;
-           &lt;<span class="tag">score</span>&gt;7.5&lt;/<span class="tag">score</span>&gt;
-       &lt;/<span class="tag">participant</span>&gt;
-   &lt;/<span class="tag">kata</span>&gt;
-&lt;/<span class="tag">kataPerformances</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;kataPerformances&gt;
+   &lt;kata id="12"&gt;
+       &lt;participant id="327"&gt;
+           &lt;name&gt;
+               &lt;lastName&gt;Моргунов&lt;/lastName&gt;
+               &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
+           &lt;/name&gt;
+           &lt;score&gt;7.5&lt;/score&gt;
+       &lt;/participant&gt;
+   &lt;/kata&gt;
+&lt;/kataPerformances&gt;</code></pre>
 
         <h2>Уровни вложенности</h2>
         <p>В документе предполагается следующая структура вложенности:</p>
@@ -202,50 +163,48 @@
         </ul>
 
         <h2>Итоговый XML-документ</h2>
-        <pre class="xml-code">
-&lt;<span class="notation">?xml version="1.0" encoding="UTF-8"?</span>&gt;
-&lt;<span class="tag">karateCompetitions</span>&gt;
-   &lt;<span class="tag">tatamis</span>&gt;
-       &lt;<span class="tag">tatami</span> <span class="attribute">id</span>=<span class="value">"A"</span>&gt;
-           &lt;<span class="tag">judgingTeam</span> <span class="attribute">id</span>=<span class="value">"1"</span>&gt;
-               &lt;<span class="tag">judge</span> <span class="attribute">id</span>=<span class="value">"1"</span> <span class="attribute">category</span>=<span class="value">"1-ая категория"</span>&gt;
-                   &lt;<span class="tag">name</span>&gt;
-                       &lt;<span class="tag">lastName</span>&gt;Данилов&lt;/<span class="tag">lastName</span>&gt;
-                       &lt;<span class="tag">firstName</span>&gt;Станислав&lt;/<span class="tag">firstName</span>&gt;
-                   &lt;/<span class="tag">name</span>&gt;
-               &lt;/<span class="tag">judge</span>&gt;
-           &lt;/<span class="tag">judgingTeam</span>&gt;
-           &lt;<span class="tag">secretariat</span>&gt;
-               &lt;<span class="tag">member</span> <span class="attribute">id</span>=<span class="value">"1"</span>&gt;
-                   &lt;<span class="tag">name</span>&gt;
-                       &lt;<span class="tag">lastName</span>&gt;Носов&lt;/<span class="tag">lastName</span>&gt;
-                       &lt;<span class="tag">firstName</span>&gt;Егор&lt;/<span class="tag">firstName</span>&gt;
-                   &lt;/<span class="tag">name</span>&gt;
-               &lt;/<span class="tag">member</span>&gt;
-           &lt;/<span class="tag">secretariat</span>&gt;
-           &lt;<span class="tag">kumites</span>&gt;
-               &lt;<span class="tag">kumite</span> <span class="attribute">id</span>=<span class="value">"24"</span>&gt;
-                   &lt;<span class="tag">decision</span>&gt;победа красного&lt;/<span class="tag">decision</span>&gt;
-                   &lt;<span class="tag">participants</span>&gt;
-                       &lt;<span class="tag">participant</span> <span class="attribute">id</span>=<span class="value">"327"</span> <span class="attribute">side</span>=<span class="value">"белый"</span>&gt;
-                           &lt;<span class="tag">name</span>&gt;
-                               &lt;<span class="tag">lastName</span>&gt;Моргунов&lt;/<span class="tag">lastName</span>&gt;
-                               &lt;<span class="tag">firstName</span>&gt;Дмитрий&lt;/<span class="tag">firstName</span>&gt;
-                           &lt;/<span class="tag">name</span>&gt;
-                           &lt;<span class="tag">category</span>&gt;
-                               &lt;<span class="tag">age</span>&gt;14-15 лет&lt;/<span class="tag">age</span>&gt;
-                               &lt;<span class="tag">weight</span>&gt;65-70 кг&lt;/<span class="tag">weight</span>&gt;
-                               &lt;<span class="tag">gender</span>&gt;м&lt;/<span class="tag">gender</span>&gt;
-                           &lt;/<span class="tag">category</span>&gt;
-                           &lt;<span class="tag">region</span>&gt;Нижегородская область&lt;/<span class="tag">region</span>&gt;
-                       &lt;/<span class="tag">participant</span>&gt;
-                   &lt;/<span class="tag">participants</span>&gt;
-               &lt;/<span class="tag">kumite</span>&gt;
-           &lt;/<span class="tag">kumites</span>&gt;
-       &lt;/<span class="tag">tatami</span>&gt;
-   &lt;/<span class="tag">tatamis</span>&gt;
-&lt;/<span class="tag">karateCompetitions</span>&gt;
-</pre>
+        <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;karateCompetitions&gt;
+   &lt;tatamis&gt;
+       &lt;tatami id="A"&gt;
+           &lt;judgingTeam id="1"&gt;
+               &lt;judge id="1" category="1-ая категория"&gt;
+                   &lt;name&gt;
+                       &lt;lastName&gt;Данилов&lt;/lastName&gt;
+                       &lt;firstName&gt;Станислав&lt;/firstName&gt;
+                   &lt;/name&gt;
+               &lt;/judge&gt;
+           &lt;/judgingTeam&gt;
+           &lt;secretariat&gt;
+               &lt;member id="1"&gt;
+                   &lt;name&gt;
+                       &lt;lastName&gt;Носов&lt;/lastName&gt;
+                       &lt;firstName&gt;Егор&lt;/firstName&gt;
+                   &lt;/name&gt;
+               &lt;/member&gt;
+           &lt;/secretariat&gt;
+           &lt;kumites&gt;
+               &lt;kumite id="24"&gt;
+                   &lt;decision&gt;победа красного&lt;/decision&gt;
+                   &lt;participants&gt;
+                       &lt;participant id="327" side="белый"&gt;
+                           &lt;name&gt;
+                               &lt;lastName&gt;Моргунов&lt;/lastName&gt;
+                               &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
+                           &lt;/name&gt;
+                           &lt;category&gt;
+                               &lt;age&gt;14-15 лет&lt;/age&gt;
+                               &lt;weight&gt;65-70 кг&lt;/weight&gt;
+                               &lt;gender&gt;м&lt;/gender&gt;
+                           &lt;/category&gt;
+                           &lt;region&gt;Нижегородская область&lt;/region&gt;
+                       &lt;/participant&gt;
+                   &lt;/participants&gt;
+               &lt;/kumite&gt;
+           &lt;/kumites&gt;
+       &lt;/tatami&gt;
+   &lt;/tatamis&gt;
+&lt;/karateCompetitions&gt;</code></pre>
 
         <h2>Графический вывод XML</h2>
         <div class="isolated-container"><img src="/assets/SecondLab/Example/1/xml_code.png" alt="image"></div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { labFiles } from './Globals'; // Импортируем labFiles
 import './Accordion.css';
+import SyntaxHighlighter from './SyntaxHighlighter';
 
 const Accordion = ({ labNumber }) => {
     const [activeIndexes, setActiveIndexes] = useState([]); // Массив активных вкладок
@@ -61,10 +62,9 @@ const Accordion = ({ labNumber }) => {
                     {activeIndexes.includes(index) && (
                         <>
                             <div className="accordion-line"></div>
-                            <div
-                                className="accordion-content"
-                                dangerouslySetInnerHTML={{ __html: contents[index] }}
-                            />
+                            <div className="accordion-content">
+                                <SyntaxHighlighter htmlContent={contents[index]} />
+                            </div>
                         </>
                     )}
                 </div>
