@@ -14,6 +14,25 @@ function App() {
     const [labNumber, setLabNumber] = useState(null);
     const [activeVariant, setActiveVariant] = useState(1);
     const [variantsCount, setVariantsCount] = useState(30);
+    const [isMenuOpen, setMenuOpen] = useState(false);
+    const [selectedButton, setSelectedButton] = useState("button1");
+
+    const buttons = [
+        { id: "button1", label: "1", backgroundColor: "linear-gradient(149deg, rgba(255, 144, 0, 0.45) 0%, rgba(0, 102, 174, 0.45) 100%)" },
+        { id: "button2", label: "2", backgroundColor: "linear-gradient(149deg, rgba(0, 255, 144, 0.45) 0%, rgba(0, 174, 102, 0.45) 100%)" },
+        { id: "button3", label: "3", backgroundColor: "linear-gradient(149deg, rgba(255, 0, 0, 0.45) 0%, rgba(174, 0, 102, 0.45) 100%)" },
+    ];
+
+    const handleMainButtonClick = () => {
+        setMenuOpen(!isMenuOpen);
+    };
+
+    const handleMenuButtonClick = (buttonId) => {
+        setSelectedButton(buttonId);
+        setMenuOpen(false);
+    };
+
+    const selectedButtonDetails = buttons.find((btn) => btn.id === selectedButton);
 
     // Обновление компонента
     const causeAnUpdate = () => setForceUpdate(Math.random());
@@ -195,7 +214,7 @@ function App() {
             );
         }
 
-        if (tabs[activeTab]?.title.startsWith('Задани')) {
+        if (/^Зад(ания|ание)/.test(tabs[activeTab]?.title)) {
             if (labNumber === '3') {
                 return (
                     <div className="theory-container">
@@ -237,7 +256,7 @@ function App() {
         if (tabs[activeTab]?.title.startsWith("Вариант №")) {
             return (
                 <div className="theory-container">
-                    <SyntaxHighlighter ref={taskContentRef} className="theory-content" htmlContent={taskContent} />
+                    <div ref={taskContentRef} className="theory-content" dangerouslySetInnerHTML={{ __html: taskContent }} />
                 </div>
             );
         }

@@ -52,6 +52,7 @@
 .accordion-content {
     padding-bottom: 20px;
     padding-left: 8%;
+    padding-right: 1%;
 }
 
 .accordion-toggle {

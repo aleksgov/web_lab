@@ -17,6 +17,37 @@
   left: 0;
 }
 
+.color-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 20px;
+  right: 20px;
+  gap: 10px;
+}
+
+.main-color-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 20px;
+  right: 20px;
+  gap: 10px;
+}
+
 .content-box {
   width: 1170px;
   height: 675px;
