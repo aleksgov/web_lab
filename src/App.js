@@ -14,7 +14,15 @@ function App() {
     const [labNumber, setLabNumber] = useState(null);
     const [activeVariant, setActiveVariant] = useState(1);
     const [variantsCount, setVariantsCount] = useState(30);
-    const [backgroundStyle, setBackgroundStyle] = useState();
+    const [backgroundStyle, setBackgroundStyle] = useState('');
+    const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+    const [menuVisible, setMenuVisible] = useState(false);
+    const colors = [
+        "linear-gradient(149deg, rgba(255, 144, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)",
+        "linear-gradient(149deg, rgba(255, 108, 0, 0.52) 0%, rgba(0, 158, 142, 0.52) 100%)",
+        "linear-gradient(149deg, rgba(166, 136, 0, 0.52) 0%, rgba(29, 7, 114, 0.52) 100%)",
+        "linear-gradient(149deg, rgba(180, 13, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)",
+    ];
 
     // Обновление компонента
     const causeAnUpdate = () => setForceUpdate(Math.random());
@@ -135,6 +143,12 @@ function App() {
         addTab(`Вариант №${variantIndex}`, "");
     };
 
+    const handleColorButtonClick = (index) => {
+        setBackgroundStyle(colors[index]);
+        setSelectedButtonIndex(index);
+        setMenuVisible(false);
+    };
+
     // Рендеринг вкладок
     const renderTabs = () => {
         return tabs.map((tab, index) => (
@@ -246,19 +260,31 @@ function App() {
         return null;
     };
 
-    const handleColorButtonClick = (style) => {
-        setBackgroundStyle(style);
-    };
-
     return (
         <div className="App">
-            <div className="background" style={{background: backgroundStyle}}></div>
+            <div className="background" style={{ background: backgroundStyle }}></div>
             {activeTab === 0 && (
                 <div className="color-buttons-container">
-                    <button className="color-button" onClick={() => handleColorButtonClick("linear-gradient(149deg, rgba(255, 144, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)")}></button>
-                    <button className="color-button" onClick={() => handleColorButtonClick("linear-gradient(149deg, rgba(255, 108, 0, 0.52) 0%, rgba(0, 158, 142, 0.52) 100%)")}></button>
-                    <button className="color-button" onClick={() => handleColorButtonClick("linear-gradient(149deg, rgba(166, 136, 0, 0.52) 0%, rgba(29, 7, 114, 0.52) 100%)")}></button>
-                    <button className="color-button" onClick={() => handleColorButtonClick("linear-gradient(149deg, rgba(180, 13, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)")}></button>
+                    <button
+                        className="color-button"
+                        style={{ background: colors[selectedButtonIndex] }}
+                        onClick={() => setMenuVisible(!menuVisible)}
+                    ></button>
+
+                    {menuVisible && (
+                        <div className="color-menu">
+                            {colors.map((color, index) => (
+                                index !== selectedButtonIndex && (
+                                    <button
+                                        key={index}
+                                        className="color-button"
+                                        style={{ background: color }}
+                                        onClick={() => handleColorButtonClick(index)}
+                                    ></button>
+                                )
+                            ))}
+                        </div>
+                    )}
                 </div>
             )}
             <div className="tabs-container">
@@ -266,6 +292,7 @@ function App() {
             </div>
             {renderContent()}
         </div>
+
     );
 }
 
