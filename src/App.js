@@ -14,25 +14,7 @@ function App() {
     const [labNumber, setLabNumber] = useState(null);
     const [activeVariant, setActiveVariant] = useState(1);
     const [variantsCount, setVariantsCount] = useState(30);
-    const [isMenuOpen, setMenuOpen] = useState(false);
-    const [selectedButton, setSelectedButton] = useState("button1");
-
-    const buttons = [
-        { id: "button1", label: "1", backgroundColor: "linear-gradient(149deg, rgba(255, 144, 0, 0.45) 0%, rgba(0, 102, 174, 0.45) 100%)" },
-        { id: "button2", label: "2", backgroundColor: "linear-gradient(149deg, rgba(0, 255, 144, 0.45) 0%, rgba(0, 174, 102, 0.45) 100%)" },
-        { id: "button3", label: "3", backgroundColor: "linear-gradient(149deg, rgba(255, 0, 0, 0.45) 0%, rgba(174, 0, 102, 0.45) 100%)" },
-    ];
-
-    const handleMainButtonClick = () => {
-        setMenuOpen(!isMenuOpen);
-    };
-
-    const handleMenuButtonClick = (buttonId) => {
-        setSelectedButton(buttonId);
-        setMenuOpen(false);
-    };
-
-    const selectedButtonDetails = buttons.find((btn) => btn.id === selectedButton);
+    const [backgroundStyle, setBackgroundStyle] = useState();
 
     // Обновление компонента
     const causeAnUpdate = () => setForceUpdate(Math.random());
@@ -248,7 +230,7 @@ function App() {
         if (tabs[activeTab]?.title === 'Теория') {
             return (
                 <div className="theory-container">
-                     <SyntaxHighlighter className="theory-content" htmlContent={theoryContent} />
+                    <SyntaxHighlighter className="theory-content" htmlContent={theoryContent} />
                 </div>
             );
         }
@@ -264,9 +246,21 @@ function App() {
         return null;
     };
 
+    const handleColorButtonClick = (style) => {
+        setBackgroundStyle(style);
+    };
+
     return (
         <div className="App">
-            <div className="background" />
+            <div className="background" style={{background: backgroundStyle}}></div>
+            {activeTab === 0 && (
+                <div className="color-buttons-container">
+                    <button className="color-button" onClick={() => handleColorButtonClick("linear-gradient(149deg, rgba(255, 144, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)")}></button>
+                    <button className="color-button" onClick={() => handleColorButtonClick("linear-gradient(149deg, rgba(255, 108, 0, 0.52) 0%, rgba(0, 158, 142, 0.52) 100%)")}></button>
+                    <button className="color-button" onClick={() => handleColorButtonClick("linear-gradient(149deg, rgba(166, 136, 0, 0.52) 0%, rgba(29, 7, 114, 0.52) 100%)")}></button>
+                    <button className="color-button" onClick={() => handleColorButtonClick("linear-gradient(149deg, rgba(180, 13, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)")}></button>
+                </div>
+            )}
             <div className="tabs-container">
                 {renderTabs()}
             </div>
