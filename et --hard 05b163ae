@@ -1,0 +1,28 @@
+[33m66108dc6[m[33m ([m[1;36mHEAD[m[33m)[m Added syntax highlighter
+[33mfb4061f2[m add task for third lab
+[33mef63c9cd[m add example html for third lab and project structure rework
+[33mea651d5f[m app rebuild
+[33m4937a1f6[m adding paragraph indents
+[33me0fedf72[m add example for second lab, part-2
+[33m4b4cc342[m deleted white line
+[33mcd368f7f[m Added variants
+[33m4694bec2[m little changes styles of html
+[33mb1c8ddbb[m project cleanups
+[33m19949f67[m adding an example to the second lab (first part)
+[33m78f55415[m loading the config into the accordion depending on the variant
+[33mfe939650[m new tab for variants
+[33mabc4a162[m scroll auto-move
+[33m05ea406a[m scroll-bar edit
+[33mdeb13749[m Merge remote-tracking branch 'origin/main'
+[33m7b7bc805[m add css style for variants
+[33m5ded13b7[m Update README.md
+[33mc5e354e5[m row accordion and variants tab
+[33mf0d718d8[m html changed
+[33m6333a6c4[m html + style change + scale_factor
+[33mdec29d0e[m html + style change + scale_factor
+[33m014c9e1c[m size correct
+[33m128d8f26[m icons add and description
+[33m1292e8d4[m add theory tab and html parser for it
+[33made5c29e[m add tab_system normaly, labs slide
+[33m394358a8[m dependencies
+[33mf9932f3d[m first commit
