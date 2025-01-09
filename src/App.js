@@ -263,30 +263,28 @@ function App() {
     return (
         <div className="App">
             <div className="background" style={{ background: backgroundStyle }}></div>
-            {activeTab === 0 && (
-                <div className="color-buttons-container">
-                    <button
-                        className="color-button"
-                        style={{ background: colors[selectedButtonIndex] }}
-                        onClick={() => setMenuVisible(!menuVisible)}
-                    ></button>
+            <div className="color-buttons-container">
+                <button
+                    className="color-button"
+                    style={{ background: colors[selectedButtonIndex] }}
+                    onClick={() => setMenuVisible(!menuVisible)}
+                ></button>
 
-                    {menuVisible && (
-                        <div className="color-menu">
-                            {colors.map((color, index) => (
-                                index !== selectedButtonIndex && (
-                                    <button
-                                        key={index}
-                                        className="color-button"
-                                        style={{ background: color }}
-                                        onClick={() => handleColorButtonClick(index)}
-                                    ></button>
-                                )
-                            ))}
-                        </div>
-                    )}
-                </div>
-            )}
+                {menuVisible && (
+                    <div className="color-menu">
+                        {colors.map((color, index) => (
+                            index !== selectedButtonIndex && (
+                                <button
+                                    key={index}
+                                    className="color-button"
+                                    style={{ background: color }}
+                                    onClick={() => handleColorButtonClick(index)}
+                                ></button>
+                            )
+                        ))}
+                    </div>
+                )}
+            </div>
             <div className="tabs-container">
                 {renderTabs()}
             </div>
