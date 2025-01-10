@@ -379,6 +379,20 @@
   }
 }
 
+@font-face {
+  font-family: "Century Gothic";
+  src: url("/public/assets/fonts/centurygothic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url("/public/assets/fonts/centurygothic_bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

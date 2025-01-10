@@ -1,7 +1,16 @@
 {
+  "name": "datalab",
+  "version": "1.0.0",
+  "author": "Govorukha Aleksandr, Sataev Stepan, Zotov Aleksandr",
+  "homepage": ".",
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "serve": "node server.js"
   },
+  "bin": "server.js",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "react-scripts": "^5.0.1",
@@ -21,8 +30,17 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
+    "express": "^4.21.2",
     "highlight.js": "^11.11.1",
+    "open": "^10.1.0",
+    "opn": "^5.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "pkg": {
+    "assets": [
+      "build/index.html",
+      "build/static/**/*"
+    ]
   }
 }
