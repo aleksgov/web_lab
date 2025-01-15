@@ -175,18 +175,34 @@ function App() {
                                 Лабораторный практикум<br />по предмету “Управление данными”
                             </div>
                             <div className="main-buttons-container">
-                                {[1, 2, 3, 4].map((number) => (
-                                    <button
-                                        key={number}
-                                        className="main-button"
-                                        onClick={() => addTab(`Лабораторная работа №${number}`)}
-                                    >
-                                        <div className="main-button-text">
-                                            Лабораторная <br /> работа
-                                        </div>
-                                        <div className="main-button-number">{number}</div>
-                                    </button>
-                                ))}
+                                <div className="button-row">
+                                    {[1, 2, 3].map((number) => (
+                                        <button
+                                            key={number}
+                                            className="main-button"
+                                            onClick={() => addTab(`Лабораторная работа №${number}`)}
+                                        >
+                                            <div className="main-button-text">
+                                                Лабораторная <br /> работа
+                                            </div>
+                                            <div className="main-button-number">{number}</div>
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="button-row">
+                                    {[4, 5].map((number) => (
+                                        <button
+                                            key={number}
+                                            className="main-button"
+                                            onClick={() => addTab(`Лабораторная работа №${number}`)}
+                                        >
+                                            <div className="main-button-text">
+                                                Лабораторная <br /> работа
+                                            </div>
+                                            <div className="main-button-number">{number}</div>
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
