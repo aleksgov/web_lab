@@ -111,141 +111,160 @@
     <title>Пример использования языка запросов XPath</title>
 </head>
 <body>
+    <header>
         <h2>Задание для второй части</h2>
-        <p>В рамках данного задания требуется ознакомиться с основами языка запросов XPath и реализовать несколько запросов к ранее созданному XML&#8209;документу. Отчет по выполненной работе должен содержать:</p>
-        <p><strong>Отчет должен содержать:</strong></p>
-        <ul>
-            <li>Листинг XML-документа.</li>
-            <li>Описание элементов XML-документа.</li>
-            <li>Вывод о проделанной работе.</li>
-        </ul>
-
-        <h2>Теоретическая часть</h2>
-        <p>XPath (XML Path Language) — это язык запросов, предназначенный для выборки данных из XML-документов. Он позволяет извлекать элементы, атрибуты, текстовые данные и даже вычислять значения на основе иерархической структуры документа.</p>
-
-        <h3>Основные понятия XPath</h3>
-        <ul>
-            <li><strong>Контекстный узел:</strong> точка в документе, от которой начинается выполнение запроса.</li>
-            <li><strong>Шаги:</strong> каждая часть XPath-запроса, разделённая символом <code>/</code>.</li>
-            <li><strong>Выражения:</strong> команды, определяющие, какие узлы выбирать, например, <code>//element</code> для выбора всех узлов <code>&lt;element&gt;</code>.</li>
-        </ul>
-
-        <h3>Типы узлов в XPath</h3>
-        <ul>
-            <li><strong>Элемент:</strong> например, <code>&lt;name&gt;</code>.</li>
-            <li><strong>Атрибут:</strong> например, <code>id="1"</code>.</li>
-            <li><strong>Текст:</strong> текстовое содержимое элементов, например, "Станислав".</li>
-            <li><strong>Корень:</strong> верхний узел документа.</li>
-        </ul>
-
-        <h3>Операторы XPath</h3>
-        <ul>
-            <li><code>/</code> — выбирает дочерний элемент.</li>
-            <li><code>//</code> — выбирает элемент на любом уровне вложенности.</li>
-            <li><code>@</code> — указывает на атрибут.</li>
-            <li><code>*</code> — выбирает все узлы или атрибуты.</li>
-            <li><code>[]</code> — задаёт фильтры (например, <code>[@id='1']</code> выбирает элементы с определённым значением атрибута <code>id</code>).</li>
-        </ul>
-
-        <h3>Функции XPath</h3>
-        <ul>
-            <li><code>text()</code> — возвращает текстовое содержимое узла.</li>
-            <li><code>contains()</code> — проверяет наличие подстроки.</li>
-            <li><code>position()</code> — возвращает позицию узла относительно других.</li>
-            <li><code>last()</code> — возвращает последний узел.</li>
-        </ul>
-
-        <h3>Примеры XPath-запросов</h3>
-        <p>Выберем код-фрагмент для примера</p>
-        <pre><code class="language-xml">&lt;judges&gt;
-    &lt;judge id="1" category="1-ая категория"&gt;
-        &lt;name&gt;Станислав&lt;/name&gt;
-    &lt;/judge&gt;
-    &lt;judge id="2" category="2-ая категория"&gt;
-        &lt;name&gt;Артур&lt;/name&gt;
-    &lt;/judge&gt;
-&lt;/judges&gt;</code></pre>
-        <ul>
-            <li>Запрос <code>//judge</code> — выбирает все узлы <code>&lt;judge&gt; (судей)</code>.</li>
-        </ul>
-        <pre><code class="language-xml">&lt;judge id="1" category="1:ая категория"&gt;
-    &lt;name&gt;Станислав&lt;/name&gt;
-&lt;/judge&gt;
-&lt;judge id="2" category="2:ая категория"&gt;
-    &lt;name&gt;Артур&lt;/name&gt;
-&lt;/judge&gt;
-</code></pre>
-        <ul>
-            <li><code>Запрос //judge[@category='1-ая категория']</code> — выбирает узлы судей с 1-й категорией.</li>
-        </ul>
-        <pre><code class="language-xml">&lt;judge id="1" category="1:ая категория"&gt;
-    &lt;name&gt;Станислав&lt;/name&gt;
-&lt;/judge&gt;
-</code></pre>
-        <ul>
-            <li><code>Запрос //judge/name/text()</code> — позволяет посмотреть текстовые значения имён судей.</li>
-        </ul>
-        <pre> Станислав
- Артур
-</pre>
-
-        <h3>Преимущества XPath</h3>
-        <ul>
-            <li><strong>Универсальность:</strong> XPath поддерживается большинством XML-парсеров и программных библиотек.</li>
-            <li><strong>Гибкость:</strong> позволяет выбирать элементы как по их структуре, так и по содержимому.</li>
-            <li><strong>Компактность:</strong> запросы могут быть короткими и легко читаемыми.</li>
-        </ul>
-
+    </header>
+    <main>
+        <aside>
+            <p>В рамках данного задания требуется ознакомиться с основами языка запросов XPath и реализовать несколько запросов к ранее созданному XML&#8209;документу. Отчет по выполненной работе должен содержать:</p>
+            <p><strong>Отчет должен содержать:</strong></p>
+            <ul>
+                <li>Листинг XML-документа.</li>
+                <li>Описание элементов XML-документа.</li>
+                <li>Вывод о проделанной работе.</li>
+            </ul>
+        </aside>
+        <section>
+            <h2>Теоретическая часть</h2>
+            <p>XPath (XML Path Language) — это язык запросов, предназначенный для выборки данных из XML-документов. Он позволяет извлекать элементы, атрибуты, текстовые данные и даже вычислять значения на основе иерархической структуры документа.</p>
+            <article>
+                <h3>Основные понятия XPath</h3>
+                <ul>
+                    <li><strong>Контекстный узел:</strong> точка в документе, от которой начинается выполнение запроса.</li>
+                    <li><strong>Шаги:</strong> каждая часть XPath-запроса, разделённая символом <code>/</code>.</li>
+                    <li><strong>Выражения:</strong> команды, определяющие, какие узлы выбирать, например, <code>//element</code> для выбора всех узлов <code>&lt;element&gt;</code>.</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Типы узлов в XPath</h3>
+                <ul>
+                    <li><strong>Элемент:</strong> например, <code>&lt;name&gt;</code>.</li>
+                    <li><strong>Атрибут:</strong> например, <code>id="1"</code>.</li>
+                    <li><strong>Текст:</strong> текстовое содержимое элементов, например, "Станислав".</li>
+                    <li><strong>Корень:</strong> верхний узел документа.</li>
+                </ul>
+            </article>
+            <article>
+            <h3>Операторы XPath</h3>
+                <ul>
+                    <li><code>/</code> — выбирает дочерний элемент.</li>
+                    <li><code>//</code> — выбирает элемент на любом уровне вложенности.</li>
+                    <li><code>@</code> — указывает на атрибут.</li>
+                    <li><code>*</code> — выбирает все узлы или атрибуты.</li>
+                    <li><code>[]</code> — задаёт фильтры (например, <code>[@id='1']</code> выбирает элементы с определённым значением атрибута <code>id</code>).</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Функции XPath</h3>
+                <ul>
+                    <li><code>text()</code> — возвращает текстовое содержимое узла.</li>
+                    <li><code>contains()</code> — проверяет наличие подстроки.</li>
+                    <li><code>position()</code> — возвращает позицию узла относительно других.</li>
+                    <li><code>last()</code> — возвращает последний узел.</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Примеры XPath-запросов</h3>
+                <p>Выберем код-фрагмент для примера</p>
+                <pre><code class="language-xml">&lt;judges&gt;
+            &lt;judge id="1" category="1-ая категория"&gt;
+                &lt;name&gt;Станислав&lt;/name&gt;
+            &lt;/judge&gt;
+            &lt;judge id="2" category="2-ая категория"&gt;
+                &lt;name&gt;Артур&lt;/name&gt;
+            &lt;/judge&gt;
+        &lt;/judges&gt;</code></pre>
+                <ul>
+                    <li>Запрос <code>//judge</code> — выбирает все узлы <code>&lt;judge&gt; (судей)</code>.</li>
+                </ul>
+                <pre><code class="language-xml">&lt;judge id="1" category="1:ая категория"&gt;
+            &lt;name&gt;Станислав&lt;/name&gt;
+        &lt;/judge&gt;
+        &lt;judge id="2" category="2:ая категория"&gt;
+            &lt;name&gt;Артур&lt;/name&gt;
+        &lt;/judge&gt;
+        </code></pre>
+                <ul>
+                    <li><code>Запрос //judge[@category='1-ая категория']</code> — выбирает узлы судей с 1-й категорией.</li>
+                </ul>
+                <pre><code class="language-xml">&lt;judge id="1" category="1:ая категория"&gt;
+            &lt;name&gt;Станислав&lt;/name&gt;
+        &lt;/judge&gt;
+        </code></pre>
+                <ul>
+                    <li><code>Запрос //judge/name/text()</code> — позволяет посмотреть текстовые значения имён судей.</li>
+                </ul>
+                <pre> Станислав
+         Артур
+        </pre>
+            </article>
+            <article>
+                <h3>Преимущества XPath</h3>
+                <ul>
+                    <li><strong>Универсальность:</strong> XPath поддерживается большинством XML-парсеров и программных библиотек.</li>
+                    <li><strong>Гибкость:</strong> позволяет выбирать элементы как по их структуре, так и по содержимому.</li>
+                    <li><strong>Компактность:</strong> запросы могут быть короткими и легко читаемыми.</li>
+                </ul>
+            </article>
+        </section>
+        <section>
         <h2>Практическая часть</h2>
-        <h3>1. Установка инструментов для работы с XPath</h3>
-        <p>Для выполнения лабораторной работы потребуется среда, поддерживающая XPath. Рассмотрим несколько вариантов:</p>
-        <ol>
-            <li><strong>Онлайн-редакторы:</strong>
-                <ul>
-                    <li><a href="https://codebeautify.org/Xpath-Tester" target="_blank">https://codebeautify.org/Xpath-Tester</a></li>
-                    <li><a href="https://xpather.com/" target="_blank">https://xpather.com/</a></li>
-                </ul>
-            </li>
-            <li><strong>Текстовые редакторы с поддержкой XPath:</strong>
-                <ul>
-                    <li>Visual Studio Code с расширением XML Tools.</li>
-                </ul>
-            </li>
-            <li><strong>Программные инструменты:</strong>
-                <ul>
-                    <li>Python с библиотекой <code>lxml</code>. Установка:</li>
-                </ul>
-                <code>pip install lxml</code>
-                <ul>
-                    <li>Java со стандартными библиотеками <code>DocumentBuilderFactory</code> и <code>DocumentBuilder</code>.</li>
-                </ul>
+            <article>
+                <h3>1. Установка инструментов для работы с XPath</h3>
+                <p>Для выполнения лабораторной работы потребуется среда, поддерживающая XPath. Рассмотрим несколько вариантов:</p>
+                <ol>
+                    <li><strong>Онлайн-редакторы:</strong>
+                        <ul>
+                            <li><a href="https://codebeautify.org/Xpath-Tester" target="_blank">https://codebeautify.org/Xpath-Tester</a></li>
+                            <li><a href="https://xpather.com/" target="_blank">https://xpather.com/</a></li>
+                        </ul>
+                    </li>
+                    <li><strong>Текстовые редакторы с поддержкой XPath:</strong>
+                        <ul>
+                            <li>Visual Studio Code с расширением XML Tools.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Программные инструменты:</strong>
+                        <ul>
+                            <li>Python с библиотекой <code>lxml</code>. Установка:</li>
+                        </ul>
+                        <code>pip install lxml</code>
+                        <ul>
+                            <li>Java со стандартными библиотеками <code>DocumentBuilderFactory</code> и <code>DocumentBuilder</code>.</li>
+                        </ul>
 
-            </li>
-        </ol>
-        <h3>2. Основные запросы XPath</h3>
-        <span class="starred">* Все дальнейшие запросы выполняются над XML-кодом первого примера.</span>
-        <h4>Пример 1: Получение всех фамилий судей с татами A</h4>
-        <pre>//tatami[@id='A']//judge/name/lastName</pre>
-        <p><strong>Результат:</strong></p>
-        <pre> Данилов
- Кузнецов
- Николаев
- Глушкова
- Зимина</pre>
+                    </li>
+                </ol>
+            </article>
+            <article>
+                <h3>2. Основные запросы XPath</h3>
+                <span class="starred">* Все дальнейшие запросы выполняются над XML-кодом первого примера.</span>
+                <h4>Пример 1: Получение всех фамилий судей с татами A</h4>
+                <pre>//tatami[@id='A']//judge/name/lastName</pre>
+                <p><strong>Результат:</strong></p>
+                <pre> Данилов
+         Кузнецов
+         Николаев
+         Глушкова
+         Зимина</pre>
 
-        <h4>Пример 2: Участники кумите с исходом “победа красного”</h4>
-        <pre>//kumite[decision="победа красного"]//participant[@side="красный"]</pre>
-        <p><strong>Результат:</strong></p>
-        <pre>Самойлов Евгений 14-15 лет 65-70 кг м Нижегородская область</pre>
-        <h4>Пример 3: Баллы участников за выполнение ката на татами B</h4>
-        <pre>//tatami[@id='B']//kata/participant/name/lastName | //tatami[@id='B']//kata/participant/score</pre>
-        <p><strong>Результат:</strong></p>
-        <pre> Моргунов
- 7.5
- Пономарев
- 6.5</pre>
-
-        <h2>Заключение</h2>
-        <p>На этой лабораторной работе вы познакомились с XPath, научились составлять запросы к XML-документам и извлекать нужные данные. Эти навыки пригодятся для работы с XML-файлами в различных IT-задачах.</p>
+                <h4>Пример 2: Участники кумите с исходом “победа красного”</h4>
+                <pre>//kumite[decision="победа красного"]//participant[@side="красный"]</pre>
+                <p><strong>Результат:</strong></p>
+                <pre>Самойлов Евгений 14-15 лет 65-70 кг м Нижегородская область</pre>
+                <h4>Пример 3: Баллы участников за выполнение ката на татами B</h4>
+                <pre>//tatami[@id='B']//kata/participant/name/lastName | //tatami[@id='B']//kata/participant/score</pre>
+                <p><strong>Результат:</strong></p>
+                <pre> Моргунов
+         7.5
+         Пономарев
+         6.5</pre>
+            </article>
+        </section>
+        <section>
+            <h2>Заключение</h2>
+            <p>На этой лабораторной работе вы познакомились с XPath, научились составлять запросы к XML-документам и извлекать нужные данные. Эти навыки пригодятся для работы с XML-файлами в различных IT-задачах.</p>
+        </section>
+    </main>
 </body>
 </html>

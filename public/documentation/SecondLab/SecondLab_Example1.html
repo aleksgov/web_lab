@@ -52,165 +52,183 @@
     <title>Пример разработки XML документа</title>
 </head>
 <body>
+    <header>
         <h2>Задание для первой части</h2>
-        <p>Цель данного задания — создать корректный XML-документ, который будет описывать иерархическую структуру базы данных, содержащую несколько типов вложенных элементов и не менее четырех уровней вложенности. Этот документ должен включать различные атрибуты и текстовые значения, соответствующие концепции базы данных, которую вы изучали в рамках курса "Базы данных". В качестве примера, можно использовать схему базы данных, связанную с организацией соревнований по карате, как основу для создания XML-документа.</p>
-        <p><strong>Отчет должен содержать:</strong></p>
-        <ul>
-            <li>Листинг XML-документа.</li>
-            <li>Описание элементов XML-документа.</li>
-            <li>Вывод о проделанной работе.</li>
-        </ul>
+    </header>
+    <main>
+        <aside>
+            <p>Цель данного задания — создать корректный XML-документ, который будет описывать иерархическую структуру базы данных, содержащую несколько типов вложенных элементов и не менее четырех уровней вложенности. Этот документ должен включать различные атрибуты и текстовые значения, соответствующие концепции базы данных, которую вы изучали в рамках курса "Базы данных". В качестве примера, можно использовать схему базы данных, связанную с организацией соревнований по карате, как основу для создания XML-документа.</p>
+            <p><strong>Отчет должен содержать:</strong></p>
+            <ul>
+                <li>Листинг XML-документа.</li>
+                <li>Описание элементов XML-документа.</li>
+                <li>Вывод о проделанной работе.</li>
+            </ul>
+        </aside>
+        <section>
+            <h2>Описание задачи</h2>
+            <p>Задача заключается в составлении XML-документа, который описывает структуру базы данных (БД) для соревнований по карате. Важно, чтобы структура XML-документа имела иерархию, включала различные типы элементов, такие как участники, судьи и секретариат, и соответствовала требованиям по вложенности. Элементы должны содержать атрибуты и текстовые значения, отражающие такие характеристики, как категория участников, результаты боев и другие данные.</p>
 
-        <h2>Описание задачи</h2>
-        <p>Задача заключается в составлении XML-документа, который описывает структуру базы данных (БД) для соревнований по карате. Важно, чтобы структура XML-документа имела иерархию, включала различные типы элементов, такие как участники, судьи и секретариат, и соответствовала требованиям по вложенности. Элементы должны содержать атрибуты и текстовые значения, отражающие такие характеристики, как категория участников, результаты боев и другие данные.</p>
+            <h2>Структура XML-документа</h2>
+            <p>Для реализации данного задания можно использовать следующую структуру XML-документа:</p>
+            <ul>
+                <li><strong>Корневой элемент:</strong> <code>&lt;karateCompetitions&gt;</code> — содержит все данные, связанные с соревнованиями по карате.</li>
+                <li><strong>Элементы татами:</strong> <code>&lt;tatami&gt;</code> — описывают каждый ковёр, на котором проводятся соревнования.</li>
+                <li><strong>Судейская команда:</strong> <code>&lt;judgingTeam&gt;</code> — описывает команду судей, работающих на каждом татами.</li>
+                <li><strong>Секретариат:</strong> <code>&lt;secretariat&gt;</code> — включает информацию о членах секретариата каждого татами.</li>
+                <li><strong>Бои:</strong> <code>&lt;kumite&gt;</code> — представляет информацию о проведенных боях, включая результаты и участников.</li>
+                <li><strong>Выступления (ката):</strong> <code>&lt;kataPerformances&gt;</code> — описывает выступления участников, включая их оценки.</li>
+            </ul>
+        </section>
+        <section>
+            <article>
+                <h2>Написание XML-документа</h2>
+                <p>На основе описанной структуры, XML-документ будет содержать вложенные элементы. Каждый элемент будет иметь атрибуты, которые позволяют точно определить его характеристики:</p>
 
-        <h2>Структура XML-документа</h2>
-        <p>Для реализации данного задания можно использовать следующую структуру XML-документа:</p>
-        <ul>
-            <li><strong>Корневой элемент:</strong> <code>&lt;karateCompetitions&gt;</code> — содержит все данные, связанные с соревнованиями по карате.</li>
-            <li><strong>Элементы татами:</strong> <code>&lt;tatami&gt;</code> — описывают каждый ковёр, на котором проводятся соревнования.</li>
-            <li><strong>Судейская команда:</strong> <code>&lt;judgingTeam&gt;</code> — описывает команду судей, работающих на каждом татами.</li>
-            <li><strong>Секретариат:</strong> <code>&lt;secretariat&gt;</code> — включает информацию о членах секретариата каждого татами.</li>
-            <li><strong>Бои:</strong> <code>&lt;kumite&gt;</code> — представляет информацию о проведенных боях, включая результаты и участников.</li>
-            <li><strong>Выступления (ката):</strong> <code>&lt;kataPerformances&gt;</code> — описывает выступления участников, включая их оценки.</li>
-        </ul>
-
-        <h2>Написание XML-документа</h2>
-        <p>На основе описанной структуры, XML-документ будет содержать вложенные элементы. Каждый элемент будет иметь атрибуты, которые позволяют точно определить его характеристики:</p>
-
-        <h3>1. Корневой элемент</h3>
-        <p>Документ начинается с корневого элемента <code>&lt;karateCompetitions&gt;</code>, который включает в себя все данные, описывающие соревнования.</p>
-        <pre><code class="language-xml">&lt;karateCompetitions&gt;
-&lt;/karateCompetitions&gt;</code></pre>
-        <p>Все остальные элементы будут находиться внутри этого корневого.</p>
-
-        <h3>2. Элементы татами</h3>
-        <p>Каждое татами, используемое для проведения соревнований, представлено вложенным элементом <code>&lt;tatami&gt;</code>. Для идентификации татами используются уникальные атрибуты <code>id</code> (например, "A", "B").</p>
-        <pre><code class="language-xml">&lt;karateCompetitions&gt;
-    &lt;tatami id="A"&gt;
-    &lt;/tatami&gt;
-    &lt;tatami id="B"&gt;
-    &lt;/tatami&gt;
-&lt;/karateCompetitions&gt;</code></pre>
-
-        <h3>3. Судейская команда</h3>
-        <p>Каждое татами включает элемент <code>&lt;judgingTeam&gt;</code>, содержащий данные о судейской команде. Вложенные элементы <code>&lt;judge&gt;</code> описывают каждого судью, включая уникальный идентификатор, категорию судейства и текстовые значения имени.</p>
-        <pre><code class="language-xml">&lt;tatami id="A"&gt;
-    &lt;judgingTeam id="1"&gt;
-        &lt;judge id="1" category="1-ая категория"&gt;
-            &lt;name&gt;
-                &lt;lastName&gt;Данилов&lt;/lastName&gt;
-                &lt;firstName&gt;Станислав&lt;/firstName&gt;
-            &lt;/name&gt;
-        &lt;/judge&gt;
-    &lt;/judgingTeam&gt;
-&lt;/tatami&gt;</code></pre>
-
-        <h3>4. Секретариат</h3>
-        <p>Элемент <code>&lt;secretariat&gt;</code> содержит сведения о членах секретариата, включая их идентификаторы и текстовые значения имени.</p>
-        <pre><code class="language-xml">&lt;secretariat&gt;
-   &lt;member id="1"&gt;
-       &lt;name&gt;
-           &lt;lastName&gt;Носов&lt;/lastName&gt;
-           &lt;firstName&gt;Егор&lt;/firstName&gt;
-       &lt;/name&gt;
-   &lt;/member&gt;
-&lt;/secretariat&gt;</code></pre>
-
-        <h3>5. Бои (кумите)</h3>
-        <p>Элемент <code>&lt;kumites&gt;</code> включает данные о боях. Каждый бой представлен элементом <code>&lt;kumite&gt;</code> с уникальным идентификатором, результатом и списком участников. Участники описываются вложенными элементами <code>&lt;participant&gt;</code> с информацией о категории, возрасте, весе и регионе.</p>
-        <pre><code class="language-xml">&lt;kumites&gt;
-   &lt;kumite id="24"&gt;
-       &lt;decision&gt;победа красного&lt;/decision&gt;
-       &lt;participants&gt;
-           &lt;participant id="327" side="белый"&gt;
+                <h3>1. Корневой элемент</h3>
+                <p>Документ начинается с корневого элемента <code>&lt;karateCompetitions&gt;</code>, который включает в себя все данные, описывающие соревнования.</p>
+                <pre><code class="language-xml">&lt;karateCompetitions&gt;
+        &lt;/karateCompetitions&gt;</code></pre>
+                <p>Все остальные элементы будут находиться внутри этого корневого.</p>
+            </article>
+            <article>
+                <h3>2. Элементы татами</h3>
+                <p>Каждое татами, используемое для проведения соревнований, представлено вложенным элементом <code>&lt;tatami&gt;</code>. Для идентификации татами используются уникальные атрибуты <code>id</code> (например, "A", "B").</p>
+                <pre><code class="language-xml">&lt;karateCompetitions&gt;
+            &lt;tatami id="A"&gt;
+            &lt;/tatami&gt;
+            &lt;tatami id="B"&gt;
+            &lt;/tatami&gt;
+        &lt;/karateCompetitions&gt;</code></pre>
+            </article>
+            <article>
+            <h3>3. Судейская команда</h3>
+                <p>Каждое татами включает элемент <code>&lt;judgingTeam&gt;</code>, содержащий данные о судейской команде. Вложенные элементы <code>&lt;judge&gt;</code> описывают каждого судью, включая уникальный идентификатор, категорию судейства и текстовые значения имени.</p>
+                <pre><code class="language-xml">&lt;tatami id="A"&gt;
+            &lt;judgingTeam id="1"&gt;
+                &lt;judge id="1" category="1-ая категория"&gt;
+                    &lt;name&gt;
+                        &lt;lastName&gt;Данилов&lt;/lastName&gt;
+                        &lt;firstName&gt;Станислав&lt;/firstName&gt;
+                    &lt;/name&gt;
+                &lt;/judge&gt;
+            &lt;/judgingTeam&gt;
+        &lt;/tatami&gt;</code></pre>
+            </article>
+            <article>
+                <h3>4. Секретариат</h3>
+                <p>Элемент <code>&lt;secretariat&gt;</code> содержит сведения о членах секретариата, включая их идентификаторы и текстовые значения имени.</p>
+                <pre><code class="language-xml">&lt;secretariat&gt;
+           &lt;member id="1"&gt;
                &lt;name&gt;
-                   &lt;lastName&gt;Моргунов&lt;/lastName&gt;
-                   &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
+                   &lt;lastName&gt;Носов&lt;/lastName&gt;
+                   &lt;firstName&gt;Егор&lt;/firstName&gt;
                &lt;/name&gt;
-               &lt;category&gt;
-                   &lt;age&gt;14-15 лет&lt;/age&gt;
-                   &lt;weight&gt;65-70 кг&lt;/weight&gt;
-                   &lt;gender&gt;м&lt;/gender&gt;
-               &lt;/category&gt;
-               &lt;region&gt;Нижегородская область&lt;/region&gt;
-           &lt;/participant&gt;
-       &lt;/participants&gt;
-   &lt;/kumite&gt;
-&lt;/kumites&gt;</code></pre>
-
-        <h3>6. Выступления (ката)</h3>
-        <p>Элемент <code>&lt;kataPerformances&gt;</code> описывает выступления участников. Каждый элемент <code>&lt;kata&gt;</code> содержит данные об участнике и его оценке.</p>
-        <pre><code class="language-xml">&lt;kataPerformances&gt;
-   &lt;kata id="12"&gt;
-       &lt;participant id="327"&gt;
-           &lt;name&gt;
-               &lt;lastName&gt;Моргунов&lt;/lastName&gt;
-               &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
-           &lt;/name&gt;
-           &lt;score&gt;7.5&lt;/score&gt;
-       &lt;/participant&gt;
-   &lt;/kata&gt;
-&lt;/kataPerformances&gt;</code></pre>
-
-        <h2>Уровни вложенности</h2>
-        <p>В документе предполагается следующая структура вложенности:</p>
-        <ul>
-            <li>Первый уровень: <code>&lt;karateCompetitions&gt;</code>.</li>
-            <li>Второй уровень: <code>&lt;tatami&gt;</code>.</li>
-            <li>Третий уровень: <code>&lt;judgingTeam&gt;</code>, <code>&lt;secretariat&gt;</code>, <code>&lt;kumites&gt;</code>.</li>
-            <li>Четвертый уровень: <code>&lt;judge&gt;</code>, <code>&lt;participant&gt;</code>, <code>&lt;kata&gt;</code>.</li>
-        </ul>
-
-        <h2>Итоговый XML-документ</h2>
-        <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;karateCompetitions&gt;
-   &lt;tatamis&gt;
-       &lt;tatami id="A"&gt;
-           &lt;judgingTeam id="1"&gt;
-               &lt;judge id="1" category="1-ая категория"&gt;
+           &lt;/member&gt;
+        &lt;/secretariat&gt;</code></pre>
+            </article>
+            <article>
+                <h3>5. Бои (кумите)</h3>
+                <p>Элемент <code>&lt;kumites&gt;</code> включает данные о боях. Каждый бой представлен элементом <code>&lt;kumite&gt;</code> с уникальным идентификатором, результатом и списком участников. Участники описываются вложенными элементами <code>&lt;participant&gt;</code> с информацией о категории, возрасте, весе и регионе.</p>
+                <pre><code class="language-xml">&lt;kumites&gt;
+           &lt;kumite id="24"&gt;
+               &lt;decision&gt;победа красного&lt;/decision&gt;
+               &lt;participants&gt;
+                   &lt;participant id="327" side="белый"&gt;
+                       &lt;name&gt;
+                           &lt;lastName&gt;Моргунов&lt;/lastName&gt;
+                           &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
+                       &lt;/name&gt;
+                       &lt;category&gt;
+                           &lt;age&gt;14-15 лет&lt;/age&gt;
+                           &lt;weight&gt;65-70 кг&lt;/weight&gt;
+                           &lt;gender&gt;м&lt;/gender&gt;
+                       &lt;/category&gt;
+                       &lt;region&gt;Нижегородская область&lt;/region&gt;
+                   &lt;/participant&gt;
+               &lt;/participants&gt;
+           &lt;/kumite&gt;
+        &lt;/kumites&gt;</code></pre>
+            </article>
+            <article>
+                <h3>6. Выступления (ката)</h3>
+                <p>Элемент <code>&lt;kataPerformances&gt;</code> описывает выступления участников. Каждый элемент <code>&lt;kata&gt;</code> содержит данные об участнике и его оценке.</p>
+                <pre><code class="language-xml">&lt;kataPerformances&gt;
+           &lt;kata id="12"&gt;
+               &lt;participant id="327"&gt;
                    &lt;name&gt;
-                       &lt;lastName&gt;Данилов&lt;/lastName&gt;
-                       &lt;firstName&gt;Станислав&lt;/firstName&gt;
+                       &lt;lastName&gt;Моргунов&lt;/lastName&gt;
+                       &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
                    &lt;/name&gt;
-               &lt;/judge&gt;
-           &lt;/judgingTeam&gt;
-           &lt;secretariat&gt;
-               &lt;member id="1"&gt;
-                   &lt;name&gt;
-                       &lt;lastName&gt;Носов&lt;/lastName&gt;
-                       &lt;firstName&gt;Егор&lt;/firstName&gt;
-                   &lt;/name&gt;
-               &lt;/member&gt;
-           &lt;/secretariat&gt;
-           &lt;kumites&gt;
-               &lt;kumite id="24"&gt;
-                   &lt;decision&gt;победа красного&lt;/decision&gt;
-                   &lt;participants&gt;
-                       &lt;participant id="327" side="белый"&gt;
-                           &lt;name&gt;
-                               &lt;lastName&gt;Моргунов&lt;/lastName&gt;
-                               &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
-                           &lt;/name&gt;
-                           &lt;category&gt;
-                               &lt;age&gt;14-15 лет&lt;/age&gt;
-                               &lt;weight&gt;65-70 кг&lt;/weight&gt;
-                               &lt;gender&gt;м&lt;/gender&gt;
-                           &lt;/category&gt;
-                           &lt;region&gt;Нижегородская область&lt;/region&gt;
-                       &lt;/participant&gt;
-                   &lt;/participants&gt;
-               &lt;/kumite&gt;
-           &lt;/kumites&gt;
-       &lt;/tatami&gt;
-   &lt;/tatamis&gt;
-&lt;/karateCompetitions&gt;</code></pre>
-
-        <h2>Графический вывод XML</h2>
-        <div class="isolated-container"><img src="/assets/SecondLab/Example/1/xml_code.png" alt="image"></div>
-
-        <h2>Заключение</h2>
-        <p>В результате выполнения задания будет создан XML-документ, описывающий данные о соревнованиях по карате с четко структурированными иерархическими элементами, включая судей, участников, результаты боёв и ката. Каждый элемент будет содержать необходимые атрибуты и текстовые значения, что позволяет представлять данные в формате XML для дальнейшего использования в базе данных или других приложениях.</p>
-
+                   &lt;score&gt;7.5&lt;/score&gt;
+               &lt;/participant&gt;
+           &lt;/kata&gt;
+        &lt;/kataPerformances&gt;</code></pre>
+            </article>
+        </section>
+        <section>
+            <h2>Уровни вложенности</h2>
+            <p>В документе предполагается следующая структура вложенности:</p>
+            <ul>
+                <li>Первый уровень: <code>&lt;karateCompetitions&gt;</code>.</li>
+                <li>Второй уровень: <code>&lt;tatami&gt;</code>.</li>
+                <li>Третий уровень: <code>&lt;judgingTeam&gt;</code>, <code>&lt;secretariat&gt;</code>, <code>&lt;kumites&gt;</code>.</li>
+                <li>Четвертый уровень: <code>&lt;judge&gt;</code>, <code>&lt;participant&gt;</code>, <code>&lt;kata&gt;</code>.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Итоговый XML-документ</h2>
+            <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    &lt;karateCompetitions&gt;
+       &lt;tatamis&gt;
+           &lt;tatami id="A"&gt;
+               &lt;judgingTeam id="1"&gt;
+                   &lt;judge id="1" category="1-ая категория"&gt;
+                       &lt;name&gt;
+                           &lt;lastName&gt;Данилов&lt;/lastName&gt;
+                           &lt;firstName&gt;Станислав&lt;/firstName&gt;
+                       &lt;/name&gt;
+                   &lt;/judge&gt;
+               &lt;/judgingTeam&gt;
+               &lt;secretariat&gt;
+                   &lt;member id="1"&gt;
+                       &lt;name&gt;
+                           &lt;lastName&gt;Носов&lt;/lastName&gt;
+                           &lt;firstName&gt;Егор&lt;/firstName&gt;
+                       &lt;/name&gt;
+                   &lt;/member&gt;
+               &lt;/secretariat&gt;
+               &lt;kumites&gt;
+                   &lt;kumite id="24"&gt;
+                       &lt;decision&gt;победа красного&lt;/decision&gt;
+                       &lt;participants&gt;
+                           &lt;participant id="327" side="белый"&gt;
+                               &lt;name&gt;
+                                   &lt;lastName&gt;Моргунов&lt;/lastName&gt;
+                                   &lt;firstName&gt;Дмитрий&lt;/firstName&gt;
+                               &lt;/name&gt;
+                               &lt;category&gt;
+                                   &lt;age&gt;14-15 лет&lt;/age&gt;
+                                   &lt;weight&gt;65-70 кг&lt;/weight&gt;
+                                   &lt;gender&gt;м&lt;/gender&gt;
+                               &lt;/category&gt;
+                               &lt;region&gt;Нижегородская область&lt;/region&gt;
+                           &lt;/participant&gt;
+                       &lt;/participants&gt;
+                   &lt;/kumite&gt;
+               &lt;/kumites&gt;
+           &lt;/tatami&gt;
+       &lt;/tatamis&gt;
+    &lt;/karateCompetitions&gt;</code></pre>
+        </section>
+        <section>
+            <h2>Графический вывод XML</h2>
+            <div class="isolated-container"><img src="/assets/labs/SecondLab/Example/1/xml_code.png" alt="image"></div>
+        </section>
+        <section>
+            <h2>Заключение</h2>
+            <p>В результате выполнения задания будет создан XML-документ, описывающий данные о соревнованиях по карате с четко структурированными иерархическими элементами, включая судей, участников, результаты боёв и ката. Каждый элемент будет содержать необходимые атрибуты и текстовые значения, что позволяет представлять данные в формате XML для дальнейшего использования в базе данных или других приложениях.</p>
+        </section>
+    </main>
 </body>
 </html>

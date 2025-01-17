@@ -52,4 +52,30 @@ export const labFiles = {
             path: 'documentation/ThirdLab/ThirdLabVariants.html'
         }
     },
+    4: {
+        theory: 'documentation/FourthLab/FourthLabTheory.html',
+        example: {
+            steps_count: 0,
+            steps_counters: [],
+            steps_headers: [],
+            steps_paths: []
+        },
+        tasks: {
+            count: 1,
+            path: ''
+        }
+    },
+    5: {
+        theory: 'documentation/FifthLab/FifthLabTheory.html',
+        example: {
+            steps_count: 0,
+            steps_counters: [],
+            steps_headers: [],
+            steps_paths: []
+        },
+        tasks: {
+            count: 1,
+            path: ''
+        }
+    },
 };

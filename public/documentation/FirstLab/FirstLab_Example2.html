@@ -57,42 +57,44 @@
     </style>
 </head>
 <body>
-    <ol>
-        <li>
-            <p>Определение единиц измерения:</p>
-            <p>В GPSS одна единица времени равна одной минуте.</p>
-        </li>
-        <li>
-            <p>Написание кода модели:</p>
-            <p>Создайте новую модель <code>«File &gt; New &gt; Model»</code></p>
-            <img style = "border: 5px solid #f0f0f0;" src="/assets/FirstLab/Example/2/gpss_create_model.png" alt="image" width="386" height="264">
-            <p>Используйте следующие команды GPSS для описания работы парикмахерской:</p>
-            <img src="/assets/FirstLab/Example/2/gpss_code_example.png" alt="image">
-        <li>
-        <p>Пояснения к коду:</p>
-        </li>
-        <pre><code>GENERATE 25,7    ; Имитация случайного интервала между прибытием
-                 ; клиентов 25 ± 7 минут
-QUEUE barberq    ; Учет очереди, в которой клиенты ожидают
-SEIZE barber     ; Если парикмахер свободен, клиент занимает
-                 ; кресло
-DEPART barber    ; Клиент покидает очередь и занимает парикмахера
-ADVANCE 18,5     ; Имитация времени стрижки 18&nbsp;±&nbsp;5&nbsp;минут
-TERMINATE 0      ; Завершение транзакции
-RELEASE barber   ; Освобождение парикмахера после завершения обслуживания
-TERMINATE 0      ; Завершение транзакции
-GENERATE 600     ; Завершение работы парикмахерской после
-                 ; 10&nbsp;часов&nbsp;(600 минут)
-TERMINATE 1      ; Остановка симуляции после завершения последнего
-                 ; события</code></pre>
-        <li>
-            <p>Запуск программы:</p>
-            <p>После написания модели запустите её действием <code>«Command &gt; Create Simulation»</code></p>
-            <div class="img-container">
-                <img src="/assets/FirstLab/Example/2/gpss_create_simulation.png" alt="image">
-                <img src="/assets/FirstLab/Example/2/gpss_simulation_result.png" alt="image">
-            </div>
-        </li>
-    </ol>
+    <main>
+        <ol>
+            <li>
+                <p>Определение единиц измерения:</p>
+                <p>В GPSS одна единица времени равна одной минуте.</p>
+            </li>
+            <li>
+                <p>Написание кода модели:</p>
+                <p>Создайте новую модель <code>«File &gt; New &gt; Model»</code></p>
+                <img style = "border: 5px solid #f0f0f0;" src="/assets/labs/FirstLab/Example/2/gpss_create_model.png" alt="image" width="386" height="264">
+                <p>Используйте следующие команды GPSS для описания работы парикмахерской:</p>
+                <img src="/assets/labs/FirstLab/Example/2/gpss_code_example.png" alt="image">
+            <li>
+            <p>Пояснения к коду:</p>
+            </li>
+            <pre><code>GENERATE 25,7    ; Имитация случайного интервала между прибытием
+                     ; клиентов 25 ± 7 минут
+    QUEUE barberq    ; Учет очереди, в которой клиенты ожидают
+    SEIZE barber     ; Если парикмахер свободен, клиент занимает
+                     ; кресло
+    DEPART barber    ; Клиент покидает очередь и занимает парикмахера
+    ADVANCE 18,5     ; Имитация времени стрижки 18&nbsp;±&nbsp;5&nbsp;минут
+    TERMINATE 0      ; Завершение транзакции
+    RELEASE barber   ; Освобождение парикмахера после завершения обслуживания
+    TERMINATE 0      ; Завершение транзакции
+    GENERATE 600     ; Завершение работы парикмахерской после
+                     ; 10&nbsp;часов&nbsp;(600 минут)
+    TERMINATE 1      ; Остановка симуляции после завершения последнего
+                     ; события</code></pre>
+            <li>
+                <p>Запуск программы:</p>
+                <p>После написания модели запустите её действием <code>«Command &gt; Create Simulation»</code></p>
+                <div class="img-container">
+                    <img src="/assets/labs/FirstLab/Example/2/gpss_create_simulation.png" alt="image">
+                    <img src="/assets/labs/FirstLab/Example/2/gpss_simulation_result.png" alt="image">
+                </div>
+            </li>
+        </ol>
+    </main>
 </body>
 </html>

@@ -91,12 +91,13 @@
     <title>Парсинг ссылок с использованием регулярных выражений</title>
 </head>
 <body>
+    <main>
         <p>Для повышения быстродействия, попробуем переписать данный шаблон на Post/Get запросах без использования браузера. Удалим все содержимое предыдущего проекта, а также выставим в настройках галочку «не использовать браузер»:</p>
         <ol class="main">
             <li>Выполним get запрос к исходной странице и сохраним полученное содержимое страницы в переменную <strong>content</strong>:</li>
-            <div class="isolated-container"><img src="/assets/ThirdLab/Example/2/zenno_get_request.png" alt="image"></div>
+            <div class="isolated-container"><img src="/assets/labs/ThirdLab/Example/2/zenno_get_request.png" alt="image"></div>
             <li>Копируем содержимое переменной content и открываем конструктор регулярных выражений. Задача будет заключаться в том, чтобы подобрать такую регулярку, с помощью который можно будет спарсить список всех тем со страницы.</li>
-            <div class="isolated-container"><img src="/assets/ThirdLab/Example/2/zenno_request_without_browser.png" alt="image"></div>
+            <div class="isolated-container"><img src="/assets/labs/ThirdLab/Example/2/zenno_request_without_browser.png" alt="image"></div>
             <p>Проанализировав исходный код, можно сделать следующие выводы:</p>
             <ol class="sub">
                 <li>Ссылка на каждую тему всегда располагается после открывающегося тега <strong>&lt;&nbsp;a&nbsp;href="</strong></li>
@@ -104,7 +105,7 @@
                 <li>А после ссылки всегда идёт следующий набор символов:<strong>&nbsp;"&nbsp;id=</strong></li>
             </ol>
             <p>Используя тестер регулярных выражений, получим следующую конструкцию:</p>
-            <div class="isolated-container"><img src="/assets/ThirdLab/Example/2/zenno_construction.png" alt="image"></div>
+            <div class="isolated-container"><img src="/assets/labs/ThirdLab/Example/2/zenno_construction.png" alt="image"></div>
 
             <h3>Пример HTML-кода, который будет соответствовать:</h3>
             <pre>&lt;a href="https://www.cyberforum.ru/pc-problem/thread2608309.html" id="thread_title_2608309">Виснет компьютер без нагрузки&lt;/a&gt;</pre>
@@ -112,7 +113,7 @@
             <pre>https://www.cyberforum.ru/pc-problem/thread2608309.html</pre>
             <p>Если в ссылке нет части<strong>&nbsp;"&nbsp;id=</strong>, или она не находится внутри атрибута <strong>href</strong>, совпадение не будет найдено.</p>
             <li>Добавим обработчик текста в проект. В частности, нас интересует Regex. Дополнительно создадим список, в который будет сохраняться содержимое (назовём его Parsing). Всё остальное должно быть заполнено, как на скриншоте ниже:</li>
-            <div class="isolated-container"><img src="/assets/ThirdLab/Example/2/zenno_parsing_list.png" alt="image"></div>
+            <div class="isolated-container"><img src="/assets/labs/ThirdLab/Example/2/zenno_parsing_list.png" alt="image"></div>
             <ol class="sub">
                 <li>В первом поле происходит обращение к переменной. В данном случае мы обращаемся к содержимому нашей страницы, которое ранее было получено get запросом.</li>
                 <li>Действие <strong>Regex</strong> означает, что к переменной будет применено регулярное выражение. В поле <strong>Regex</strong> необходимо вставить выражение, которое было получено ранее.</li>
@@ -120,8 +121,9 @@
                 <li>Результаты сохраняем в список <strong>Parsing</strong></li>
             </ol>
             <p>После парсинга содержимое списка будет выглядеть следующим образом:</p>
-            <div class="isolated-container"><img src="/assets/ThirdLab/Example/2/zenno_after_parsing.png" alt="image"></div>
+            <div class="isolated-container"><img src="/assets/labs/ThirdLab/Example/2/zenno_after_parsing.png" alt="image"></div>
             <p>Все, что осталось – сохранить эти данные в файл (как это сделать показано в первом примере).</p>
         </ol>
+    </main>
 </body>
 </html>
