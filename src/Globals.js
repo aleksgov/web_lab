@@ -68,14 +68,16 @@ export const labFiles = {
     5: {
         theory: 'documentation/FifthLab/FifthLabTheory.html',
         example: {
-            steps_count: 0,
-            steps_counters: [],
-            steps_headers: [],
-            steps_paths: []
+            steps_count: 2,
+            steps_counters: ["Часть 1", "Часть 2"],
+            steps_headers: ["Подготовка к созданию порта",
+                "Настройка и моделирование"],
+            steps_paths: ['documentation/FifthLab/FifthLab_Example1.html',
+                'documentation/FifthLab/FifthLab_Example2.html']
         },
         tasks: {
-            count: 1,
-            path: ''
+            count: 22,
+            path: 'documentation/FifthLab/FifthLabVariants.html'
         }
     },
 };

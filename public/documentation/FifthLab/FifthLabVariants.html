@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Варианты</title>
+    <style>
+        .variant {
+            display: none;
+        }
+
+        .variant.active {
+            display: block;
+        }
+
+        body {
+            font-family: "Helvetica", Helvetica, Arial, sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.42857143;
+            color: #333;
+            margin: 0;
+            padding-right: 5%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0.6vw;
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: lightgray;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #aaa;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 5px;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 4px;
+            margin-top: 15px;
+        }
+
+        p {
+            text-indent: 1.5em;
+            margin: 0 0 10px;
+            text-align: justify;
+        }
+
+        ol {
+            margin-top: 0;
+            margin-bottom: 20px;
+            margin-left: 1.5em;
+        }
+
+        ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 1.5em;
+        }
+
+        ol li, ul li {
+            margin-bottom: 0.2em;
+        }
+
+        .isolated-container img {
+            display: block;
+            border: 5px solid #f0f0f0;
+            max-width: 90%;
+            height: auto;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-content">
+        <div id="variant-1" class="variant active">
+            <h2>Вариант 1</h2>
+            <h3>Портовые данные:</h3>
+            <ul>
+                <li>Название порта: Сент-Джон-те-Баптист</li>
+                <li>Вместимость порта: 5</li>
+            </ul>
+        </div>
+
+        <div id="variant-2" class="variant">
+            <h2>Вариант 2</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Янбу-эль-Бахр</li>
+                <li>Вместимость порта: 3</li>
+            </ul>
+        </div>
+
+        <div id="variant-3" class="variant">
+            <h2>Вариант 3</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Антананариву</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-4" class="variant">
+            <h2>Вариант 4</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Нижний Новгород</li>
+                <li>Вместимость порта: 3</li>
+            </ul>
+        </div>
+
+        <div id="variant-5" class="variant">
+            <h2>Вариант 5</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Маарианхамина</li>
+                <li>Вместимость порта: 8</li>
+            </ul>
+        </div>
+
+        <div id="variant-6" class="variant">
+            <h2>Вариант 6</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Сент-Питер-Порт</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-7" class="variant">
+            <h2>Вариант 7</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Магадан</li>
+                <li>Вместимость порта: 2</li>
+            </ul>
+        </div>
+
+        <div id="variant-8" class="variant">
+            <h2>Вариант 8</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Лас-Таблас</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-9" class="variant">
+            <h2>Вариант 9</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Эсмеральдас</li>
+                <li>Вместимость порта: 6</li>
+            </ul>
+        </div>
+
+        <div id="variant-10" class="variant">
+            <h2>Вариант 10</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Лима</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-11" class="variant">
+            <h2>Вариант 11</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Фритаун</li>
+                <li>Вместимость порта: 2</li>
+            </ul>
+        </div>
+
+        <div id="variant-12" class="variant">
+            <h2>Вариант 12</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Прая</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-13" class="variant">
+            <h2>Вариант 13</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Хенераль-Сантос</li>
+                <li>Вместимость порта: 3</li>
+            </ul>
+        </div>
+
+        <div id="variant-14" class="variant">
+            <h2>Вариант 14</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Пусан</li>
+                <li>Вместимость порта: 7</li>
+            </ul>
+        </div>
+
+        <div id="variant-15" class="variant">
+            <h2>Вариант 15</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Тиба</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-16" class="variant">
+            <h2>Вариант 16</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Манила</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-17" class="variant">
+            <h2>Вариант 17</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Гданьск</li>
+                <li>Вместимость порта: 5</li>
+            </ul>
+        </div>
+
+        <div id="variant-18" class="variant">
+            <h2>Вариант 18</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Таллин</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-19" class="variant">
+            <h2>Вариант 19</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Ванкувер</li>
+                <li>Вместимость порта: 5</li>
+            </ul>
+        </div>
+
+        <div id="variant-20" class="variant">
+            <h2>Вариант 20</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Коломбо</li>
+                <li>Вместимость порта: 5</li>
+            </ul>
+        </div>
+
+        <div id="variant-21" class="variant">
+            <h2>Вариант 21</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Триест</li>
+                <li>Вместимость порта: 4</li>
+            </ul>
+        </div>
+
+        <div id="variant-22" class="variant">
+            <h2>Вариант 22</h2>
+            <h3>Портовые данные</h3>
+            <ul>
+                <li>Название порта: Берген</li>
+                <li>Вместимость порта: 3</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Задание:</h3>
+    <ol>
+        <li>Создать порт согласно своему варианту.</li>
+        <li>Произвести моделирование, собрать статистику моделирования для своего порта (пример на рисунке). Объяснить каждый параметр из статистики, сделать соответствующие выводы о загрузке порта. Вычислить КПД и коэффициент простоя порта.</li>
+        <div class="isolated-container"><img src="/assets/labs/FifthLab/Task/al_statistics.png" alt="image"></div>
+        <li>Произвести новое моделирование с включенным режимом Storm On. Собрать статистику порта во время шторма, сделать соответствующие выводы о загрузке. Вычислить КПД и коэффициент простоя порта.</li>
+        <li>Произвести сравнительный анализ между моделированием в обычных условиях и моделированием со штормом.</li>
+        <li>Изменять вместимость своего порта в интервале от 2 до 8. Произвести моделирование в обычном режиме и в режиме шторма. Собрать статистику, вычислить КПД и коэффициент простоя портов для каждого из случаев. Составить графики зависимости КПД от вместимости порта, коэффициент простоя от вместимости порта. Сделать выводы об оптимальной вместимости вашего порта.</li>
+    </ol>
+    <p><strong>Моделирование во всех случаях производить в равные интервалы времени!</strong></p>
+</body>
+</html>
