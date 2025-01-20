@@ -73,6 +73,37 @@
   background: linear-gradient(149deg, rgba(180, 13, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%);
 }
 
+.info-button {
+  position: fixed;
+  bottom: 1.2vw;
+  right: 0.9vw;
+  width: 3vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.65);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0.2vw 0.32vw rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.info-text {
+  color: #4F4F4F;
+  font-size: 2vw;
+  font-family: Century Gothic, serif;
+  font-weight: bold;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.info-button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.info-button:hover .info-text {
+  transform: scale(1.2);
+}
+
 .notification {
   position: absolute;
   top: 7.5%;

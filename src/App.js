@@ -186,7 +186,7 @@ function App() {
                     <div className="tab-content">
                         <div className="main-tab-content">
                             <div className="header-text">
-                                Лабораторный практикум<br />по предмету “Управление данными”
+                                Лабораторный практикум<br/>по предмету “Управление данными”
                             </div>
                             <div className="main-buttons-container">
                                 <div className="button-row">
@@ -197,7 +197,7 @@ function App() {
                                             onClick={() => addTab(`Лабораторная работа №${number}`)}
                                         >
                                             <div className="main-button-text">
-                                                Лабораторная <br /> работа
+                                                Лабораторная <br/> работа
                                             </div>
                                             <div className="main-button-number">{number}</div>
                                         </button>
@@ -211,7 +211,7 @@ function App() {
                                             onClick={() => addTab(`Лабораторная работа №${number}`)}
                                         >
                                             <div className="main-button-text">
-                                                Лабораторная <br /> работа
+                                                Лабораторная <br/> работа
                                             </div>
                                             <div className="main-button-number">{number}</div>
                                         </button>
@@ -292,17 +292,16 @@ function App() {
 
     return (
         <div className="App">
-            {/* Всплывающее уведомление */}
             {showNotification && (
                 <div className="notification">
                     Чтобы масштабировать страницу, используйте сочетание клавиш Ctrl + колесико мыши.
                 </div>
             )}
-            <div className="background" style={{ background: backgroundStyle }}></div>
+            <div className="background" style={{background: backgroundStyle}}></div>
             <div className="color-buttons-container">
                 <button
                     className="color-button"
-                    style={{ background: colors[selectedButtonIndex] }}
+                    style={{background: colors[selectedButtonIndex]}}
                     onClick={() => setMenuVisible(!menuVisible)}
                 ></button>
 
@@ -313,7 +312,7 @@ function App() {
                                 <button
                                     key={index}
                                     className="color-button"
-                                    style={{ background: color }}
+                                    style={{background: color}}
                                     onClick={() => handleColorButtonClick(index)}
                                 ></button>
                             )
@@ -321,12 +320,17 @@ function App() {
                     </div>
                 )}
             </div>
+            <button
+                className="info-button"
+                onClick={() => alert("Информация о приложении web_lab!")}
+            >
+                <span className="info-text">i</span>
+            </button>
             <div className="tabs-container">
                 {renderTabs()}
             </div>
             {renderContent()}
         </div>
-
     );
 }
 
