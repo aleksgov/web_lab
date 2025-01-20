@@ -17,6 +17,7 @@ function App() {
     const [backgroundStyle, setBackgroundStyle] = useState('');
     const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
     const [menuVisible, setMenuVisible] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
     const colors = [
         "linear-gradient(149deg, rgba(255, 144, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)",
         "linear-gradient(149deg, rgba(255, 108, 0, 0.52) 0%, rgba(0, 158, 142, 0.52) 100%)",
@@ -65,6 +66,19 @@ function App() {
             setActiveTab(tabs.length);
         }
     };
+
+    // Показать уведомление при активации вкладки "Теория"
+    useEffect(() => {
+        if (tabs[activeTab]?.title === 'Теория') {
+            setShowNotification(true);
+            const timer = setTimeout(() => {
+                setShowNotification(false);
+            }, 2000);
+            return () => clearTimeout(timer);
+        } else {
+            setShowNotification(false);
+        }
+    }, [activeTab, tabs]);
 
     // Загрузка теории
     const loadTheoryContent = (labNumberFromTitle) => {
@@ -278,6 +292,12 @@ function App() {
 
     return (
         <div className="App">
+            {/* Всплывающее уведомление */}
+            {showNotification && (
+                <div className="notification">
+                    Чтобы масштабировать страницу, используйте сочетание клавиш Ctrl + колесико мыши.
+                </div>
+            )}
             <div className="background" style={{ background: backgroundStyle }}></div>
             <div className="color-buttons-container">
                 <button
