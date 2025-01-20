@@ -131,7 +131,7 @@ function App() {
     // Стиль контента для лабораторной работы
     const getContentBoxStyle = (tabTitle) => {
         if (tabTitle.startsWith("Лабораторная работа")) {
-            return { width: '1098px', height: '612px' };
+            return { width: '65vw', height: '71.5vh' };
         }
     };
 
