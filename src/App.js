@@ -289,6 +289,23 @@ function App() {
 
         return null;
     };
+    // Переписал код, так думаю будет проще
+    // Константы потом нужно будет вынести вверх файла
+
+    const [isInfoOpen, setIsInfoOpen] = useState(false);
+    const [htmlContent, setHtmlContent] = useState('');
+
+    useEffect(() => {
+        if (isInfoOpen) {
+            fetch('/instructions.html')
+                .then((response) => response.text())
+                .then((data) => setHtmlContent(data));
+        }
+    }, [isInfoOpen]);
+
+    const handleInfoClick = () => {
+        setIsInfoOpen(!isInfoOpen);
+    };
 
     return (
         <div className="App">
@@ -322,10 +339,20 @@ function App() {
             </div>
             <button
                 className="info-button"
-                onClick={() => alert("Информация о приложении web_lab!")}
+                onClick={handleInfoClick}
             >
                 <span className="info-text">i</span>
             </button>
+            {isInfoOpen && (
+                <div className="info-modal">
+                    <div className="info-content">
+                        <button className="close-button" onClick={handleInfoClick}>
+                            &times;
+                        </button>
+                        <div className="modal-container" dangerouslySetInnerHTML={{__html: htmlContent}}/>
+                    </div>
+                </div>
+            )}
             <div className="tabs-container">
                 {renderTabs()}
             </div>
