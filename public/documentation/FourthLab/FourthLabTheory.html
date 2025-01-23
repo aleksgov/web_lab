@@ -1,10 +1,373 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru-RU">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.35rem;
+            line-height: 1.42857143;
+            color: #333;
+            margin: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0.6vw;
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: lightgray;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #aaa;
+        }
+
+        h1 {
+            font-family: inherit;
+            font-weight: 500;
+            line-height: 1.1;
+            color: inherit;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 36px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #2A2F35;
+            font-family: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif', serif;
+        }
+
+        .centered-title {
+            font-size: 28px;
+            text-align: center;
+            margin: 10px 0 20px auto;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-indent: 1.5em;
+            text-align: justify;
+        }
+
+        ol {
+            text-align: justify;
+            margin-bottom: 10px;
+            margin-top: 0;
+            padding-left: 40px;
+            line-height: 1.5;
+        }
+
+        ul {
+            text-align: justify;
+            margin-bottom: 0;
+            margin-top: -5px;
+            padding-left: 4.5rem;
+            line-height: 1.5;
+        }
+
+        ol li {
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        ul li {
+            line-height: 1.7;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border: 3px solid #e9edf1;
+            max-width: 90%;
+            height: auto;
+        }
+
+        .center {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: -10px;
+        }
+
+        ul.custom-bullets {
+            list-style: none;
+            padding-left: 2.7rem;
+        }
+
+        ul.custom-bullets li {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        ul.custom-bullets li::before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            color: black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .cell-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .cell-content img {
+            margin: 0 20px 0 1px;
+            width: 75px;
+            height: 75px;
+            border: none;
+        }
+
+        .cell-content span {
+            text-align: left;
+            margin: 0;
+        }
+
+        .last-cell-content {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+
+        .images-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .last-cell-content img {
+            width: 75px;
+            height: 75px;
+            border: none;
+            padding: 0 10px 0 4px;
+            margin: 12px 20px 12px 0;
+        }
+
+        .last-cell-content span {
+            text-align: left;
+            margin-top: 10px;
+        }
+    </style>
+    <title>Моделирование в AnyLogic</title>
 </head>
 <body>
-
+<header>
+    <h2>Лабораторная Работа №4</h2>
+    <h3 class="centered-title">Знакомство со средой Cisco Packet Tracer.<br>Моделирование простой сети.</h3>
+</header>
+<main>
+    <p>Программные продукты Packet Tracer дают возможность создавать сетевые топологии из широкого спектра маршрутизаторов и коммутаторов компании Cisco, рабочих станций и сетевых соединений типа Ethernet, Serial, ISDN, Frame Relay. Эта функция может быть выполнена как для обучения, так и для работы. Например, чтобы сделать настройку сети ещё на этапе планирования или, чтобы создать копию рабочей сети с целью устранения неисправности.</p>
+    <p>Для запуска Cisco Packet Tracer необходимо вызвать исполняемый файл, <code>PacketTracer.exe</code>. Общий вид программы можно увидеть на рис.5.1.</p>
+    <img src="/assets/labs/FourthLab/Theory/cpt_program_overview.jpeg" alt="image">
+    <p class="center">Рис.5.1. Общий вид программы Packet Tracer.</p>
+    <p>Рабочая область окна программы состоит из следующих элементов:</p>
+    <section>
+        <h3>1. Menu Bar</h3>
+        <p>Панель, которая содержит меню <strong>File</strong>, <strong>Edit</strong>, <strong>Options</strong>, <strong>View</strong>, <strong>Tools</strong>, <strong>Extensions</strong>, <strong>Help</strong>.</p>
+    </section>
+    <section>
+        <h3>2. Main Tool Bar</h3>
+        <p>Содержит графические изображения ярлыков для доступа к командам меню <strong>File</strong>, <strong>Edit</strong>, <strong>View</strong> и <strong>Tools</strong>, а также кнопку <strong>Network Information</strong>.</p>
+    </section>
+    <section>
+    <h3>3. Common Tools Bar</h3>
+        <p>Панель, которая обеспечивает доступ к наиболее используемым инструментам программы:</p>
+        <ul>
+            <li><strong>Select</strong></li>
+            <li><strong>Move Layout</strong></li>
+            <li><strong>Place Note</strong></li>
+            <li><strong>Delete</strong></li>
+            <li><strong>Inspect</strong></li>
+            <li><strong>Add Simple PDU</strong></li>
+            <li><strong>Add Complex PDU</strong></li>
+        </ul>
+    </section>
+    <section>
+        <h3>4. Logical/Physical Workspace and Navigation Bar</h3>
+        <p>Панель, которая дает возможность переключать рабочую область: <strong>физическую</strong> или <strong>логическую</strong>, а также позволяет перемещаться между уровнями кластера.</p>
+    </section>
+    <section>
+        <h3>5. Workspace</h3>
+        <p>Область, в которой происходит создание сети, проводятся наблюдения за симуляцией и просматривается разная информация и статистика.</p>
+    </section>
+    <section>
+        <h3>6. Realtime/Simulation Bar</h3>
+        <p>С помощью закладок этой панели можно переключаться между режимом <strong>Realtime</strong> и режимом <strong>Simulation</strong>. Она также содержит кнопки, относящиеся к Power Cycle Devices, кнопки Play Control и переключатель Event List в режиме <code>Simulation</code>.</p>
+    </section>
+    <section>
+        <h3>7. Network Component Box</h3>
+        <p>Область, в которой выбираются устройства и связи для размещения их на рабочем пространстве. Она содержит область <strong>Device-Type Selection</strong> и область <strong>Device-Specific Selection</strong>.</p>
+    </section>
+    <section>
+        <h3>8. Device-Type Selection Box</h3>
+        <p>Эта область содержит доступные типы устройств и связей в <strong>Packet Tracer</strong>.</p>
+        <p>Область <strong>Device-Specific Selection</strong> изменяется в зависимости от выбранного устройства.</p>
+    </section>
+    <section>
+    <h3>9. Device-Specific Selection Box</h3>
+    <p>Эта область используется для выбора конкретных устройств и соединений, необходимых для постройки сети в рабочем пространстве.</p>
+    </section>
+    <section>
+        <h3>10. User Created Packet Window</h3>
+        <p>Это окно управляет пакетами, которые были созданы в сети во время симуляции сценария.</p>
+        <p>Для создания топологии необходимо выбрать устройство из панели Network Component, а затем из панели Device-Type Selection выбрать тип выбранного устройства. После этого нужно нажать левую кнопку мыши в поле рабочей области программы (Workspace). Также можно переместить устройство прямо из области Device-Type Selection, но при этом будет выбрана модель устройства по умолчанию.</p>
+        <p>Для быстрого создания нескольких экземпляров одного и того же устройства нужно, удерживая кнопку Ctrl, нажать на устройство в области Device-Specific Selection и отпустить кнопку Ctrl. После этого можно несколько раз нажать на рабочей области для добавления копий устройства.</p>
+    </section>
+    <section>
+        <p><strong>В Packet Tracer представлены следующие типы устройств:</strong></p>
+        <ul>
+            <li>Маршрутизаторы;</li>
+            <li>Коммутаторы (в том числе и мосты);</li>
+            <li>Хабы и повторители;</li>
+            <li>Конечные устройства – ПК, серверы, принтеры, IP-телефоны;</li>
+            <li>Беспроводные устройства: точки доступа и беспроводной маршрутизатор;</li>
+            <li>Остальные устройства – облако, DSL-модем и кабельный модем.</li>
+        </ul>
+    </section>
+    <p>Добавим необходимые элементы в рабочую область программы так, как показано на рис.5.2.</p>
+    <img src="/assets/labs/FourthLab/Theory/cpt_network_items.jpeg" alt="image">
+    <p class="center">Рис.5.2. Добавление элементов сети.</p>
+    <p>При добавлении каждого элемента пользователь имеет возможность дать ему имя и установить необходимые параметры. Для этого необходимо нажать на нужный элемент левой кнопкой мыши (ЛКМ) и в диалоговом окне устройства перейти к вкладке Config.</p>
+    <p>Диалоговое окно свойств каждого элемента имеет две вкладки:</p>
+    <ul class="custom-bullets">
+        <li>Physical – содержит графический интерфейс устройства и позволяет симулировать работу с ним на физическом уровне.</li>
+        <li>Config – содержит все необходимые параметры для настройки устройства и имеет удобный для этого интерфейс.</li>
+    </ul>
+    <p>Также в зависимости от устройства, свойства могут иметь дополнительную вкладку для управления работой выбранного элемента: Desktop (если выбрано конечное устройство) или CLI (если выбран маршрутизатор) и т.д.</p>
+    <p>Для удаления ненужных устройств с рабочей области программы используется кнопка Delete (Del).</p>
+    <p>Свяжем добавленные элементы мы с помощью соединительных связей. Для этого необходимо выбрать вкладку Connections из панели Network Component Box. Мы увидим все возможные типы соединений между устройствами. Выберем подходящий тип кабеля. Указатель мыши изменится на курсор “connection” (имеет вид разъема). Нажмем на первом устройстве и выберем соответствующий интерфейс, с которым нужно выполнить соединение, а затем нажмем на второе устройство, выполнив ту же операцию. Можно также соединить с помощью Automatically Choose Connection Type (автоматически соединяет элементы в сети). Выберем и нажмем на каждом из устройств, которые нужно соединить. Между устройствами появится кабельное соединение, а индикаторы на каждом конце покажут статус соединения (для интерфейсов которые имеют индикатор).</p>
+    <img src="/assets/labs/FourthLab/Theory/cpt_supported_cable_types.jpeg" alt="image">
+    <p class="center">Рис.5.3. Поддерживаемые в Packet Tracer типы кабелей.</p>
+    <p>Packet Tracer поддерживает широкий диапазон сетевых соединений (см. табл. 1). Каждый тип кабеля может быть соединен лишь с определенными типами интерфейсов.</p>
+    <table>
+        <thead>
+        <tr>
+            <th style="width: 25%; text-align: center">Тип кабеля</th>
+            <th style="width: 75%; text-align: center">Описание</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div class="cell-content">
+                    <img src="/assets/labs/FourthLab/Theory/console_cable.png" alt="UTP Icon">
+                    <span>Console</span>
+                </div>
+            </td>
+            <td>Консольное соединение может быть выполнено между ПК и маршрутизаторами или коммутаторами. Должны быть выполнены некоторые требования для работы консольного сеанса с ПК: скорость соединения с обеих сторон должна быть одинаковая, должно быть 7 бит данных (или 8 бит) для обеих сторон, контроль четности должен быть одинаковый, должно быть 1 или 2 стоповых бита (но они не обязательно должны быть одинаковыми), а поток данных может быть чем-угодно для обеих сторон.</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="cell-content">
+                    <img src="/assets/labs/FourthLab/Theory/copper_straight_through_cable.png" alt="UTP Icon">
+                    <span>Copper Straight-through</span>
+                </div>
+            </td>
+            <td>Этот тип кабеля является стандартной средой передачи Ethernet для соединения устройств, который функционирует на разных уровнях OSI. Он должен быть соединен со следующими типами портов: медный 10 Мбит/с (Ethernet), медный 100 Мбит/с (Fast Ethernet) и медный 1000 Мбит/с (Gigabit Ethernet).</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="cell-content">
+                    <img src="/assets/labs/FourthLab/Theory/copper_cross_over_cable.png" alt="UTP Icon">
+                    <span>Copper Cross-over</span>
+                </div>
+            </td>
+            <td>Этот тип кабеля является средой передачи Ethernet для соединения устройств, которые функционируют на одинаковых уровнях OSI. Он может быть соединен со следующими типами портов: медный 10 Мбит/с (Ethernet), медный 100 Мбит/с (Fast Ethernet) и медный 1000 Мбит/с (Gigabit Ethernet).</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="cell-content">
+                    <img src="/assets/labs/FourthLab/Theory/fiber_cable.png" alt="UTP Icon">
+                    <span>Fiber</span>
+                </div>
+            </td>
+            <td>Оптоволоконная среда используется для соединения между оптическими портами (100 Мбит/с или 1000 Мбит/с).</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="cell-content">
+                    <img src="/assets/labs/FourthLab/Theory/phone_cable.png" alt="UTP Icon">
+                    <span>Phone</span>
+                </div>
+            </td>
+            <td>Соединение через телефонную линию может быть осуществлено только между устройствами, имеющими модемные порты. Стандартное представление модемного соединения – это конечное устройство (например, ПК), дозванивающееся в сетевое облако.</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="cell-content">
+                    <img src="/assets/labs/FourthLab/Theory/coaxial_cable.png" alt="UTP Icon">
+                    <span>Coaxial</span>
+                </div>
+            </td>
+            <td>Коаксиальная среда	используется для соединения между коаксиальными портами, такие как кабельный модем, соединенный с облаком Packet Tracer.</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="last-cell-content">
+                    <div class="images-row">
+                        <img src="/assets/labs/FourthLab/Theory/dce_cable.png" alt="DCE Icon">
+                        <img src="/assets/labs/FourthLab/Theory/dte_cable.png" alt="DTE Icon">
+                    </div>
+                    <span>Serial DCE and DTE</span>
+                </div>
+            </td>
+            <td>Соединения через последовательные порты, часто используются для связей WAN. Для настройки таких соединений необходимо установить синхронизацию на стороне DCE-устройства. Синхронизация DTE выполняется по выбору. Сторону DCE можно определить по маленькой иконке “часов” рядом с портом. При выборе типа соединения Serial DCE, первое устройство, к которому применяется соединение, становится DCE-устройством, а второе - автоматически станет стороной DTE. Возможно и обратное расположение сторон, если выбран тип соединения Serial DTE.</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>После создания сети ее нужно сохранить, выбрав пункт меню File → Save или иконку Save на панели Main Tool Bar. Файл сохраненной топологии имеет расширение *.pkt.</p>
+    <p>Packet Tracer дает нам возможность симулировать работу с интерфейсом командной строки (ИКС) операционной	системы	IOS, установленной на всех коммутаторах	и маршрутизаторах компании Cisco.</p>
+    <p>Подключившись к устройству, мы можем работать с ним так, как за консолью реального устройства. Симулятор обеспечивает поддержку практически всех команд, доступных на реальных устройствах.</p>
+    <p>Подключение к ИКС коммутаторов или маршрутизаторов можно произвести, нажав на необходимое устройство и перейдя в окно свойств к вкладке CLI.</p>
+    <p style="margin-bottom: 25px">Для симуляции работы командной строки на конечном устройстве (компьютере) необходимо в свойствах выбрать вкладку Desktop, а затем нажать на ярлык CommandPrompt.</p>
+    <h3 style="font-size: 30px">Работа с файлами в симуляторе</h3>
+    <p style="margin-top: 10px">Packet Tracer дает возможность пользователю хранить конфигурацию некоторых устройств, таких как маршрутизаторы или свичи, в текстовых файлах. Для этого необходимо перейти к свойствам необходимого устройства и во вкладке Config нажать на кнопку “Export…” для экспорта конфигурации Startup Config или Running Config. Так получим диалоговое окно для сохранения необходимой конфигурации в файл, который будет иметь расширение *.txt. Текст файла с конфигурацией устройства running-config.txt (имя по умолчанию) аналогичен тексту информации полученной при использовании команды show running-config в IOS-устройствах.</p>
+    <p>Необходимо отметить, что конфигурация каждого устройства сохраняется в отдельном текстовом файле. Пользователь также имеет возможность изменять конфигурацию в сохраненном файле вручную с помощью произвольного текстового редактора. Для предоставления устройству сохраненных или отредактированных настроек нужно во вкладке Config нажать кнопку “Load...” для загрузки необходимой конфигурации Stàrtup Config или кнопку “Merge…” для загрузки конфигурации Running Config.</p>
+</main>
 </body>
 </html>
