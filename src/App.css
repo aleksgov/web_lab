@@ -100,7 +100,7 @@
 
 .modal-container {
   position: absolute;
-  padding: 0 4.5vw 0 3.1vw;
+  padding: 0 5.5vw 0 3.1vw;
   width: 73vw;
   height: 85vh;
   overflow-y: auto;
@@ -111,7 +111,7 @@
 
 .close-button {
   position: absolute;
-  top: 0.6vw;
+  top: -0.2vw;
   right: 1vw;
   font-size: 5vw;
   border: none;
@@ -281,11 +281,11 @@
   user-select: none;
 }
 
-.main-button:hover {
+.number-button-container:hover {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.main-button:active {
+.number-button-container:active {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
