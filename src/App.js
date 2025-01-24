@@ -37,6 +37,21 @@ function App() {
         return match ? match[1] : null;
     };
 
+    // Обработчик клика для кнопки с информацией
+    const handleInfoClick = () => {
+        setIsInfoOpen(!isInfoOpen);
+    };
+
+    // Файл для инструкции
+    useEffect(() => {
+        if (isInfoOpen) {
+            fetch('/documentation/instructions.html')
+                .then((response) => response.text())
+                .then((data) => setHtmlContent(data));
+        }
+    }, [isInfoOpen]);
+
+
     // Загрузка теории при смене вкладки
     useEffect(() => {
         if (activeTab !== 0 && tabs[activeTab].startsWith('Лабораторная работа')) {
@@ -270,18 +285,6 @@ function App() {
         }
 
         return null;
-    };
-
-    useEffect(() => {
-        if (isInfoOpen) {
-            fetch('/instructions.html')
-                .then((response) => response.text())
-                .then((data) => setHtmlContent(data));
-        }
-    }, [isInfoOpen]);
-
-    const handleInfoClick = () => {
-        setIsInfoOpen(!isInfoOpen);
     };
 
     return (

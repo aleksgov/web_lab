@@ -53,6 +53,7 @@
   box-shadow: 0 .1vw 0.2vw rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
   padding: 0;
+  user-select: none;
 }
 
 .color-button:hover {
@@ -90,17 +91,17 @@
 
 .info-content {
   background: white;
-  padding: 20px;
-  width: 75vw;
+  padding: 1.2vw;
+  width: 70vw;
   height: 85vh;
-  border-radius: 30px;
+  border-radius: 1.8vw;
   position: relative;
 }
 
 .modal-container {
   position: absolute;
-  padding: 0 6% 4% 4%;
-  width: 78vw;
+  padding: 0 4.5vw 0 3.1vw;
+  width: 73vw;
   height: 85vh;
   overflow-y: auto;
   align-items: center;
@@ -110,14 +111,16 @@
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 3.5em;
+  top: 0.6vw;
+  right: 1vw;
+  font-size: 5vw;
   border: none;
   background: transparent;
   cursor: pointer;
   color: #888;
   z-index: 10;
+  padding: 0;
+  user-select: none;
 }
 
 .close-button:hover {
@@ -140,6 +143,7 @@
   align-items: center;
   justify-content: center;
   padding: 0;
+  user-select: none;
 }
 
 .info-text {
@@ -149,6 +153,7 @@
   font-weight: bold;
   display: inline-block;
   transition: transform 0.2s ease;
+  user-select: none;
 }
 
 .info-button:hover {
@@ -170,6 +175,7 @@
   font-size: 1vw;
   border-radius: 0.3vw;
   z-index: 1000;
+  user-select: none;
 }
 
 .content-box {
@@ -183,6 +189,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  user-select: none;
 }
 
 .tabs-container {
@@ -201,6 +208,7 @@
   line-height: 1.42857143;
   font-weight: 500;
   transition: background-color 0.3s;
+  user-select: none;
 }
 
 .tab.active {
@@ -215,6 +223,7 @@
   padding-left: 1vw;
   padding-right: 1vw;
   color: #333;
+  user-select: none;
 }
 
 .main-tab-content {
@@ -236,6 +245,7 @@
   font-weight: 400;
   line-height: 1.5;
   word-wrap: break-word;
+  user-select: none;
 }
 
 .buttons-container {
@@ -268,6 +278,7 @@
   display: flex;
   align-items: center;
   max-width: 20vw;
+  user-select: none;
 }
 
 .main-button:hover {
@@ -284,6 +295,7 @@
   font-family: 'Century Gothic', sans-serif;
   font-weight: 400;
   text-align: left;
+  user-select: none;
 }
 
 .main-button-number {
@@ -293,6 +305,7 @@
   font-weight: 400;
   word-wrap: break-word;
   margin-right: 1vw;
+  user-select: none;
 }
 
 .lab-buttons-container {
@@ -312,6 +325,7 @@
   border-radius: 1.8vw;
   border: none;
   cursor: pointer;
+  user-select: none;
 }
 
 .lab-button-variants {
@@ -337,9 +351,6 @@
   font-weight: 400;
   line-height: 1.5;
   word-wrap: break-word;
-}
-
-.tabs-container, .main-button, .header-text, .lab-button, .lab-work-title {
   user-select: none;
 }
 
