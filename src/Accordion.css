@@ -4,15 +4,16 @@
 }
 
 .accordion-item {
-    border-radius: 1.5vw;
+    width: 68vw;
+    border-radius: 1.7vw;
     background-color: white;
     padding-right: 2vw;
-    margin-bottom: 6.9vh;
-    box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.25);
+    margin-bottom: 4.4vw;
+    box-shadow: 0 0.32vw 0.52vw rgba(0, 0, 0, 0.25);
 }
 
 .accordion-title {
-    width: 60vw;
+    height: 7.68vw;
     aspect-ratio: 1152 / 130;
     cursor: pointer;
     display: flex;
@@ -35,24 +36,25 @@
 }
 
 .step-counter {
-    font-size: 2vw;
+    font-size: 2.35vw;
     font-weight: bold;
-    padding-left: 7vw;
+    padding-left: 4.8vw;
     white-space: nowrap;
     line-height: 0;
 }
 
 .step-header {
-    font-size: 1.5vw;
-    margin-left: 1.3vw;
-    margin-top: 0.64vh;
+    font-size: 1.8vw;
+    margin-left: 1.5vw;
+    margin-top: 0.44vw;
     line-height: 1.42857143;
 }
 
 .accordion-content {
-    padding-bottom: 1.8vw;
-    padding-left: 8vw;
-    padding-right: 1vw;
+    font-size: 1.42vw;
+    padding-bottom: 1.2vw;
+    padding-left: 5.45vw;
+    padding-right: 0.7vw;
 }
 
 .accordion-toggle {
@@ -63,6 +65,6 @@
 
 .accordion-toggle img {
     cursor: pointer;
-    width: 2vw;
+    width: 2.4vw;
     aspect-ratio: 1 / 1;
 }

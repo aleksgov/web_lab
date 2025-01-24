@@ -129,6 +129,12 @@ function App() {
         setActiveTab(index);
     };
 
+    const getContentBoxStyle = (tabTitle) => {
+        if (tabTitle.startsWith("Лабораторная работа")) {
+            return { width: '65vw', aspectRatio: '1098 / 612' };
+        }
+    };
+
     // Обработчики кликов по кнопкам
     const handleTheoryClick = () => addTab("Теория");
     const handleExampleClick = () => addTab("Пример");
@@ -172,7 +178,7 @@ function App() {
         ));
     };
 
-    const renderLabButton = (number) => 
+    const renderLabButton = (number) =>
         <NumberButton number={number} text="Лабораторная работа" onClick={() => addTab(`Лабораторная работа №${number}`)} />;
 
     // Рендеринг содержимого в зависимости от активной вкладки
@@ -196,25 +202,25 @@ function App() {
                 </div>
             );
         }
-        
+
         if (!tabs[activeTab])
             return null;
 
         if (tabs[activeTab].startsWith("Лабораторная работа")) {
             return (
-                <div className="content-box">
+                <div className="content-box" style={getContentBoxStyle(tabs[activeTab])}>
                     <div className="lab-work-title">{tabs[activeTab]}</div>
-                    {/* <p>{tabs[activeTab]?.content}</p> */}
                     <div className="lab-buttons-container">
                         <button className="lab-button" onClick={handleTheoryClick}>Теория</button>
                         <button className="lab-button" onClick={handleExampleClick}>Пример</button>
                     </div>
-                    <button className="lab-button lab-button-variants" onClick={handleTasksClick}>Варианты заданий</button>
+                    <button className="lab-button lab-button-variants" onClick={handleTasksClick}>Варианты заданий
+                    </button>
                 </div>
             );
         }
 
-        if (/^Задани(я|е)/.test(tabs[activeTab])) {
+        if (/^Задани([яе])/.test(tabs[activeTab])) {
             if (labNumber === '3') {
                 return (
                     <div className="theory-container">
@@ -227,7 +233,14 @@ function App() {
                 <div className="task-variants-container">
                     <div className="task-buttons">
                         {Array.from({ length: variantsCount }, (_, index) => (
-                            <NumberButton number={index < 9 ? '0' + (index + 1) : (index + 1) } text="Вариант" onClick={() => handleVariantClick(index)} />
+                            <button
+                                key={index}
+                                className={`task-button ${index + 1 >= 10 ? 'two-digit' : ''}`}
+                                onClick={() => handleVariantClick(index)}
+                            >
+                                <span className="task-button-number">{index + 1}</span>
+                                <span className="task-button-text">Вариант</span>
+                            </button>
                         ))}
                     </div>
                 </div>
@@ -235,13 +248,13 @@ function App() {
         }
 
         if (tabs[activeTab] === 'Пример') {
-            return <div className="accordion-container"><Accordion labNumber={labNumber} /></div>;
+            return <div className="accordion-container"><Accordion labNumber={labNumber}/></div>;
         }
 
         if (tabs[activeTab] === 'Теория') {
             return (
                 <div className="theory-container">
-                    <SyntaxHighlighter className="theory-content" htmlContent={theoryContent} />
+                    <SyntaxHighlighter className="theory-content" htmlContent={theoryContent}/>
                 </div>
             );
         }
