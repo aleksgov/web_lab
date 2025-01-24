@@ -19,6 +19,8 @@ function App() {
     const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
     const [menuVisible, setMenuVisible] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
+    const [isInfoOpen, setIsInfoOpen] = useState(false);
+    const [htmlContent, setHtmlContent] = useState('');
     const colors = [
         "linear-gradient(149deg, rgba(255, 144, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)",
         "linear-gradient(149deg, rgba(255, 108, 0, 0.52) 0%, rgba(0, 158, 142, 0.52) 100%)",
@@ -270,6 +272,18 @@ function App() {
         return null;
     };
 
+    useEffect(() => {
+        if (isInfoOpen) {
+            fetch('/instructions.html')
+                .then((response) => response.text())
+                .then((data) => setHtmlContent(data));
+        }
+    }, [isInfoOpen]);
+
+    const handleInfoClick = () => {
+        setIsInfoOpen(!isInfoOpen);
+    };
+
     return (
         <div className="App">
             {showNotification && (
@@ -302,10 +316,20 @@ function App() {
             </div>
             <button
                 className="info-button"
-                onClick={() => alert("Информация о приложении web_lab!")}
+                onClick={handleInfoClick}
             >
                 <span className="info-text">i</span>
             </button>
+            {isInfoOpen && (
+                <div className="info-modal">
+                    <div className="info-content">
+                        <button className="close-button" onClick={handleInfoClick}>
+                            &times;
+                        </button>
+                        <div className="modal-container" dangerouslySetInnerHTML={{__html: htmlContent}}/>
+                    </div>
+                </div>
+            )}
             <div className="tabs-container">
                 {renderTabs()}
             </div>
