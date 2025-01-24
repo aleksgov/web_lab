@@ -54,8 +54,6 @@ const Accordion = ({ labNumber }) => {
                             <img
                                 src={activeIndexes.includes(index) ? 'assets/up_arrow.png' : 'assets/down_arrow.png'}
                                 alt={activeIndexes.includes(index) ? 'Minus' : 'Plus'}
-                                width="40"
-                                height="40"
                             />
                         </span>
                     </div>

@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { labFiles } from './Globals';
 import Accordion from './Accordion';
+import NumberButton from './NumberButton';
 import SyntaxHighlighter from './SyntaxHighlighter';
 
 function App() {
     const taskContentRef = useRef(null);
     const [forceUpdate, setForceUpdate] = useState(0);
     const [activeTab, setActiveTab] = useState(0);
-    const [tabs, setTabs] = useState([{ title: 'Главная', content: 'Контент главной страницы' }]);
+    const [tabs, setTabs] = useState([ 'Главная' ]);
     const [theoryContent, setTheoryContent] = useState('');
     const [taskContent, setTaskContent] = useState('');
     const [labNumber, setLabNumber] = useState(null);
@@ -36,8 +37,8 @@ function App() {
 
     // Загрузка теории при смене вкладки
     useEffect(() => {
-        if (activeTab !== 0 && tabs[activeTab]?.title.startsWith('Лабораторная работа')) {
-            const labNumberFromTitle = getLabNumberFromTitle(tabs[activeTab]?.title);
+        if (activeTab !== 0 && tabs[activeTab].startsWith('Лабораторная работа')) {
+            const labNumberFromTitle = getLabNumberFromTitle(tabs[activeTab]);
             if (labNumberFromTitle) {
                 setLabNumber(labNumberFromTitle);
                 loadTheoryContent(labNumberFromTitle);
@@ -57,19 +58,19 @@ function App() {
     }, [taskContent, activeVariant, taskContentRef, forceUpdate]);
 
     // Функция для добавления вкладки
-    const addTab = (title, content = '') => {
-        const existingTabIndex = tabs.findIndex((tab) => tab.title === title);
+    const addTab = (title) => {
+        const existingTabIndex = tabs.findIndex((tab) => tab === title);
         if (existingTabIndex !== -1) {
             setActiveTab(existingTabIndex);
         } else {
-            setTabs((prevTabs) => [...prevTabs, { title, content }]);
+            setTabs((prevTabs) => [...prevTabs, title]);
             setActiveTab(tabs.length);
         }
     };
 
     // Показать уведомление при активации вкладки "Теория"
     useEffect(() => {
-        if (tabs[activeTab]?.title === 'Теория') {
+        if (tabs[activeTab] === 'Теория') {
             setShowNotification(true);
             const timer = setTimeout(() => {
                 setShowNotification(false);
@@ -128,25 +129,18 @@ function App() {
         setActiveTab(index);
     };
 
-    // Стиль контента для лабораторной работы
-    const getContentBoxStyle = (tabTitle) => {
-        if (tabTitle.startsWith("Лабораторная работа")) {
-            return { width: '65vw', height: '71.5vh' };
-        }
-    };
-
     // Обработчики кликов по кнопкам
-    const handleTheoryClick = () => addTab("Теория", "");
-    const handleExampleClick = () => addTab("Пример", "");
+    const handleTheoryClick = () => addTab("Теория");
+    const handleExampleClick = () => addTab("Пример");
     const handleTasksClick = () => {
         const variantsCount = labFiles[labNumber]?.tasks?.count;
         if (variantsCount == null) {
-            addTab("Задание", "");
+            addTab("Задание");
         } else {
             if (variantsCount) {
                 setVariantsCount(variantsCount);
             }
-            addTab("Задания", "");
+            addTab("Задания");
         }
     };
 
@@ -154,7 +148,7 @@ function App() {
         const variantIndex = index + 1;
         setActiveVariant(variantIndex);
         causeAnUpdate();
-        addTab(`Вариант №${variantIndex}`, "");
+        addTab(`Вариант №${variantIndex}`);
     };
 
     const handleColorButtonClick = (index) => {
@@ -171,76 +165,56 @@ function App() {
                     className={`tab ${activeTab === index ? 'active' : ''}`}
                     onClick={() => closeOtherTabs(index)}
                 >
-                    {tab.title}
+                    {tab}
                 </div>
                 {index !== tabs.length - 1 && <div className="arrow">→</div>}
             </React.Fragment>
         ));
     };
 
+    const renderLabButton = (number) => 
+        <NumberButton number={number} text="Лабораторная работа" onClick={() => addTab(`Лабораторная работа №${number}`)} />;
+
     // Рендеринг содержимого в зависимости от активной вкладки
     const renderContent = () => {
         if (activeTab === 0) {
             return (
                 <div className="content-box">
-                    <div className="tab-content">
-                        <div className="main-tab-content">
-                            <div className="header-text">
-                                Лабораторный практикум<br/>по предмету “Управление данными”
+                    <div className="main-tab-content">
+                        <div className="header-text">
+                            Лабораторный практикум<br/>по предмету “Управление данными”
+                        </div>
+                        <div className="buttons-container">
+                            <div className="button-row">
+                                {[1, 2, 3].map(renderLabButton)}
                             </div>
-                            <div className="main-buttons-container">
-                                <div className="button-row">
-                                    {[1, 2, 3].map((number) => (
-                                        <button
-                                            key={number}
-                                            className="main-button"
-                                            onClick={() => addTab(`Лабораторная работа №${number}`)}
-                                        >
-                                            <div className="main-button-text">
-                                                Лабораторная <br/> работа
-                                            </div>
-                                            <div className="main-button-number">{number}</div>
-                                        </button>
-                                    ))}
-                                </div>
-                                <div className="button-row">
-                                    {[4, 5].map((number) => (
-                                        <button
-                                            key={number}
-                                            className="main-button"
-                                            onClick={() => addTab(`Лабораторная работа №${number}`)}
-                                        >
-                                            <div className="main-button-text">
-                                                Лабораторная <br/> работа
-                                            </div>
-                                            <div className="main-button-number">{number}</div>
-                                        </button>
-                                    ))}
-                                </div>
+                            <div className="button-row">
+                                {[4, 5].map(renderLabButton)}
                             </div>
                         </div>
                     </div>
                 </div>
             );
         }
+        
+        if (!tabs[activeTab])
+            return null;
 
-        if (tabs[activeTab]?.title.startsWith("Лабораторная работа")) {
+        if (tabs[activeTab].startsWith("Лабораторная работа")) {
             return (
-                <div className="content-box" style={getContentBoxStyle(tabs[activeTab]?.title)}>
-                    <div className="tab-content">
-                        <div className="lab-work-title">{tabs[activeTab]?.title}</div>
-                        <p>{tabs[activeTab]?.content}</p>
-                        <div className="lab-buttons-container">
-                            <button className="lab-button" onClick={handleTheoryClick}>Теория</button>
-                            <button className="lab-button" onClick={handleExampleClick}>Пример</button>
-                        </div>
-                        <button className="lab-button lab-button-variants" onClick={handleTasksClick}>Варианты заданий</button>
+                <div className="content-box">
+                    <div className="lab-work-title">{tabs[activeTab]}</div>
+                    {/* <p>{tabs[activeTab]?.content}</p> */}
+                    <div className="lab-buttons-container">
+                        <button className="lab-button" onClick={handleTheoryClick}>Теория</button>
+                        <button className="lab-button" onClick={handleExampleClick}>Пример</button>
                     </div>
+                    <button className="lab-button lab-button-variants" onClick={handleTasksClick}>Варианты заданий</button>
                 </div>
             );
         }
 
-        if (/^Зад(ания|ание)/.test(tabs[activeTab]?.title)) {
+        if (/^Задани(я|е)/.test(tabs[activeTab])) {
             if (labNumber === '3') {
                 return (
                     <div className="theory-container">
@@ -253,25 +227,18 @@ function App() {
                 <div className="task-variants-container">
                     <div className="task-buttons">
                         {Array.from({ length: variantsCount }, (_, index) => (
-                            <button
-                                key={index}
-                                className={`task-button ${index + 1 >= 10 ? 'two-digit' : ''}`}
-                                onClick={() => handleVariantClick(index)}
-                            >
-                                <span className="task-button-number">{index + 1}</span>
-                                <span className="task-button-text">Вариант</span>
-                            </button>
+                            <NumberButton number={index < 9 ? '0' + (index + 1) : (index + 1) } text="Вариант" onClick={() => handleVariantClick(index)} />
                         ))}
                     </div>
                 </div>
             );
         }
 
-        if (tabs[activeTab]?.title === 'Пример') {
+        if (tabs[activeTab] === 'Пример') {
             return <div className="accordion-container"><Accordion labNumber={labNumber} /></div>;
         }
 
-        if (tabs[activeTab]?.title === 'Теория') {
+        if (tabs[activeTab] === 'Теория') {
             return (
                 <div className="theory-container">
                     <SyntaxHighlighter className="theory-content" htmlContent={theoryContent} />
@@ -279,7 +246,7 @@ function App() {
             );
         }
 
-        if (tabs[activeTab]?.title.startsWith("Вариант №")) {
+        if (tabs[activeTab].startsWith("Вариант №")) {
             return (
                 <div className="theory-container">
                     <div ref={taskContentRef} className="theory-content" dangerouslySetInnerHTML={{ __html: taskContent }} />
@@ -314,7 +281,7 @@ function App() {
                                     className="color-button"
                                     style={{background: color}}
                                     onClick={() => handleColorButtonClick(index)}
-                                ></button>
+                                />
                             )
                         ))}
                     </div>

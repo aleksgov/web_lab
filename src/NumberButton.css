@@ -1,0 +1,30 @@
+.number-button-container {
+    aspect-ratio: 333 / 135;
+    position: relative;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0.35vw 0.07vw rgba(0, 0, 0, 0.25);
+    border-radius: 1.8vw;
+    border: none;
+    cursor: pointer;
+    font-size: 5.1vw;
+    word-wrap: break-word;
+    padding-left: 1.25vw;
+    display: flex;
+    align-items: center;
+    max-width: 20vw;
+    font-family: 'Century Gothic', sans-serif;
+    font-weight: 400;
+}
+
+.number-button-text {
+    color: black;
+    font-size: 1.67vw;
+    text-align: left;
+}
+
+.number-button-number {
+    color: black;
+    font-size: 5.1vw;
+    word-wrap: break-word;
+    margin-right: 1vw;
+}
