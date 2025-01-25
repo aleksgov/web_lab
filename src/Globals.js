@@ -25,7 +25,8 @@ export const labFiles = {
         example: {
             steps_count: 2,
             steps_counters: ["Часть 1", "Часть 2"],
-            steps_headers: ["Разработка XML-документа для иерархической базы данных", "Изучение языка запросов XPath"],
+            steps_headers: ["Разработка XML-документа для иерархической базы данных",
+                "Изучение языка запросов XPath"],
             steps_paths: [
                 'documentation/SecondLab/SecondLab_Example1.html',
                 'documentation/SecondLab/SecondLab_Example2.html'
@@ -55,10 +56,14 @@ export const labFiles = {
     4: {
         theory: 'documentation/FourthLab/FourthLabTheory.html',
         example: {
-            steps_count: 0,
-            steps_counters: [],
-            steps_headers: [],
-            steps_paths: []
+            steps_count: 2,
+            steps_counters: ["Часть №1", "Часть №2"],
+            steps_headers: ['Создание топологии сети и настройка IP-адресов',
+                'Моделирование с использованием утилиты Ping и анализ сетевых протоколов'],
+            steps_paths: [
+                '/documentation/FourthLab/FourthLabExample1.html',
+                '/documentation/FourthLab/FourthLabExample2.html',
+            ]
         },
         tasks: {
             path: 'documentation/FourthLab/FourthLabVariants.html'

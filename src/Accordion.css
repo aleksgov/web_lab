@@ -52,9 +52,7 @@
 
 .accordion-content {
     font-size: 1.42vw;
-    padding-bottom: 1.2vw;
-    padding-left: 5.45vw;
-    padding-right: 0.7vw;
+    padding: 0.7vw 0.7vw 1.2vw 5.45vw;
 }
 
 .accordion-toggle {

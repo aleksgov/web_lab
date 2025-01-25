@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.42857143;
+            margin: 0;
+            color: #333;
+            padding-top: 0;
+        }
+
+        ol {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            margin-top: 0;
+            text-indent: 1.5em;
+            text-align: justify;
+        }
+
+        pre {
+            padding: 2px;
+            border: 1px solid #eee;
+        }
+
+        .isolated-container img {
+            display: block;
+            border: 5px solid #f0f0f0;
+            max-width: 90%;
+            height: auto;
+            margin: 25px auto;
+        }
+
+        .center {
+            text-align: center;
+            margin-bottom: 25px;
+            margin-top: -10px;
+        }
+
+        .imp {
+            display: inline;
+            font-weight: bold;
+            font-family: monospace;
+        }
+    </style>
+    <title>Пример 2</title>
+</head>
+<body>
+    <main>
+        <ol>
+            <li>В Packet Tracer 5.2 активируйте режим моделирования, нажав на значок в нижнем левом углу рабочей области или используя комбинацию клавиш <span class="imp">Shift+S</span>. Откроется «Панель моделирования» (рис. 5.6), в которой будут отображаться события, связанные с выполнением ping-процесса.</li>
+            <div class="isolated-container"><img src="/assets/labs/FourthLab/Example/2/cpt_simulation_panel.jpeg" alt="image"></div>
+            <p class="center">Рис.5.6. Панель моделирования</p>
+            <li>В режиме <strong>Автоматически</strong> процесс ping будет моделироваться целиком, а в режиме <strong>Пошагово</strong> – шаг за шагом.</li>
+            <li>Чтобы узнать структуру пакета, щелкните правой кнопкой мыши на цветной квадрат в графе «Информация».</li>
+            <li>Моделирование завершится либо при завершении процесса ping, либо при закрытии окна «Редактирование» соответствующей рабочей станции.</li>
+        </ol>
+        <p>Если все настроено правильно, вы сможете пропинговать любой компьютер из другого. Например, с компьютера PC3 выполните команду <span class="imp">ping</span> до компьютера PC0 и убедитесь, что получен отчет о пинге (рис. 5.7).</p>
+        <p>Однако, это не все преимущества Packet Tracer: в «Режиме симуляции» можно не только отслеживать используемые протоколы, но и видеть, на каком из семи уровней модели OSI данный протокол задействован (см. рис. 5.8).</p>
+        <div class="isolated-container"><img src="/assets/labs/FourthLab/Example/2/cpt_ping_command_line.jpeg" alt="image"></div>
+        <p class="center">Рис.5.7. Выполнение команды ping в командной строке</p>
+        <div class="isolated-container"><img src="/assets/labs/FourthLab/Example/2/cpt_analyzing_seven-level_model.jpeg" alt="image"></div>
+        <p class="center">Рис.5.8 Анализ семиуровневой модели OSI в Cisco Packet Tracer 5.2.</p>
+    </main>
+</body>
+</html>

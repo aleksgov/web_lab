@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.42857143;
+            margin: 0;
+            color: #333;
+            padding-top: 0;
+        }
+
+        ol {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            margin-top: 0;
+            text-indent: 1.5em;
+            text-align: justify;
+        }
+
+        pre {
+            padding: 2px;
+            border: 1px solid #eee;
+        }
+
+        .isolated-container img {
+            display: block;
+            border: 5px solid #f0f0f0;
+            max-width: 90%;
+            height: auto;
+            margin: 25px auto;
+        }
+
+        .center {
+            text-align: center;
+            margin-bottom: 25px;
+            margin-top: -10px;
+        }
+
+        .imp {
+            display: inline;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+    <title>Пример 1</title>
+</head>
+<body>
+    <main>
+        <ol>
+            <li>На рабочей области программы добавьте два коммутатора Switch-PT. По умолчанию они будут иметь имена Switch0 и Switch1.</li>
+            <li>Добавьте на рабочее поле четыре компьютера с именами по умолчанию: PC0, PC1, PC2 и PC3.</li>
+            <li>Соедините устройства в сеть Ethernet, как показано на рисунке 5.4.</li>
+            <li>Сохраните созданную топологию, нажав кнопку "<code>Save</code>" в меню <code>File → Save</code>.</li>
+        </ol>
+        <div class="isolated-container"><img src="/assets/labs/FourthLab/Example/1/cpt_experimental_network_model.jpeg" alt="image"></div>
+        <p class="center">Рис.5.4. Экспериментальная модель сети</p>
+        <p>Далее откройте свойства устройства PC0, щелкнув на его изображение. Перейдите на вкладку <span class="imp">Desktop</span> и откройте <span class="imp">Command Prompt</span>. Введите команду «<span class="imp">?</span>» и нажмите Enter для получения списка доступных команд. Для конфигурирования IP-адреса компьютера используйте команду <span class="imp">ipconfig</span>. Например, для настройки IP-адреса 192.168.1.2 с маской подсети 255.255.255.0 выполните команду:</p>
+        <pre><code>ipconfig 192.168.1.2 255.255.255.0</code></pre>
+        <p>IP-адрес и маску сети также можно настроить через графический интерфейс устройства (см. рисунок 5.5). Параметр <span class="imp">DEFAULT GATEWAY</span> не требуется, так как создаваемая сеть не предполагает маршрутизации.</p>
+        <div class="isolated-container"><img src="/assets/labs/FourthLab/Example/1/cpt_host_config.jpeg" alt="image"></div>
+        <p class="center">Рис.5.5. Настройка узла</p>
+        <p>Повторите этот процесс для каждого компьютера.</p>
+        <h3>Таблица 2. Настроенные IP-адреса и маски подсети:</h3>
+        <table>
+            <tr>
+                <th>Устройство</th>
+                <th>IP-адрес</th>
+                <th>Маска подсети</th>
+            </tr>
+            <tr>
+                <td>PC0</td>
+                <td>192.168.1.2</td>
+                <td>255.255.255.0</td>
+            </tr>
+            <tr>
+                <td>PC1</td>
+                <td>192.168.1.3</td>
+                <td>255.255.255.0</td>
+            </tr>
+            <tr>
+                <td>PC2</td>
+                <td>192.168.1.4</td>
+                <td>255.255.255.0</td>
+            </tr>
+            <tr>
+                <td>PC3</td>
+                <td>192.168.1.5</td>
+                <td>255.255.255.0</td>
+            </tr>
+        </table>
+        <p>На каждом компьютере выполните команду <span class="imp">ipconfig</span> без параметров, чтобы убедиться, что IP-адреса назначены корректно.</p>
+    </main>
+</body>
+</html>
