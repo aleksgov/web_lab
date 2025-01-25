@@ -9,7 +9,7 @@
     background-color: white;
     padding-right: 2vw;
     margin-bottom: 4.4vw;
-    box-shadow: 0 0.32vw 0.52vw rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 0.5vw 0.2vw rgba(0, 0, 0, 0.10);
 }
 
 .accordion-title {
