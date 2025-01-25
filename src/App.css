@@ -193,6 +193,11 @@
   user-select: none;
 }
 
+.content-box-lab {
+  width: 65vw;
+  aspect-ratio: 1098 / 612;
+}
+
 .tabs-container {
   position: absolute;
   top: 0.8vw;

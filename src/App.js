@@ -51,7 +51,6 @@ function App() {
         }
     }, [isInfoOpen]);
 
-
     // Загрузка теории при смене вкладки
     useEffect(() => {
         if (activeTab !== 0 && tabs[activeTab].startsWith('Лабораторная работа')) {
@@ -146,12 +145,6 @@ function App() {
         setActiveTab(index);
     };
 
-    const getContentBoxStyle = (tabTitle) => {
-        if (tabTitle.startsWith("Лабораторная работа")) {
-            return { width: '65vw', aspectRatio: '1098 / 612' };
-        }
-    };
-
     // Обработчики кликов по кнопкам
     const handleTheoryClick = () => addTab("Теория");
     const handleExampleClick = () => addTab("Пример");
@@ -225,7 +218,8 @@ function App() {
 
         if (tabs[activeTab].startsWith("Лабораторная работа")) {
             return (
-                <div className="content-box" style={getContentBoxStyle(tabs[activeTab])}>
+                <div
+                    className={`content-box ${tabs[activeTab].startsWith("Лабораторная работа") ? 'content-box-lab' : ''}`}>
                     <div className="lab-work-title">{tabs[activeTab]}</div>
                     <div className="lab-buttons-container">
                         <button className="lab-button" onClick={handleTheoryClick}>Теория</button>
@@ -238,7 +232,7 @@ function App() {
         }
 
         if (/^Задани([яе])/.test(tabs[activeTab])) {
-            if (labNumber === '3') {
+            if (['3', '4'].includes(labNumber)) {
                 return (
                     <div className="theory-container">
                         <SyntaxHighlighter className="theory-content" htmlContent={taskContent} />

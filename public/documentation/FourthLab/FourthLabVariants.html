@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание по ZennoPoster</title>
+    <style>
+        body {
+            font-family: "Helvetica", Helvetica, Arial, sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.42857143;
+            color: #333;
+            margin: 0;
+            padding-right: 5%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 12px;
+            color: #2A2F35;
+        }
+
+        p {
+            margin: 3px 0 3px 0;
+            text-align: justify;
+        }
+
+        ol {
+            margin-top: 10px;
+        }
+
+        ul {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        ol li {
+            margin-bottom: 0.4em;
+        }
+
+        ul li {
+            margin-bottom: 0.1em;
+        }
+
+        a {
+            outline: none;
+            text-decoration: none;
+            padding: 2px 1px 0;
+        }
+
+        a:link {
+            color: #00509e;
+        }
+
+        a:visited {
+            color: #003366;
+        }
+
+        a:focus {
+            border-bottom: 1px solid;
+            background: #b3d9ff;
+        }
+
+        a:hover {
+            border-bottom: 1px solid;
+            background: #99ccff;
+        }
+
+        a:active {
+            background: #003366;
+            color: #b3d9ff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0.55vw;
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: lightgray;
+            border-radius: calc(0.25vw);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: calc(0.25vw);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #aaa;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border: 3px solid #e9edf1;
+            max-width: 90%;
+            height: auto;
+        }
+
+        .center {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: -10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            margin-left: -25px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .first-table td:nth-child(3) {
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .example {
+            font-style: italic;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        .marge {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Задание</h2>
+    <ol>
+        <li>Постройте топологию, показанную на рисунке 5.9.</li>
+        <img src="/assets/labs/FourthLab/Task/cpt_network_topology.jpeg" alt=image">
+        <p class="center">Рис 5.9. Топология сети для исследования</p>
+        <li>Присвойте компьютерам IP-адреса в соответствии с вариантом v.</li>
+        <table class="first-table">
+            <thead>
+            <tr>
+                <th style="width: 25%;">Устройство</th>
+                <th style="width: 25%;">IP-адрес</th>
+                <th style="width: 50%;">Топология сети</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>PC1</td>
+                <td>v*10.v.1.1</td>
+                <td rowspan="6">Маска подсети определяется в зависимости от класса сети, к которому принадлежит IP адрес</td>
+            </tr>
+            <tr>
+                <td>PC2</td>
+                <td>v*10.v.1.2</td>
+            </tr>
+            <tr>
+                <td>PC3</td>
+                <td>v*10.v.1.3</td>
+            </tr>
+            <tr>
+                <td>PC4</td>
+                <td>v*10.v.1.4</td>
+            </tr>
+            <tr>
+                <td>PC5</td>
+                <td>v*10.v.1.5</td>
+            </tr>
+            <tr>
+                <td>PC6</td>
+                <td>v*10.v.1.6</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="marge">
+            <p><strong>Пример:</strong> Для варианта 7 (v = 7) и компьютера PC5:</p>
+            <div class="example">
+                <ul>
+                    <li><strong>IP-адрес:</strong> 70.7.1.5</li>
+                    <li><strong>Маска подсети:</strong> 255.0.0.0</li>
+                </ul>
+            </div>
+        </div>
+        <p style="margin-bottom: 10px;">Если адреса настроены корректно, вы сможете успешно выполнить <code>ping</code> любого компьютера из любого другого устройства.</p>
+        <li>Выполните команду <code>ping</code> согласно таблице 4.</li>
+        <table>
+            <thead>
+            <tr>
+                <th>Вариант v%7</th>
+                <th>Пинг из</th>
+                <th>Пинг в</th>
+                <th>Вариант v</th>
+                <th>Пинг из</th>
+                <th>Пинг в</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr><td>1</td><td>PC1</td><td>PC6</td><td>15</td><td>PC1</td><td>PC6</td></tr>
+            <tr><td>2</td><td>PC2</td><td>PC6</td><td>16</td><td>PC2</td><td>PC6</td></tr>
+            <tr><td>3</td><td>PC3</td><td>PC1</td><td>17</td><td>PC3</td><td>PC1</td></tr>
+            <tr><td>4</td><td>PC4</td><td>PC2</td><td>18</td><td>PC4</td><td>PC2</td></tr>
+            <tr><td>5</td><td>PC5</td><td>PC3</td><td>19</td><td>PC5</td><td>PC3</td></tr>
+            <tr><td>6</td><td>PC6</td><td>PC4</td><td>20</td><td>PC6</td><td>PC4</td></tr>
+            <tr><td>7</td><td>PC6</td><td>PC5</td><td>21</td><td>PC6</td><td>PC5</td></tr>
+            <tr><td>8</td><td>PC6</td><td>PC5</td><td>22</td><td>PC6</td><td>PC5</td></tr>
+            <tr><td>9</td><td>PC1</td><td>PC6</td><td>23</td><td>PC1</td><td>PC6</td></tr>
+            <tr><td>10</td><td>PC2</td><td>PC6</td><td>24</td><td>PC2</td><td>PC6</td></tr>
+            <tr><td>11</td><td>PC3</td><td>PC1</td><td>25</td><td>PC3</td><td>PC1</td></tr>
+            <tr><td>12</td><td>PC4</td><td>PC2</td><td>26</td><td>PC4</td><td>PC2</td></tr>
+            <tr><td>13</td><td>PC5</td><td>PC3</td><td>27</td><td>PC5</td><td>PC3</td></tr>
+            <tr><td>14</td><td>PC6</td><td>PC4</td><td>28</td><td>PC6</td><td>PC4</td></tr>
+            </tbody>
+        </table>
+        <li>Переключитесь в режим «Симуляция» и отследите движение пакетов, а также используемые протоколы (см. рис. 5.8).</li>
+        <li>В режиме «Симуляция» подробно рассмотрите процесс обмена данными по протоколу ICMP. Для этого выполните команду <code>ping</code> с одного компьютера на другой (как указано в пункте 3). Объясните роль протокола ARP в данном процессе. Включите подробное описание в отчет.</li>
+        <li>Убедитесь, что все устройства сети доступны по протоколу IP.</li>
+    </ol>
+    <h3>Содержание отчета</h3>
+    <div class="marge">
+        <p>Отчёт готовится в электронном виде и распечатывается. Отчёт содержит:</p>
+        <ol>
+            <li>Титульный лист</li>
+            <li>Задание (Скриншот топологии согласно варианту)</li>
+            <li>Схема сети</li>
+            <li>Ход работы:</li>
+            <ol type="a">
+                <li>Этот раздел включает пошаговое описание всех ключевых действий с объяснением их сути, включая разбор работы команды ping и анализ содержимого <strong>используемых протоколов</strong>.</li>
+                <li>В разделе необходимо приложить скриншоты с видимой введенной командой и реакцией системы, если таковая имеется.</li>
+            </ol>
+            <li>Выводы</li>
+        </ol>
+    </div>
+</body>
+</html>

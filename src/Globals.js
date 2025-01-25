@@ -61,8 +61,7 @@ export const labFiles = {
             steps_paths: []
         },
         tasks: {
-            count: 1,
-            path: ''
+            path: 'documentation/FourthLab/FourthLabVariants.html'
         }
     },
     5: {
