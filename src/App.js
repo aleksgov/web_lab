@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import './App.css';
+import './styles/App.css';
 import { labFiles } from './Globals';
-import Accordion from './Accordion';
-import NumberButton from './NumberButton';
-import SyntaxHighlighter from './SyntaxHighlighter';
+import Accordion from './components/Accordion';
+import NumberButton from './components/NumberButton';
+import SyntaxHighlighter from './components/SyntaxHighlighter';
+import MainTab from './components/Tabs/MainTab';
 
 const COLORS = [
     "linear-gradient(149deg, rgba(255, 144, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)",
@@ -37,14 +38,12 @@ function App() {
         [labNumber]
     );
 
-    // Мемоизация обработчиков
     const handleInfoClick = useCallback(() => setIsInfoOpen(v => !v), []);
     const handleColorButtonClick = useCallback((index) => {
         setSelectedButtonIndex(index);
         setMenuVisible(false);
     }, []);
 
-    // Оптимизация запросов с AbortController
     useEffect(() => {
         if (!isInfoOpen) return;
         const controller = new AbortController();
@@ -59,7 +58,6 @@ function App() {
         return () => controller.abort();
     }, [isInfoOpen]);
 
-    // Загрузка теории
     const loadTheoryContent = useCallback(async (labNumber) => {
         if (!labFiles[labNumber]?.theory) {
             console.error(`Theory file for lab ${labNumber} not found`);
@@ -74,7 +72,6 @@ function App() {
         }
     }, []);
 
-    // Загрузка задания
     const loadTaskContent = useCallback(async () => {
         if (!labNumber || !labFiles[labNumber]?.tasks?.path) {
             console.error(`Task file for lab ${labNumber} not found`);
@@ -89,7 +86,6 @@ function App() {
         }
     }, [labNumber]);
 
-    // Общие эффекты загрузки данных
     useEffect(() => {
         if (activeTab === 0 || !tabs[activeTab].startsWith('Лабораторная работа')) return;
         if (labNumber) loadTheoryContent(labNumber);
@@ -99,7 +95,6 @@ function App() {
         if (activeTab !== 0) loadTaskContent();
     }, [activeTab, labNumber, loadTaskContent]);
 
-    // Оптимизация работы с вариантами
     const showVariant = useCallback((variantIndex) => {
         const variants = taskContentRef.current?.querySelectorAll('.variant') || [];
         variants.forEach(v => v.classList.remove('active'));
@@ -110,7 +105,6 @@ function App() {
         showVariant(activeVariant);
     }, [activeVariant, showVariant, taskContent]);
 
-    // Оптимизация работы с вкладками
     const addTab = useCallback((title) => {
         setTabs(prev => {
             const existingIndex = prev.findIndex(tab => tab === title);
@@ -125,7 +119,6 @@ function App() {
         setActiveTab(index);
     }, []);
 
-    // Мемоизированные обработчики вкладок
     const handleTheoryClick = useCallback(() => addTab("Теория"), [addTab]);
     const handleExampleClick = useCallback(() => addTab("Пример"), [addTab]);
     const handleTasksClick = useCallback(() => {
@@ -138,7 +131,6 @@ function App() {
         addTab(`Вариант №${variantIndex}`);
     }, [addTab]);
 
-    // Оптимизация рендеринга через мемоизацию компонентов
     const renderLabButton = useCallback(
         (number) => (
             <NumberButton
@@ -166,26 +158,8 @@ function App() {
         [tabs, activeTab, closeOtherTabs]
     );
 
-    // Оптимизированный рендеринг контента
     const renderContent = useMemo(() => {
-        if (activeTab === 0) return (
-            <div className="content-box">
-                <div className="main-tab-content">
-                    <div className="header-text">
-                        Лабораторный практикум<br/>по предмету “Управление данными”
-                    </div>
-                    <div className="buttons-container">
-                        {[1, 2, 3, 4, 5].reduce((rows, num, index) => {
-                            if (index % 3 === 0) rows.push([]);
-                            rows[rows.length - 1].push(renderLabButton(num));
-                            return rows;
-                        }, []).map((row, i) => (
-                            <div key={i} className="button-row">{row}</div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        );
+        if (activeTab === 0) return <MainTab renderLabButton={renderLabButton} />;
 
         const currentTab = tabs[activeTab];
         if (!currentTab) return null;

@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import hljs from 'highlight.js';
-import './SyntaxHighlighter.css';
+import '../SyntaxHighlighter.css';
 import 'highlight.js/styles/atom-one-light.css';
 
 const SyntaxHighlighter = ({ htmlContent, className = '' }) => {

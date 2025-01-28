@@ -16,6 +16,14 @@
     font-weight: 400;
 }
 
+.number-button-container:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.number-button-container:active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
 .number-button-text {
     color: black;
     font-size: 1.67vw;

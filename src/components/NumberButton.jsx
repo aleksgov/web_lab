@@ -1,5 +1,5 @@
 import React from 'react';
-import './NumberButton.css';
+import '../styles/NumberButton.css';
 
 export default function NumberButton({ number, text, onClick }) {
     return (

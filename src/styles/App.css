@@ -179,25 +179,6 @@
   user-select: none;
 }
 
-.content-box {
-  width: 69vw;
-  aspect-ratio:  1170 / 650;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 3.5vw;
-  box-shadow: 0 0.25vw 1.25vw rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  user-select: none;
-}
-
-.content-box-lab {
-  width: 65vw;
-  aspect-ratio: 1098 / 612;
-}
-
 .tabs-container {
   position: absolute;
   top: 0.8vw;
@@ -229,88 +210,6 @@
   padding-left: 1vw;
   padding-right: 1vw;
   color: #333;
-  user-select: none;
-}
-
-.main-tab-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-text {
-  padding-top: 5vw;
-  padding-bottom: 5vw;
-  width: 100%;
-  text-align: center;
-  color: black;
-  font-size: 2.35vw;
-  font-family: 'Century Gothic', sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  word-wrap: break-word;
-  user-select: none;
-}
-
-.buttons-container {
-  align-self: center;
-  margin-top: -1.75vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.75vw;
-}
-
-.button-row {
-  display: flex;
-  justify-content: center;
-  gap: 1.45vw;
-}
-
-.main-button {
-  aspect-ratio: 333 / 135;
-  position: relative;
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 0.35vw 0.07vw rgba(0, 0, 0, 0.25);
-  border-radius: 1.8vw;
-  border: none;
-  cursor: pointer;
-  font-size: 5.1vw;
-  font-family: 'Century Gothic', sans-serif;
-  word-wrap: break-word;
-  padding-left: 1.25vw;
-  display: flex;
-  align-items: center;
-  max-width: 20vw;
-  user-select: none;
-}
-
-.number-button-container:hover {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-
-.number-button-container:active {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.main-button-text {
-  color: black;
-  font-size: 1.67vw;
-  font-family: 'Century Gothic', sans-serif;
-  font-weight: 400;
-  text-align: left;
-  user-select: none;
-}
-
-.main-button-number {
-  color: black;
-  font-size: 5.1vw;
-  font-family: 'Century Gothic', sans-serif;
-  font-weight: 400;
-  word-wrap: break-word;
-  margin-right: 1vw;
   user-select: none;
 }
 

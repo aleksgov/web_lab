@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { labFiles } from './Globals'; // Импортируем labFiles
-import './Accordion.css';
+import { labFiles } from '../Globals'; // Импортируем labFiles
+import '../styles/Accordion.css';
 import SyntaxHighlighter from './SyntaxHighlighter';
 
 const Accordion = ({ labNumber }) => {
