@@ -17,65 +17,6 @@
   left: 0;
 }
 
-.color-buttons-container {
-  position: absolute;
-  min-width: 2.4vw;
-  top: 0.9vw;
-  right: 0.9vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.52vw;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.33);
-  padding: 0.42vw;
-  border-radius: 50vw;
-  box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.color-menu {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  gap: 0.6vw;
-  transition: max-height 0.3s ease;
-  align-items: center;
-  justify-content: center;
-}
-
-.color-button {
-  width: 2.4vw;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 .1vw 0.2vw rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-  padding: 0;
-  user-select: none;
-}
-
-.color-button:hover {
-  transform: scale(1.1);
-}
-
-.color-button:nth-child(1) {
-  background: linear-gradient(149deg, rgba(255, 144, 0, 0.52), rgba(0, 102, 174, 0.52));
-}
-
-.color-button:nth-child(2) {
-  background: linear-gradient(149deg, rgba(255, 108, 0, 0.52) 0%, rgba(0, 158, 142, 0.52) 100%);
-}
-
-.color-button:nth-child(3) {
-  background: linear-gradient(149deg, rgba(166, 136, 0, 0.52) 0%, rgba(29, 7, 114, 0.52) 100%);
-}
-
-.color-button:nth-child(4) {
-  background: linear-gradient(149deg, rgba(180, 13, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%);
-}
-
 .info-modal {
   position: fixed;
   top: 0;

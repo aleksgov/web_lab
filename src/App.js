@@ -8,13 +8,8 @@ import TheoryTab from './components/Tabs/TheoryTab';
 import VariantsTab from './components/Tabs/VariantsTab';
 import LabWorkTab from './components/Tabs/LabWorkTab';
 import TaskTab from "./components/Tabs/TaskTab";
-
-const COLORS = [
-    "linear-gradient(149deg, rgba(255, 144, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)",
-    "linear-gradient(149deg, rgba(255, 108, 0, 0.52) 0%, rgba(0, 158, 142, 0.52) 100%)",
-    "linear-gradient(149deg, rgba(166, 136, 0, 0.52) 0%, rgba(29, 7, 114, 0.52) 100%)",
-    "linear-gradient(149deg, rgba(180, 13, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)",
-];
+import ColorPicker from './components/ColorPicker';
+import { COLOR_THEMES, DEFAULT_THEME_INDEX } from './constants/theme';
 
 function App() {
     const taskContentRef = useRef(null);
@@ -23,8 +18,7 @@ function App() {
     const [theoryContent, setTheoryContent] = useState('');
     const [taskContent, setTaskContent] = useState('');
     const [activeVariant, setActiveVariant] = useState(1);
-    const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-    const [menuVisible, setMenuVisible] = useState(false);
+    const [selectedButtonIndex, setSelectedButtonIndex] = useState(DEFAULT_THEME_INDEX);
     const [isInfoOpen, setIsInfoOpen] = useState(false);
     const [htmlContent, setHtmlContent] = useState('');
     const [labNumber, setLabNumber] = useState(null);
@@ -42,10 +36,6 @@ function App() {
     );
 
     const handleInfoClick = useCallback(() => setIsInfoOpen(v => !v), []);
-    const handleColorButtonClick = useCallback((index) => {
-        setSelectedButtonIndex(index);
-        setMenuVisible(false);
-    }, []);
 
     useEffect(() => {
         if (!isInfoOpen) return;
@@ -204,28 +194,13 @@ function App() {
 
     return (
         <div className="App">
-            <div className="background" style={{ background: COLORS[selectedButtonIndex] }}></div>
+            <div className="background" style={{background: COLOR_THEMES[selectedButtonIndex]}}></div>
 
-            <div className="color-buttons-container">
-                <button
-                    className="color-button"
-                    style={{ background: COLORS[selectedButtonIndex] }}
-                    onClick={() => setMenuVisible(v => !v)}
-                />
-
-                {menuVisible && (
-                    <div className="color-menu">
-                        {COLORS.map((color, index) => index !== selectedButtonIndex && (
-                            <button
-                                key={color}
-                                className="color-button"
-                                style={{ background: color }}
-                                onClick={() => handleColorButtonClick(index)}
-                            />
-                        ))}
-                    </div>
-                )}
-            </div>
+            <ColorPicker
+                colors={COLOR_THEMES}
+                selectedColorIndex={selectedButtonIndex}
+                onColorChange={setSelectedButtonIndex}
+            />
 
             <button className="info-button" onClick={handleInfoClick}>
                 <span className="info-text">i</span>
