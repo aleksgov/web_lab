@@ -7,9 +7,11 @@ import MainTab from './components/Tabs/MainTab';
 import TheoryTab from './components/Tabs/TheoryTab';
 import VariantsTab from './components/Tabs/VariantsTab';
 import LabWorkTab from './components/Tabs/LabWorkTab';
-import TaskTab from "./components/Tabs/TaskTab";
+import TaskTab from './components/Tabs/TaskTab';
 import ColorPicker from './components/ColorPicker';
+import InfoModal from './components/InfoModal';
 import { COLOR_THEMES, DEFAULT_THEME_INDEX } from './constants/theme';
+import TabNavigation from './components/TabNavigation';
 
 function App() {
     const taskContentRef = useRef(null);
@@ -19,8 +21,6 @@ function App() {
     const [taskContent, setTaskContent] = useState('');
     const [activeVariant, setActiveVariant] = useState(1);
     const [selectedButtonIndex, setSelectedButtonIndex] = useState(DEFAULT_THEME_INDEX);
-    const [isInfoOpen, setIsInfoOpen] = useState(false);
-    const [htmlContent, setHtmlContent] = useState('');
     const [labNumber, setLabNumber] = useState(null);
 
     useEffect(() => {
@@ -34,22 +34,6 @@ function App() {
         () => labFiles[labNumber]?.tasks?.count || 30,
         [labNumber]
     );
-
-    const handleInfoClick = useCallback(() => setIsInfoOpen(v => !v), []);
-
-    useEffect(() => {
-        if (!isInfoOpen) return;
-        const controller = new AbortController();
-
-        fetch('/documentation/instructions.html', { signal: controller.signal })
-            .then((response) => response.text())
-            .then(setHtmlContent)
-            .catch((error) => {
-                if (error.name !== 'AbortError') console.error('Fetch error:', error);
-            });
-
-        return () => controller.abort();
-    }, [isInfoOpen]);
 
     const loadTheoryContent = useCallback(async (labNumber) => {
         if (!labFiles[labNumber]?.theory) {
@@ -136,21 +120,6 @@ function App() {
         [addTab]
     );
 
-    const renderTabs = useMemo(() =>
-            tabs.map((tab, index) => (
-                <React.Fragment key={tab}>
-                    <div
-                        className={`tab ${activeTab === index ? 'active' : ''}`}
-                        onClick={() => closeOtherTabs(index)}
-                    >
-                        {tab}
-                    </div>
-                    {index !== tabs.length - 1 && <div className="arrow">→</div>}
-                </React.Fragment>
-            )),
-        [tabs, activeTab, closeOtherTabs]
-    );
-
     const renderContent = useMemo(() => {
         if (activeTab === 0) return <MainTab renderLabButton={renderLabButton} />;
 
@@ -202,20 +171,14 @@ function App() {
                 onColorChange={setSelectedButtonIndex}
             />
 
-            <button className="info-button" onClick={handleInfoClick}>
-                <span className="info-text">i</span>
-            </button>
+            <InfoModal />
 
-            {isInfoOpen && (
-                <div className="info-modal">
-                    <div className="info-content">
-                        <button className="close-button" onClick={handleInfoClick}>&times;</button>
-                        <div className="modal-container" dangerouslySetInnerHTML={{ __html: htmlContent }} />
-                    </div>
-                </div>
-            )}
+            <TabNavigation
+                tabs={tabs}
+                activeTab={activeTab}
+                closeOtherTabs={closeOtherTabs}
+            />
 
-            <div className="tabs-container">{renderTabs}</div>
             {renderContent}
         </div>
     );

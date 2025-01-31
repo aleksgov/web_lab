@@ -1,0 +1,33 @@
+.tabs-container {
+    position: absolute;
+    top: 0.8vw;
+    left: 2vw;
+    display: flex;
+    margin-bottom: 2vw;
+    z-index: 2;
+}
+
+.tab {
+    cursor: pointer;
+    font-size: 1.5vw;
+    font-family: 'Century Gothic', sans-serif;
+    line-height: 1.42857143;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    user-select: none;
+}
+
+.tab.active {
+    text-decoration: underline;
+}
+
+.arrow {
+    font-family: 'Century Gothic', sans-serif;
+    line-height: 1.42857143;
+    font-size: 1.5vw;
+    margin: 0;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    color: #333;
+    user-select: none;
+}
