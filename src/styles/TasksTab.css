@@ -1,0 +1,75 @@
+.task-variants-container {
+    margin-top: 3.8%;
+    margin-left: 1.5%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 87vw;
+    height: 81.5vh;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.task-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5.3vh 3.86vw;
+}
+
+.task-button {
+    width: 13.6vw;
+    height: 5.75vw;
+    background: rgba(255, 255, 255, 1);
+    font-family: 'Century Gothic', sans-serif;
+    align-items: flex-start;
+    text-align: center;
+    color: black;
+    box-shadow: 0 0 0.35vw 0.07vw rgba(0, 0, 0, 0.25);
+    border-radius: 1.4vw;
+    border: none;
+    cursor: pointer;
+}
+
+.task-button-number {
+    margin-right: 0.76vw;
+    font-size: 3.9vw;
+}
+
+.task-button.two-digit .task-button-number {
+    margin-left: -0.52vw;
+    margin-right: 0.52vw;
+    letter-spacing: -0.157vw;
+}
+
+.task-button-text {
+    position: relative;
+    bottom: 0.85vw;
+    font-size: 1.65vw;
+}
+
+.task-button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.task-button:active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.task-variants-container::-webkit-scrollbar {
+    width: 0.55vw;
+    background-color: transparent;
+}
+
+.task-variants-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: calc(0.25vw);
+}
+
+.task-variants-container::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}
+
+.task-variants-container::-webkit-scrollbar-track {
+    background-color: lightgray;
+    border-radius: calc(0.25vw);
+}

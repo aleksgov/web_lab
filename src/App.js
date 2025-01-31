@@ -3,8 +3,11 @@ import './styles/App.css';
 import { labFiles } from './Globals';
 import Accordion from './components/Accordion';
 import NumberButton from './components/NumberButton';
-import SyntaxHighlighter from './components/SyntaxHighlighter';
 import MainTab from './components/Tabs/MainTab';
+import TheoryTab from './components/Tabs/TheoryTab';
+import VariantsTab from './components/Tabs/VariantsTab';
+import LabWorkTab from './components/Tabs/LabWorkTab';
+import TaskTab from "./components/Tabs/TaskTab";
 
 const COLORS = [
     "linear-gradient(149deg, rgba(255, 144, 0, 0.52) 0%, rgba(0, 102, 174, 0.52) 100%)",
@@ -167,56 +170,32 @@ function App() {
         switch(true) {
             case currentTab.startsWith("Лабораторная работа"):
                 return (
-                    <div className="content-box content-box-lab">
-                        <div className="lab-work-title">{currentTab}</div>
-                        <div className="lab-buttons-container">
-                            <button className="lab-button" onClick={handleTheoryClick}>Теория</button>
-                            <button className="lab-button" onClick={handleExampleClick}>Пример</button>
-                        </div>
-                        <button className="lab-button lab-button-variants" onClick={handleTasksClick}>
-                            Варианты заданий
-                        </button>
-                    </div>
+                    <LabWorkTab
+                        currentTab={currentTab}
+                        handleTheoryClick={handleTheoryClick}
+                        handleExampleClick={handleExampleClick}
+                        handleTasksClick={handleTasksClick}
+                    />
                 );
 
             case /^Задани([яе])/.test(currentTab):
-                return ['3', '4'].includes(labNumber) ? (
-                    <div className="theory-container">
-                        <SyntaxHighlighter className="theory-content" htmlContent={taskContent} />
-                    </div>
-                ) : (
-                    <div className="task-variants-container">
-                        <div className="task-buttons">
-                            {Array.from({ length: variantsCount }, (_, index) => (
-                                <button
-                                    key={index}
-                                    className={`task-button ${index + 1 >= 10 ? 'two-digit' : ''}`}
-                                    onClick={() => handleVariantClick(index)}
-                                >
-                                    <span className="task-button-number">{index + 1}</span>
-                                    <span className="task-button-text">Вариант</span>
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+                return (
+                    <VariantsTab
+                        labNumber={labNumber}
+                        taskContent={taskContent}
+                        variantsCount={variantsCount}
+                        handleVariantClick={handleVariantClick}
+                    />
                 );
 
             case currentTab === 'Пример':
                 return <div className="accordion-container"><Accordion labNumber={labNumber}/></div>;
 
             case currentTab === 'Теория':
-                return (
-                    <div className="theory-container">
-                        <SyntaxHighlighter className="theory-content" htmlContent={theoryContent}/>
-                    </div>
-                );
+                return <TheoryTab theoryContent={theoryContent} />;
 
             case currentTab.startsWith("Вариант №"):
-                return (
-                    <div className="theory-container">
-                        <div ref={taskContentRef} className="theory-content" dangerouslySetInnerHTML={{ __html: taskContent }} />
-                    </div>
-                );
+                return <TaskTab taskContent={taskContent} taskContentRef={taskContentRef} />;
 
             default:
                 return null;

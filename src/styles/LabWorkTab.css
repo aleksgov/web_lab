@@ -1,0 +1,45 @@
+.lab-buttons-container {
+    display: flex;
+    gap: 2.2vw;
+    margin-top: 2.25vw;
+    align-items: flex-end;
+}
+
+.lab-button {
+    width: 19.2vw;
+    aspect-ratio: 325 / 130;
+    font-size: 2.13vw;
+    font-family: 'Century Gothic', sans-serif;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0.35vw 0.07vw rgba(0, 0, 0, 0.25);
+    border-radius: 1.8vw;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.lab-button-variants {
+    width: 40.5vw;
+    aspect-ratio: 685 / 132;
+    margin-top: 2vw;
+}
+
+.lab-button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.lab-button:active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.lab-work-title {
+    color: black;
+    text-align: center;
+    font-size: 2.84vw;
+    margin-top: 5.25vw;
+    font-family: 'Century Gothic', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    word-wrap: break-word;
+    user-select: none;
+}
