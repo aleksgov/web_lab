@@ -10,8 +10,8 @@ import LabWorkTab from './components/Tabs/LabWorkTab';
 import TaskTab from './components/Tabs/TaskTab';
 import ColorPicker from './components/ColorPicker';
 import InfoModal from './components/InfoModal';
-import { COLOR_THEMES, DEFAULT_THEME_INDEX } from './constants/theme';
 import TabNavigation from './components/TabNavigation';
+import { COLOR_THEMES, DEFAULT_THEME_INDEX } from './constants/theme';
 
 function App() {
     const taskContentRef = useRef(null);
@@ -104,9 +104,15 @@ function App() {
 
     const handleVariantClick = useCallback((index) => {
         const variantIndex = index + 1;
-        setActiveVariant(variantIndex);
+        if (activeVariant === variantIndex) {
+            setActiveVariant(null);
+            setTimeout(() => setActiveVariant(variantIndex), 0);
+        } else {
+            setActiveVariant(variantIndex);
+        }
         addTab(`Вариант №${variantIndex}`);
-    }, [addTab]);
+    }, [activeVariant, addTab]);
+
 
     const renderLabButton = useCallback(
         (number) => (
