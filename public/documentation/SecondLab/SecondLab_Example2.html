@@ -7,23 +7,46 @@
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 1.5rem;
-            line-height: 1.42857143;
-            margin: 0;
             color: #333;
-            padding-top: 0;
-        }
-
-        ol {
-            margin: 10px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
+            box-sizing: border-box;
         }
 
         ul {
-            margin: 5px 0 10px 20px;
+            padding-left: 1.5vw;
+            margin-bottom: 0.8vw;
+            margin-top: 0.8vw;
             list-style-type: circle;
+        }
+
+        ol {
+            padding-left: 1.5vw;
+            margin-bottom: 0.8vw;
+            margin-top: 0.8vw;
+        }
+
+        ol li, ul li {
+            line-height: 2vw;
+            padding-left: 10px;
+            padding-bottom: 5px;
+        }
+
+        .custom-list {
+            padding-left: 1.5vw;
+            margin-bottom: 0.8vw;
+            margin-top: 0.8vw;
+            list-style-type: none;
+            counter-reset: custom-counter;
+        }
+
+        .custom-list > li {
+            line-height: 2vw;
+            padding-left: 10px;
+            padding-bottom: 5px;
+            counter-increment: custom-counter;
+        }
+
+        .custom-list > li::before {
+            content: counter(custom-counter) ") ";
         }
 
         h2, h3 {
@@ -37,20 +60,22 @@
         }
 
         h3 {
-            margin-top: 20px;
-            margin-bottom: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
         }
 
         p {
-            text-indent: 1.5em;
-            margin-bottom: 20px;
-            margin-top: 15px;
-            letter-spacing: 1px;
-            text-align: justify;
+            display: block;
+            line-height: 31px;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
         }
 
         pre {
-            padding: 2px;
+            padding: 0;
             border: 1px solid #eee;
         }
 
@@ -181,21 +206,18 @@
         &lt;/judge&gt;
         &lt;judge id="2" category="2:ая категория"&gt;
             &lt;name&gt;Артур&lt;/name&gt;
-        &lt;/judge&gt;
-        </code></pre>
+        &lt;/judge&gt;</code></pre>
                 <ul>
                     <li><code>Запрос //judge[@category='1-ая категория']</code> — выбирает узлы судей с 1-й категорией.</li>
                 </ul>
                 <pre><code class="language-xml">&lt;judge id="1" category="1:ая категория"&gt;
             &lt;name&gt;Станислав&lt;/name&gt;
-        &lt;/judge&gt;
-        </code></pre>
+        &lt;/judge&gt;</code></pre>
                 <ul>
                     <li><code>Запрос //judge/name/text()</code> — позволяет посмотреть текстовые значения имён судей.</li>
                 </ul>
-                <pre> Станислав
-         Артур
-        </pre>
+                <pre><code class="language-xml"> Станислав
+ Артур</code></pre>
             </article>
             <article>
                 <h3>Преимущества XPath</h3>
@@ -227,7 +249,7 @@
                         <ul>
                             <li>Python с библиотекой <code>lxml</code>. Установка:</li>
                         </ul>
-                        <code>pip install lxml</code>
+                        <pre><code>pip install lxml</code></pre>
                         <ul>
                             <li>Java со стандартными библиотеками <code>DocumentBuilderFactory</code> и <code>DocumentBuilder</code>.</li>
                         </ul>
@@ -239,25 +261,25 @@
                 <h3>2. Основные запросы XPath</h3>
                 <span class="starred">* Все дальнейшие запросы выполняются над XML-кодом первого примера.</span>
                 <h4>Пример 1: Получение всех фамилий судей с татами A</h4>
-                <pre>//tatami[@id='A']//judge/name/lastName</pre>
+                <pre><code class="language-xml">//tatami[@id='A']//judge/name/lastName</code></pre>
                 <p><strong>Результат:</strong></p>
-                <pre> Данилов
-         Кузнецов
-         Николаев
-         Глушкова
-         Зимина</pre>
+                <pre><code class="language-xml"> Данилов
+ Кузнецов
+ Николаев
+ Глушкова
+ Зимина</code></pre>
 
                 <h4>Пример 2: Участники кумите с исходом “победа красного”</h4>
-                <pre>//kumite[decision="победа красного"]//participant[@side="красный"]</pre>
+                <pre><code class="language-xml">//kumite[decision="победа красного"]//participant[@side="красный"]</code></pre>
                 <p><strong>Результат:</strong></p>
-                <pre>Самойлов Евгений 14-15 лет 65-70 кг м Нижегородская область</pre>
+                <pre><code class="language-xml">Самойлов Евгений 14-15 лет 65-70 кг м Нижегородская область</code></pre>
                 <h4>Пример 3: Баллы участников за выполнение ката на татами B</h4>
-                <pre>//tatami[@id='B']//kata/participant/name/lastName | //tatami[@id='B']//kata/participant/score</pre>
+                <pre><code class="language-xml">//tatami[@id='B']//kata/participant/name/lastName | //tatami[@id='B']//kata/participant/score</code></pre>
                 <p><strong>Результат:</strong></p>
-                <pre> Моргунов
-         7.5
-         Пономарев
-         6.5</pre>
+                <pre><code class="language-xml"> Моргунов
+ 7.5
+ Пономарев
+ 6.5</code></pre>
             </article>
         </section>
         <section>
