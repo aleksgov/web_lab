@@ -8,34 +8,35 @@
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 1.5rem;
-            line-height: 1.42857143;
-            margin: 0;
             color: #333;
-            padding-top: 0;
-        }
-
-        ol {
-            margin: 10px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .isolated-container img {
-            display: block;
-            margin: 0 auto;
-            border: 10px solid #f0f0f0;
-            max-width: 90%;
-            height: auto;
+            box-sizing: border-box;
         }
 
         ul {
-            margin: 5px 0 10px 20px;
+            padding-left: 1.9vw;
+            padding-right: 0;
+            margin-bottom: 0.4vw;
+            margin-top: 0.4vw;
         }
 
-        p {
-            text-align: justify;
+        ol {
+            padding: 0.8vw 0 0 1.1vw;
+            margin: 0;
+        }
+
+        ol li, ul li {
+            line-height: 2vw;
+            padding-left: 0.5vw;
+            padding-bottom: 1vw;
+        }
+
+        .iso-container img {
+            display: block;
+            width: 60%;
+            max-width: 90%;
+            height: auto;
+            margin: 0 auto 1vw;
+            border: 0.3vw solid #f3f3f3;
         }
     </style>
 </head>
@@ -43,21 +44,24 @@
     <main>
         <ol>
             <li>
-                <p>После выполнения симуляции проанализируйте выводы, используя приведенные ниже метрики:</p>
+                После выполнения симуляции проанализируйте выводы, используя приведенные ниже метрики:
                 <ul>
-                    <li><strong>Загруженность парикмахера:</strong><br>
+                    <li>
+                        <strong>Загруженность парикмахера:</strong><br>
                         Например, если он был занят 69,6%&nbsp;времени, это указывает на эффективность использования ресурса.
                     </li>
-                    <li><strong>Средняя длина очереди:</strong><br>
+                    <li>
+                        <strong>Средняя длина очереди:</strong><br>
                         Максимальная длина очереди = 1&nbsp;клиент. Средняя длина очереди минимальна.
                     </li>
-                    <li><strong>Среднее время ожидания:</strong><br>
+                    <li>
+                        <strong>Среднее время ожидания:</strong><br>
                         Если среднее время ожидания составляет 2,344&nbsp;минуты для клиентов, которые ждали, это показывает хорошую управляемость очередей.
                     </li>
                 </ul>
             </li>
             <li>
-                <p><strong>Пример результатов:</strong></p>
+                <strong>Пример результатов:</strong>
                 <ul>
                     <li>Парикмахер занят 69,6%&nbsp;времени.</li>
                     <li>Среднее время обслуживания — 18,15&nbsp;минут.</li>
@@ -66,8 +70,7 @@
                 </ul>
             </li>
         </ol>
-        <br>
-        <div class="isolated-container"><img src="/assets/labs/FirstLab/Example/3/PictureExample5.png" alt="image"></div>
+        <div class="iso-container"><img src="/assets/labs/FirstLab/Example/3/PictureExample5.png" alt="image"></div>
     </main>
 </body>
 </html>

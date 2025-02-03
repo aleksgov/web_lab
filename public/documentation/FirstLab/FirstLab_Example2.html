@@ -8,40 +8,70 @@
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 1.5rem;
-            line-height: 1.42857143;
-            margin: 0;
             color: #333;
-            padding-top: 0;
-        }
-
-        ol {
-            margin: 10px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
+            box-sizing: border-box;
         }
 
         ul {
-            margin: 5px 0 10px 20px;
+            padding-left: 1.9vw;
+            margin-bottom: 0.4vw;
+            margin-top: 0.4vw;
+        }
+
+        ol {
+            padding-left: 1.1vw;
+            padding-bottom: 0;
+            padding-top: 0.8vw;
+            margin: 0;
+        }
+
+        ol li, ul li {
+            line-height: 2vw;
+            padding-left: 0.5vw;
+            padding-bottom: 1vw;
+        }
+
+        li::marker, ol::marker {
+            unicode-bidi: isolate;
+            font-variant-numeric: tabular-nums;
+            text-transform: none;
+            text-indent: 0 !important;
+            text-align: start !important;
+            text-align-last: start !important;
+        }
+
+        .new-line {
+            display: block;
+            margin-top: 10px;
         }
 
         p {
-            text-align: justify;
+            display: block;
+            line-height: 31px;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
         }
 
         pre {
             background-color: #f4f4f4;
-            font-size: 24px;
-            padding: 10px;
-            border-radius: 5px;
+            line-height: 1.5;
+            border-radius: 0.1vw;
+            border: 0.1vw solid #f3f3f3;
             font-family: Courier, monospace;
             white-space: pre-wrap;
+            margin-top: 5px;
+            margin-left: -1.5vw;
         }
 
-        img {
+        .isolated-container img {
             display: block;
-            margin: 0 auto;
+            max-width: 90%;
+            height: auto;
+            margin: 1.3vw auto;
+            border: 0.3vw solid #f3f3f3;
         }
 
         .img-container {
@@ -52,7 +82,8 @@
 
         .img-container img {
             width: 45%;
-            height: auto;
+            margin: 1.3vw 1.8vw 1.3vw -0.1vw;
+            border: 0.3vw solid #f3f3f3;
         }
     </style>
 </head>
@@ -60,35 +91,40 @@
     <main>
         <ol>
             <li>
-                <p>Определение единиц измерения:</p>
-                <p>В GPSS одна единица времени равна одной минуте.</p>
+                Определение единиц измерения: В GPSS одна единица времени равна одной минуте.
             </li>
+
             <li>
-                <p>Написание кода модели:</p>
-                <p>Создайте новую модель <code>«File &gt; New &gt; Model»</code></p>
-                <img style = "border: 5px solid #f0f0f0;" src="/assets/labs/FirstLab/Example/2/gpss_create_model.png" alt="image" width="386" height="264">
-                <p>Используйте следующие команды GPSS для описания работы парикмахерской:</p>
-                <img src="/assets/labs/FirstLab/Example/2/gpss_code_example.png" alt="image">
-            <li>
-            <p>Пояснения к коду:</p>
+                Написание кода модели:
+                <span class="new-line">Создайте новую модель <code>«File &gt; New &gt; Model»</code></span>
+                <div class="isolated-container"><img src="/assets/labs/FirstLab/Example/2/gpss_create_model.png" alt="image" width="386" height="264"></div>
             </li>
-            <pre><code>GENERATE 25,7    ; Имитация случайного интервала между прибытием
-                     ; клиентов 25 ± 7 минут
-    QUEUE barberq    ; Учет очереди, в которой клиенты ожидают
-    SEIZE barber     ; Если парикмахер свободен, клиент занимает
-                     ; кресло
-    DEPART barber    ; Клиент покидает очередь и занимает парикмахера
-    ADVANCE 18,5     ; Имитация времени стрижки 18&nbsp;±&nbsp;5&nbsp;минут
-    TERMINATE 0      ; Завершение транзакции
-    RELEASE barber   ; Освобождение парикмахера после завершения обслуживания
-    TERMINATE 0      ; Завершение транзакции
-    GENERATE 600     ; Завершение работы парикмахерской после
-                     ; 10&nbsp;часов&nbsp;(600 минут)
-    TERMINATE 1      ; Остановка симуляции после завершения последнего
-                     ; события</code></pre>
+
             <li>
-                <p>Запуск программы:</p>
-                <p>После написания модели запустите её действием <code>«Command &gt; Create Simulation»</code></p>
+                Используйте следующие команды GPSS для описания работы парикмахерской:
+            </li>
+                <div class="isolated-container"><img src="/assets/labs/FirstLab/Example/2/gpss_code_example.png" alt="image"></div>
+            <li>
+                Пояснения к коду:
+            </li>
+            <pre><code> GENERATE 25,7    ; Имитация случайного интервала между прибытием
+                  ; клиентов 25 ± 7 минут
+ QUEUE barberq    ; Учет очереди, в которой клиенты ожидают
+ SEIZE barber     ; Если парикмахер свободен, клиент занимает
+                  ; кресло
+ DEPART barber    ; Клиент покидает очередь и занимает парикмахера
+ ADVANCE 18,5     ; Имитация времени стрижки 18&nbsp;±&nbsp;5&nbsp;минут
+ TERMINATE 0      ; Завершение транзакции
+ RELEASE barber   ; Освобождение парикмахера после завершения
+                  ; обслуживания
+ TERMINATE 0      ; Завершение транзакции
+ GENERATE 600     ; Завершение работы парикмахерской после
+                  ; 10&nbsp;часов&nbsp;(600 минут)
+ TERMINATE 1      ; Остановка симуляции после завершения последнего
+                  ; события</code></pre>
+            <li>
+                Запуск программы:
+                <span class="new-line">После написания модели запустите её действием <code>«Command &gt; Create Simulation»</code></span>
                 <div class="img-container">
                     <img src="/assets/labs/FirstLab/Example/2/gpss_create_simulation.png" alt="image">
                     <img src="/assets/labs/FirstLab/Example/2/gpss_simulation_result.png" alt="image">

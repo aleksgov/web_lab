@@ -59,6 +59,32 @@
   border-radius: calc(0.25vw);
 }
 
+.accordion-container a {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+    color: #0089ff;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 136, 255, .3);
+}
+
+.accordion-container a:link {
+    color: #003366;
+}
+
+.accordion-container a:visited {
+    color: #00509e;
+}
+
+.accordion-container a:hover,
+.accordion-container a:focus {
+    border-bottom: 1px solid rgba(0,136,255,.8)
+}
+
+.accordion-container a:active {
+    color: #b3d9ff;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

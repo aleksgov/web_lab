@@ -7,47 +7,66 @@
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 1.5rem;
-            line-height: 1.42857143;
-            margin: 0;
             color: #333;
-            padding-top: 0;
+            box-sizing: border-box;
         }
 
-        ol {
-            margin: 10px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        ul {
-            margin: 5px 0 10px 20px;
-            list-style-type: circle;
-        }
-
-        .isolated-container img {
-            display: block;
-            margin: 0;
-            border: 10px solid #f0f0f0;
-            max-width: 90%;
-            height: auto;
-        }
-
-        h2 {
+        h2, h3 {
             font-family: Century Gothic, sans-serif;
             color: #2c3e50;
         }
 
+        h2 {
+            margin-top: 1vw;
+            margin-bottom: 0;
+        }
+
+        h3 {
+            margin-top: 1.8vw;
+            margin-bottom: 1vw;
+        }
+
         p {
-            text-indent: 1.5em;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+            display: block;
+            line-height: 2.1vw;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
+        }
+
+        ul {
+            padding-left: 1.5vw;
+            margin-bottom: 0.5vw;
+            margin-top: 1vw;
+            list-style-type: circle;
+        }
+
+        ol {
+            padding-left: 1.5vw;
+            margin-bottom: 0.8vw;
+            margin-top: 0.8vw;
+        }
+
+        ol li, ul li {
+            line-height: 2vw;
+            padding-left: 0.5vw;
+            padding-bottom: 0.4vw;
         }
 
         pre {
-            padding: 2px;
-            border: 1px solid #eee;
+            padding: 0;
+            border: 0.1vw solid #eee;
+        }
+
+        .isolated-container img {
+            display: block;
+            width: 70%;
+            height: auto;
+            margin-top: 1vw;
+            margin-bottom: 0.8vw;
+            border: 0.2vw solid #f0f0f0;
         }
     </style>
     <title>Пример разработки XML документа</title>

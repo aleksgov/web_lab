@@ -6,101 +6,70 @@
     <title>Задание по ZennoPoster</title>
     <style>
         body {
-            font-family: "Helvetica", Helvetica, Arial, sans-serif;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 1.5rem;
-            line-height: 1.42857143;
             color: #333;
-            margin: 0;
-            padding-right: 5%;
             overflow-y: auto;
             overflow-x: hidden;
+            text-align: justify;
             box-sizing: border-box;
         }
 
         h2 {
             text-align: center;
             margin-bottom: 25px;
-            margin-top: 0;
-        }
-
-        p {
-            margin: 3px 0 3px 0;
-            text-align: justify;
-        }
-
-        ol {
             margin-top: 10px;
         }
 
+        p {
+            display: block;
+            line-height: 31px;
+            margin: 0 0 15px 0;
+            margin-block-start: 0.7em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
+        }
+
+        ol {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-left: 28px;
+            padding-bottom: 0;
+        }
+
         ul {
-            margin-top: 0;
-            margin-bottom: 0;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            padding-left: 25px;
+            padding-bottom: 0;
         }
 
-        ol li {
-            margin-bottom: 0.4em;
+        ol li, ul li {
+            line-height: 31px;
+            padding-left: 15px;
+            padding-bottom: 10px;
         }
 
-        ul li {
-            margin-bottom: 0.1em;
-        }
-
-        a {
-            outline: none;
-            text-decoration: none;
-            padding: 2px 1px 0;
-        }
-
-        a:link {
-            color: #00509e;
-        }
-
-        a:visited {
-            color: #003366;
-        }
-
-        a:focus {
-            border-bottom: 1px solid;
-            background: #b3d9ff;
-        }
-
-        a:hover {
-            border-bottom: 1px solid;
-            background: #99ccff;
-        }
-
-        a:active {
-            background: #003366;
-            color: #b3d9ff;
-        }
-
-        ::-webkit-scrollbar {
-            width: 0.55vw;
-            background-color: transparent;
-        }
-
-        ::-webkit-scrollbar-track {
-            background-color: lightgray;
-            border-radius: calc(0.25vw);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: calc(0.25vw);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: #aaa;
+        li::marker, ol::marker {
+            unicode-bidi: isolate;
+            font-variant-numeric: tabular-nums;
+            text-transform: none;
+            text-indent: 0 !important;
+            text-align: start !important;
+            text-align-last: start !important;
         }
     </style>
 </head>
 <body>
         <h2>Задание</h2>
         <ol>
-            <li><strong>Установить программное обеспечение</strong>
+            <li>
+                <strong>Установить программное обеспечение</strong>
                 <p>Скачать и установить демонстрационную версию ZennoPoster с официального сайта:
-                    <a href="https://zennolab.com/ru/products/zennoposter/" target="_blank">https://zennolab.com/ru/products/zennoposter/</a>.
-                    Для выполнения задания достаточно версии с поддержкой одного потока.</p>
+                <a href="https://zennolab.com/ru/products/zennoposter/" target="_blank">https://zennolab.com/ru/products/zennoposter/</a>.
+                Для выполнения задания достаточно версии с поддержкой одного потока.</p>
             </li>
             <li><strong>Ознакомиться с функционалом программы</strong>
                 <p>Использовать следующие ресурсы для изучения возможностей ZennoPoster:</p>
@@ -116,7 +85,7 @@
                     <li>Авторегистратор (авторегер)</li>
                     <li>Постер</li>
                 </ul>
-                <p>Приветствуется разработка проекта на Post/Get запросах.</p>
+                <p style="margin-top: 0">Приветствуется разработка проекта на Post/Get запросах.</p>
             </li>
         </ol>
 </body>

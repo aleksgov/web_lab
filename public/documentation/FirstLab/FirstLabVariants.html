@@ -2,82 +2,92 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Варианты</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания первой лабораторной работы</title>
     <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.5rem;
+            color: #333;
+            overflow-y: auto;
+            overflow-x: hidden;
+            text-align: justify;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 5px;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        p {
+            display: block;
+            line-height: 31px;
+            margin: 0 0 15px 0;
+            margin-block-start: 0.7em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
+        }
+
+        ol {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-left: 28px;
+            padding-bottom: 0;
+        }
+
+        ul {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            padding-left: 25px;
+            padding-bottom: 0;
+        }
+
+        ol li, ul li {
+            line-height: 31px;
+            padding-left: 15px;
+            padding-bottom: 10px;
+        }
+
+        li::marker, ol::marker {
+            unicode-bidi: isolate;
+            font-variant-numeric: tabular-nums;
+            text-transform: none;
+            text-indent: 0 !important;
+            text-align: start !important;
+            text-align-last: start !important;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
         .variant {
             display: none;
         }
 
         .variant.active {
             display: block;
-        }
-
-        body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 1.5rem;
-            line-height: 1.42857143;
-            color: #333;
-            margin: 0;
-            padding-right: 5%;
-            overflow-y: auto;
-            overflow-x: hidden;
-            box-sizing: border-box;
-        }
-
-        ::-webkit-scrollbar {
-            width: 0.55vw;
-            background-color: transparent;
-        }
-
-        ::-webkit-scrollbar-track {
-            background-color: lightgray;
-            border-radius: calc(0.25vw);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: calc(0.25vw);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: #aaa;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            margin-top: 5px;
-        }
-
-        h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            margin-top: 10px;
-        }
-
-        h4 {
-            margin-bottom: 0.3em;
-            margin-top: 0.5em;
-        }
-
-        p {
-            text-indent: 1.5em;
-            margin: 0 0 10px;
-            text-align: justify;
-        }
-
-        ol, ul {
-            margin-left: 1.5em;
-            margin-top: 0;
-            line-height: 1.6;
-        }
-
-        ol li {
-            margin-bottom: 0.1em;
-        }
-
-        ul li {
-            margin-bottom: 0.1em;
         }
     </style>
 </head>
@@ -223,7 +233,7 @@
         <div id="variant-11" class="variant">
             <h2>Вариант 11</h2>
             <p>В банке работают 4&nbsp;оператора, выполняющие все возможные операции. Клиентов банка можно условно разделить по времени обработки на 3&nbsp;группы, данные по которым приведены в таблице (заданы средние значения, распределенные по экспоненциальному закону).</p>
-            <table border="1" style="margin: 20px auto 0;">
+            <table>
                 <thead>
                     <tr>
                         <th>Тип клиента</th>
@@ -252,7 +262,7 @@
             <h3>Задание:</h3>
                 <ol>
                     <li>Написать модель для двух вариантов дисциплин обслуживания:
-                        <ul style="list-style-type: circle; margin-left: 20px;">
+                        <ul>
                             <li>Клиент встает в очередь к одному из операторов (равновероятностно).</li>
                             <li>Клиент встает в общую очередь ко всем операторам и обслуживается первым освободившимся оператором (так называемая "быстрая" очередь).</li>
                         </ul>
@@ -276,7 +286,7 @@
         <div id="variant-13" class="variant">
             <h2>Вариант 13</h2>
             <p>В системе массового обслуживания с одним прибором и очередью имеет место пуассоновский входящий поток с интенсивностью 12&nbsp;приходов в час. Обслуживание является экспоненциальным, но среднее время обслуживания зависит от числа требований, находящихся в очереди к прибору. Эта зависимость представлена в таблице.</p>
-            <table border="1" style="margin: 20px auto 0;">
+            <table>
                 <thead>
                     <tr>
                         <th>Длина очереди</th>
@@ -314,7 +324,7 @@
             <h2>Вариант 14</h2>
             <p>В центре координации работ в одном из подразделений предполагается организовать обслуживание по системе с одним прибором и очередью; входящий поток является пуассоновским с интенсивностью 4.5&nbsp;клиентов в день. Несмотря на то, что клиенты делятся на три различных типа, время, необходимое для направления на работу, для них одинаково, распределено по экспоненциальному закону и имеет среднее значение 0.2&nbsp;дня. Обслуживание клиентов происходит по принципу "первым пришел — первым обслужен".</p>
             <p><strong>Условия задачи:</strong></p>
-            <ul>
+            <ul style="margin-top: -10px; margin-bottom: -5px;">
                 <li>Клиенты первого типа не могут долго ждать.</li>
                 <li>Клиенты второго типа спешат, но не очень.</li>
                 <li>Клиенты третьего типа почти безразличны к времени ожидания.</li>
@@ -323,7 +333,7 @@
             <h3>Задание:</h3>
             <ol>
                 <li>Сравнить время ожидания (включая время обслуживания) для каждого типа клиентов при различных дисциплинах обслуживания:</li>
-                <ul>
+                <ul style="margin-top: 5px; margin-left: 10px;">
                     <li>“Первым пришел — первым обслужен”.</li>
                     <li>“Первым пришел — первым обслужен внутри одного класса приоритетов”.</li>
                 </ul>
@@ -333,7 +343,7 @@
         <div id="variant-15" class="variant">
             <h2>Вариант 15</h2>
             <p>На фабрике имеются две кладовые, в каждой из которых работает один кладовщик. Один кладовщик обслуживает механиков, работающих на больших станках, а другой всех прочих механиков. Входящий в каждую кладовую поток является пуассоновским с интенсивностью, равной 20&nbsp;механикам в час. Время обслуживания механиков распределено по экспоненциальному закону со средним значением 2&nbsp;минуты.</p>
-            <h4>Предложенное изменение:</h4>
+            <p><strong>Предложенное изменение:</strong></p>
             <p>Ввиду того, что механики слишком долго ждут обслуживания, было предложено объединить две кладовые так, чтобы любой кладовщик мог обслуживать любой запрос механика. При этом предполагается, что интенсивность прихода в объединенную кладовую удвоится и составит в среднем 40&nbsp;механиков в час, а среднее время обслуживания останется равным 2&nbsp;минутам.</p>
             <h3>Задание:</h3>
             <ol>

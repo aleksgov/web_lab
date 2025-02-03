@@ -6,31 +6,11 @@
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 1.35rem;
-            line-height: 1.42857143;
             color: #333;
-            margin: 0;
             overflow-y: auto;
             overflow-x: hidden;
+            text-align: justify;
             box-sizing: border-box;
-        }
-
-        ::-webkit-scrollbar {
-            width: 0.55vw;
-            background-color: transparent;
-        }
-
-        ::-webkit-scrollbar-track {
-            background-color: lightgray;
-            border-radius: calc(0.25vw);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: calc(0.25vw);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: #aaa;
         }
 
         h1 {
@@ -46,55 +26,38 @@
         h2 {
             text-align: center;
             margin-top: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         h3 {
             font-size: 28px;
             font-weight: 700;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            color: #2A2F35;
-            font-family: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif', serif;
-        }
-
-        .centered-title {
-            font-size: 28px;
-            text-align: center;
-            margin: 10px 0 20px auto;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
         }
 
         p {
-            margin-top: 0;
-            margin-bottom: 10px;
-            text-indent: 1.5em;
-            text-align: justify;
+            display: block;
+            line-height: 31px;
+            margin: 0 0 15px 0;
+            margin-block-start: 0.7em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
         }
 
-        ol {
-            text-align: justify;
-            margin-bottom: 10px;
-            margin-top: 0;
-            padding-left: 40px;
-            line-height: 1.5;
-        }
-
-        ul {
-            text-align: justify;
+        ul, ol {
+            margin-top: 10px;
             margin-bottom: 0;
-            margin-top: -5px;
-            padding-left: 4.5rem;
-            line-height: 1.5;
+            padding-left: 24px;
+            padding-bottom: 0;
         }
 
-        ol li {
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-
-        ul li {
-            line-height: 1.7;
+        ol li, ul li {
+            line-height: 31px;
+            padding-left: 15px;
+            padding-bottom: 10px;
         }
 
         img {
@@ -107,25 +70,18 @@
 
         .center {
             text-align: center;
-            margin-bottom: 20px;
-            margin-top: -10px;
+            margin-bottom: 30px;
+            margin-top: -5px;
         }
 
-        ul.custom-bullets {
-            list-style: none;
-            padding-left: 2.7rem;
+        .centered-title {
+            text-align: center;
+            line-height: 1.4;
+            margin: 15px 0 25px auto;
         }
 
-        ul.custom-bullets li {
-            position: relative;
-            padding-left: 20px;
-        }
-
-        ul.custom-bullets li::before {
-            content: "-";
-            position: absolute;
-            left: 0;
-            color: black;
+        .circle-list {
+            list-style-type: circle;
         }
 
         table {
@@ -136,9 +92,10 @@
         }
 
         th, td {
-            border: 1px solid #ccc;
-            padding: 8px 12px;
             text-align: left;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            line-height: 1.5;
         }
 
         th {
@@ -274,7 +231,7 @@
     <p class="center">Рис.5.2. Добавление элементов сети.</p>
     <p>При добавлении каждого элемента пользователь имеет возможность дать ему имя и установить необходимые параметры. Для этого необходимо нажать на нужный элемент левой кнопкой мыши (ЛКМ) и в диалоговом окне устройства перейти к вкладке Config.</p>
     <p>Диалоговое окно свойств каждого элемента имеет две вкладки:</p>
-    <ul class="custom-bullets">
+    <ul class="circle-list">
         <li>Physical – содержит графический интерфейс устройства и позволяет симулировать работу с ним на физическом уровне.</li>
         <li>Config – содержит все необходимые параметры для настройки устройства и имеет удобный для этого интерфейс.</li>
     </ul>
