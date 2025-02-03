@@ -7,39 +7,64 @@
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 1.5rem;
-            line-height: 1.42857143;
-            margin: 0;
             color: #333;
-            padding-top: 0;
+            box-sizing: border-box;
         }
 
-        ol {
-            margin: 10px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
+        h3 {
+            font-family: Century Gothic, sans-serif;
+            margin-left: -0.6vw;
+            margin-top: 0.6vw;
         }
 
         p {
-            margin-bottom: 20px;
-            text-indent: 1.5em;
-            text-align: justify;
+            display: block;
+            line-height: 2.1vw;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
+        }
+
+        ul {
+            padding-left: 2vw;
+            margin-bottom: 0.5vw;
+            margin-top: 1vw;
+            list-style-type: circle;
+        }
+
+        ol {
+            padding-left: 1vw;
+            margin-bottom: 0.8vw;
+            margin-top: 0.8vw;
+        }
+
+        ol p {
+            margin-left: 0.5vw;
+            margin-bottom: 0;
+            margin-top: 0.4vw;
+        }
+
+        ol li, ul li {
+            line-height: 2vw;
+            padding-left: 0.5vw;
+            padding-bottom: 0.4vw;
         }
 
         .isolated-container img {
             display: block;
-            border: 5px solid #f0f0f0;
-            max-width: 90%;
+            max-width: 100%;
             height: auto;
-            margin: 20px auto;
+            margin: 1.4vw auto;
+            border: 0.2vw solid #f0f0f0;
         }
     </style>
     <title>Пример 1</title>
 </head>
 <body>
     <main>
-        <p>Рассмотрим пример создания нового порта.</p>
+        <h3>Рассмотрим пример создания нового порта.</h3>
         <ol>
             <li>Установка и загрузка</li>
             <ul>
@@ -48,21 +73,18 @@
             </ul>
             <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_container_line.png" alt="image"></div>
             <li>Добавление нового порта</li>
+            <p>На открывшейся модели создать точечный узел:</p>
             <ul>
-                <li>На открывшейся модели создать точечный узел:</li>
-                <ul>
-                    <li>Перейти во вкладку «Библиотека моделирования процессов».</li>
-                    <li>Создать узел, указав имя, например, <code>nodeSochi</code>.</li>
-                    <li>Разместить узел на карте в местоположении порта. Координаты обновятся автоматически.</li>
-                </ul>
+                <li>Перейти во вкладку «Библиотека моделирования процессов».</li>
+                <li>Создать узел, указав имя, например, <code>nodeSochi</code>.</li>
+                <li>Разместить узел на карте в местоположении порта. Координаты обновятся автоматически.</li>
             </ul>
             <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_add_node.png" alt="image"></div>
             <li>Добавление агента</li>
             <ul>
-                <li>Перенести на созданный узел новый агент:</li>
-                <ul>
-                    <li>Открыть палитру, выбрать «Агент» и добавить его на карту.</li>
-                </ul>
+                <li>
+                    Перенести на созданный узел новый агент: Открыть палитру, выбрать «Агент» и добавить его на карту.
+                </li>
                 <li>На первом шаге настройки выбрать позицию «Единственный агент».</li>
             </ul>
             <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_step2.png" alt="image"></div>

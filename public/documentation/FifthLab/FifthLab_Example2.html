@@ -7,32 +7,51 @@
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 1.5rem;
-            line-height: 1.42857143;
-            margin: 0;
             color: #333;
-            padding-top: 0;
-        }
-
-        ol {
-            margin: 20px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
+            box-sizing: border-box;
         }
 
         p {
-            margin-bottom: 20px;
-            text-indent: 1.5em;
-            text-align: justify;
+            display: block;
+            line-height: 2.1vw;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
+        }
+
+        ul {
+            padding-left: 2vw;
+            margin-bottom: 0.5vw;
+            margin-top: 1vw;
+            list-style-type: circle;
+        }
+
+        ol {
+            padding-left: 1vw;
+            margin-bottom: 0.8vw;
+            margin-top: 0.8vw;
+        }
+
+        ol p {
+            margin-left: 0.5vw;
+            margin-bottom: 0;
+            margin-top: 0.4vw;
+        }
+
+        ol li, ul li {
+            line-height: 2vw;
+            padding-left: 0.5vw;
+            padding-bottom: 0.4vw;
         }
 
         .isolated-container img {
             display: block;
-            border: 5px solid #f0f0f0;
-            max-width: 90%;
+            max-width: 100%;
             height: auto;
-            margin: 20px auto;
+            margin: 1.4vw auto;
+            border: 0.2vw solid #f0f0f0;
         }
     </style>
     <title>Пример 2</title>
@@ -46,16 +65,15 @@
                 <li>Соединить новый узел с морскими путями (палитра → соединитель).</li>
             </ul>
             <li>Параметры порта</li>
+            <p>Настроить параметры исходя из рисунка:</p>
             <ul>
-                <li>Настроить параметры исходя из рисунка:</li>
-                <ul>
-                    <li>Порты, с которыми соединен новый порт (Connected Ports).</li>
-                    <li>Вместимость порта (Capacity).</li>
-                    <li>Местоположение агента (Location) &dash; совместить точечный узел с агентом.</li>
-                </ul>
-                <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/2/al_property_setting.png" alt="image"></div>
-                <li>Открыть свойства выбранных для соединения агентов и добавить в Connected Ports свой порт.</li>
+                <li>Порты, с которыми соединен новый порт (Connected Ports).</li>
+                <li>Вместимость порта (Capacity).</li>
+                <li>Местоположение агента (Location) &dash; совместить точечный узел с агентом.</li>
             </ul>
+            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/2/al_property_setting.png" alt="image"></div>
+            <li>Открыть свойства выбранных для соединения агентов и добавить в Connected Ports свой порт.</li>
+
             <li>Моделирование</li>
             <ul>
                 <li>Запустить модель, нажав <strong>F5</strong>.</li>
