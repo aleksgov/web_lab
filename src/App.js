@@ -22,11 +22,24 @@ function App() {
     const [activeVariant, setActiveVariant] = useState(1);
     const [selectedButtonIndex, setSelectedButtonIndex] = useState(DEFAULT_THEME_INDEX);
     const [labNumber, setLabNumber] = useState(null);
+    const [showNotification, setShowNotification] = useState(false);
 
     useEffect(() => {
         if (activeTab !== 0 && tabs[activeTab].startsWith('Лабораторная работа')) {
             const match = tabs[activeTab].match(/Лабораторная работа №\s*(\d+)/);
             setLabNumber(match ? match[1] : null);
+        }
+    }, [activeTab, tabs]);
+
+    useEffect(() => {
+        if (tabs[activeTab] === 'Теория') {
+            setShowNotification(true);
+            const timer = setTimeout(() => {
+                setShowNotification(false);
+            }, 2000);
+            return () => clearTimeout(timer);
+        } else {
+            setShowNotification(false);
         }
     }, [activeTab, tabs]);
 
@@ -169,6 +182,11 @@ function App() {
 
     return (
         <div className="App">
+            {showNotification && (
+                <div className="notification">
+                    Чтобы масштабировать страницу, используйте сочетание клавиш Ctrl + колесико мыши.
+                </div>
+            )}
             <div className="background" style={{background: COLOR_THEMES[selectedButtonIndex]}}></div>
 
             <ColorPicker

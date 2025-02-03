@@ -7,9 +7,19 @@
     <style>
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 1.5rem;
             color: #333;
             box-sizing: border-box;
+            line-height: 1.5;
+        }
+
+        p {
+            display: block;
+            line-height: 31px;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
+            unicode-bidi: isolate;
         }
 
         ul {
@@ -26,7 +36,6 @@
         }
 
         ol li, ul li {
-            line-height: 2vw;
             padding-left: 0.5vw;
             padding-bottom: 1vw;
         }
@@ -40,30 +49,19 @@
             text-align-last: start !important;
         }
 
-        .new-line {
-            display: block;
-            margin-top: 10px;
-        }
-
-        p {
-            display: block;
-            line-height: 31px;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0;
-            margin-inline-end: 0;
-            unicode-bidi: isolate;
-        }
-
         pre {
             background-color: #f4f4f4;
-            line-height: 1.5;
             border-radius: 0.1vw;
             border: 0.1vw solid #f3f3f3;
             font-family: Courier, monospace;
             white-space: pre-wrap;
             margin-top: 5px;
             margin-left: -1.5vw;
+        }
+
+        .new-line {
+            display: block;
+            margin-top: 10px;
         }
 
         .isolated-container img {
