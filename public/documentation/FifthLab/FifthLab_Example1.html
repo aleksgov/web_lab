@@ -41,7 +41,7 @@
 
         ol p {
             margin-left: 0.5vw;
-            margin-bottom: 0;
+            margin-bottom: 0.4vw;
             margin-top: 0.4vw;
         }
 
@@ -57,6 +57,20 @@
             margin: 1.4vw auto;
             border: 0.2vw solid #f0f0f0;
         }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4vw;
+            margin: 0.5vw auto;
+            max-width: 100%;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border: 0.2vw solid #f0f0f0;
+        }
     </style>
     <title>Пример 1</title>
 </head>
@@ -66,31 +80,36 @@
         <ol>
             <li>Установка и загрузка</li>
             <ul>
-                <li>Установить версию AnyLogic 8.3.3 или выше.</li>
-                <li>Загрузить пример модели «Container Line».</li>
+                <li>Для выполнения задания потребуется программа AnyLogic версии 8.3.3 или выше (обучающая версия). Официальный сайт AnyLogic: <a href="https://www.anylogic.ru/downloads/" target="_blank">https://www.anylogic.ru/downloads/</a></li>
+                <li>После установки запустите программу и откройте пример модели под названием «Container Line» (Линия контейнерных перевозок).</li>
             </ul>
-            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_container_line.png" alt="image"></div>
+            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/start_page.png" alt="image"></div>
+            <p>Цель примера — показать работу с AnyLogic, добавив новый морской порт в существующую модель контейнерных перевозок и запустить симуляцию, чтобы увидеть, как порт будет взаимодействовать с остальной сетью.</p>
             <li>Добавление нового порта</li>
-            <p>На открывшейся модели создать точечный узел:</p>
+            <p>Чтобы добавить новый порт в модель, нужно создать точку на карте — узел (node):</p>
             <ul>
-                <li>Перейти во вкладку «Библиотека моделирования процессов».</li>
-                <li>Создать узел, указав имя, например, <code>nodeSochi</code>.</li>
-                <li>Разместить узел на карте в местоположении порта. Координаты обновятся автоматически.</li>
+                <li>Откройте вкладку «Палитра» → «Библиотека моделирования процессов».</li>
+                <li>Найдите и перетащите элемент точечный-узел (node) на карту.</li>
+                <li>Задайте имя новому порту, например: <code>nodeSochi</code>.</li>
+                <li>Разместите узел в нужном месте на карте — там, где должен находиться ваш порт. Узел можно двигать вручную, координаты обновляются автоматически.</li>
             </ul>
-            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_add_node.png" alt="image"></div>
+            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/add_node.png" alt="image"></div>
             <li>Добавление агента</li>
+            <p>Чтобы соединить новый порт с другими, нужно создать <b>агента</b>, который будет представлять маршрут или транспорт:</p>
             <ul>
-                <li>
-                    Перенести на созданный узел новый агент: Открыть палитру, выбрать «Агент» и добавить его на карту.
-                </li>
-                <li>На первом шаге настройки выбрать позицию «Единственный агент».</li>
+                <li>Откройте вкладку «Палитра», выберите элемент «Агент» и перетащите его на карту.</li>
+                <li>В открывшемся окне настройки выберите тип: «Единственный агент» (Single agent).</li>
+                <li>Следуйте дальнейшим шагам (указаны ниже)</li>
             </ul>
-            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_step2.png" alt="image"></div>
-            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_step3.png" alt="image"></div>
-            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_step4.png" alt="image"></div>
-            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/1/al_step5.png" alt="image"></div>
+            <div class="image-grid">
+                <img src="/assets/labs/FifthLab/Example/1/create_agent_step1.png" alt="image">
+                <img src="/assets/labs/FifthLab/Example/1/create_agent_step2.png" alt="image">
+                <img src="/assets/labs/FifthLab/Example/1/create_agent_step3.png" alt="image">
+                <img src="/assets/labs/FifthLab/Example/1/create_agent_step4.png" alt="image">
+            </div>
+
         </ol>
-        <p>После создания новый агент должен появиться в списке агентов модели.</p>
+        <p>После этого созданный агент появится в списке агентов — он отображается в левой части окна (левее карты).</p>
     </main>
 </body>
 </html>

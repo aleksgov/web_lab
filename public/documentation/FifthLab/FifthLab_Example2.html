@@ -59,24 +59,32 @@
         <ol>
             <li>Настройка агента</li>
             <ul>
-                <li>Убедиться, что новый агент появился в списке агентов модели.</li>
-                <li>Соединить новый узел с морскими путями (палитра → соединитель).</li>
+                <li>Проверьте, что созданный агент появился в списке агентов.</li>
             </ul>
+            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/2/agent_list.png" alt="image"></div>
+            <p>Теперь нужно соединить новый порт (<code>NodeSochi</code>) с существующими морскими путями:</p>
+            <ol>
+                <li>Дважды кликните левой кнопкой мыши по краю узла.</li>
+                <li>Проведите линию (путь) к уже существующему морскому маршруту.</li>
+            </ol>
             <li>Параметры порта</li>
-            <p>Настроить параметры исходя из рисунка:</p>
+            <p>Настройте свойства агента, используя пример на рисунке:</p>
             <ul>
-                <li>Порты, с которыми соединен новый порт (Connected Ports).</li>
-                <li>Вместимость порта (Capacity).</li>
-                <li>Местоположение агента (Location) &dash; совместить точечный узел с агентом.</li>
+                <li>Connected Ports (Связанные порты): укажите, с какими другими портами будет связан ваш новый порт.</li>
+                <li>Capacity (Вместимость): задайте максимальное количество контейнеров, которое может обслуживать порт.</li>
+                <li>Location (Местоположение): убедитесь, что агент размещён в узле</li>
             </ul>
-            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/2/al_property_setting.png" alt="image"></div>
-            <li>Открыть свойства выбранных для соединения агентов и добавить в Connected Ports свой порт.</li>
-
+            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/2/agent_settings.png" alt="image"></div>
+            <ul>
+                <li>Откройте свойства агентов, с которыми вы хотите соединить свой порт: Вкладка «Проекты» → «Container Line» → «Main» → «Агенты».</li>
+                <li>В поле Connected Ports добавьте название вашего порта (<code>Sochi</code>), чтобы установить связь.</li>
+            </ul>
+            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/2/add_connection.png" alt="image"></div>
             <li>Моделирование</li>
             <ul>
-                <li>Запустить модель, нажав <strong>F5</strong>.</li>
+                <li>Для запуска модели нажмите <b>F5</b>.</li>
             </ul>
-            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/2/al_simulation.png" alt="image"></div>
+            <div class="isolated-container"><img src="/assets/labs/FifthLab/Example/2/port_simulation.png" alt="image"></div>
         </ol>
     </main>
 </body>
