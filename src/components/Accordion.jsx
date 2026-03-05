@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { labFiles } from '../Globals'; // Импортируем labFiles
+import { labFiles } from '../Globals';
 import '../styles/Accordion.css';
 import SyntaxHighlighter from './SyntaxHighlighter';
 
