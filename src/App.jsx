@@ -1,184 +1,105 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import './styles/App.css';
-import { labFiles } from './Globals';
-import Accordion from './components/Accordion';
-import NumberButton from './components/NumberButton';
-import MainTab from './components/Tabs/MainTab';
-import TheoryTab from './components/Tabs/TheoryTab';
-import VariantsTab from './components/Tabs/VariantsTab';
-import LabWorkTab from './components/Tabs/LabWorkTab';
-import TaskTab from './components/Tabs/TaskTab';
-import ColorPicker from './components/ColorPicker';
-import InfoModal from './components/InfoModal';
-import TabNavigation from './components/TabNavigation';
-import { COLOR_THEMES, DEFAULT_THEME_INDEX } from './constants/theme';
+
+import { LAB_CONFIG } from './config/labs.config';
+import { COLOR_THEMES, DEFAULT_THEME_INDEX } from './config/theme.config';
+import { useTabs } from './hooks/useTabs';
+import { useLabContent } from './hooks/useLabContent';
+
+import ColorPicker from './components/ui/ColorPicker';
+import InfoModal from './components/ui/InfoModal';
+import TabNavigation from './components/layout/TabNavigation';
+import Accordion from './components/ui/Accordion';
+import MainTab from './components/tabs/MainTab';
+import LabWorkTab from './components/tabs/LabWorkTab';
+import TheoryTab from './components/tabs/TheoryTab';
+import VariantsTab from './components/tabs/VariantsTab';
+import TaskTab from './components/tabs/TaskTab';
 
 function App() {
-    const taskContentRef = useRef(null);
-    const [activeTab, setActiveTab] = useState(0);
-    const [tabs, setTabs] = useState(['Главная']);
-    const [theoryContent, setTheoryContent] = useState('');
-    const [taskContent, setTaskContent] = useState('');
-    const [activeVariant, setActiveVariant] = useState(1);
-    const [selectedButtonIndex, setSelectedButtonIndex] = useState(DEFAULT_THEME_INDEX);
-    const [labNumber, setLabNumber] = useState(null);
+    const [themeIndex, setThemeIndex]         = useState(DEFAULT_THEME_INDEX);
     const [showNotification, setShowNotification] = useState(false);
+    const [activeVariant, setActiveVariant]   = useState(1);
+    const taskContentRef = useRef(null);
+
+    const { tabs, activeTab, addTab, navigateToTab } = useTabs();
+
+    const currentTab = tabs[activeTab] ?? '';
+
+    const labNumber = useMemo(() => {
+        for (let i = activeTab; i >= 0; i--) {
+            const match = tabs[i]?.match(/Лабораторная работа №\s*(\d+)/);
+            if (match) return match[1];
+        }
+        return null;
+    }, [tabs, activeTab]);
+
+    const { theoryContent, taskContent } = useLabContent(labNumber);
+
+    const variantsCount = LAB_CONFIG[labNumber]?.tasks?.count ?? 30;
 
     useEffect(() => {
-        if (activeTab !== 0 && tabs[activeTab].startsWith('Лабораторная работа')) {
-            const match = tabs[activeTab].match(/Лабораторная работа №\s*(\d+)/);
-            setLabNumber(match ? match[1] : null);
-        }
-    }, [activeTab, tabs]);
+        if (currentTab !== 'Теория') { setShowNotification(false); return; }
+        setShowNotification(true);
+        const t = setTimeout(() => setShowNotification(false), 2000);
+        return () => clearTimeout(t);
+    }, [currentTab]);
 
     useEffect(() => {
-        if (tabs[activeTab] === 'Теория') {
-            setShowNotification(true);
-            const timer = setTimeout(() => {
-                setShowNotification(false);
-            }, 2000);
-            return () => clearTimeout(timer);
-        } else {
-            setShowNotification(false);
-        }
-    }, [activeTab, tabs]);
+        if (!taskContentRef.current || !activeVariant) return;
+        taskContentRef.current.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+        taskContentRef.current.querySelector(`#variant-${activeVariant}`)?.classList.add('active');
+    }, [activeVariant, taskContent]);
 
-    const variantsCount = useMemo(
-        () => labFiles[labNumber]?.tasks?.count || 30,
-        [labNumber]
-    );
+    const openTheory  = () => addTab('Теория');
+    const openExample = () => addTab('Пример');
+    const openTasks   = () => addTab(LAB_CONFIG[labNumber]?.tasks?.count ? 'Задания' : 'Задание');
+    const openVariant = (index) => {
+        const n = index + 1;
+        setActiveVariant(n);
+        addTab(`Вариант №${n}`);
+    };
+    const openLab = (number) => addTab(`Лабораторная работа №${number}`);
 
-    const loadTheoryContent = useCallback(async (labNumber) => {
-        if (!labFiles[labNumber]?.theory) {
-            console.error(`Theory file for lab ${labNumber} not found`);
-            return;
+    const renderContent = () => {
+        if (activeTab === 0) {
+            return <MainTab onLabClick={openLab} />;
         }
 
-        try {
-            const response = await fetch(labFiles[labNumber].theory);
-            setTheoryContent(await response.text());
-        } catch (error) {
-            console.error('Error loading theory:', error);
-        }
-    }, []);
-
-    const loadTaskContent = useCallback(async () => {
-        if (!labNumber || !labFiles[labNumber]?.tasks?.path) {
-            console.error(`Task file for lab ${labNumber} not found`);
-            return;
+        if (currentTab.startsWith('Лабораторная работа')) {
+            return (
+                <LabWorkTab
+                    currentTab={currentTab}
+                    onTheoryClick={openTheory}
+                    onExampleClick={openExample}
+                    onTasksClick={openTasks}
+                />
+            );
         }
 
-        try {
-            const response = await fetch(labFiles[labNumber].tasks.path);
-            setTaskContent(await response.text());
-        } catch (error) {
-            console.error('Error loading tasks:', error);
+        if (/^Задани[яе]/.test(currentTab)) {
+            return (
+                <VariantsTab
+                    labNumber={labNumber}
+                    taskContent={taskContent}
+                    variantsCount={variantsCount}
+                    onVariantClick={openVariant}
+                />
+            );
         }
-    }, [labNumber]);
 
-    useEffect(() => {
-        if (activeTab === 0 || !tabs[activeTab].startsWith('Лабораторная работа')) return;
-        if (labNumber) loadTheoryContent(labNumber);
-    }, [activeTab, labNumber, loadTheoryContent, tabs]);
-
-    useEffect(() => {
-        if (activeTab !== 0) loadTaskContent();
-    }, [activeTab, labNumber, loadTaskContent]);
-
-    const showVariant = useCallback((variantIndex) => {
-        const variants = taskContentRef.current?.querySelectorAll('.variant') || [];
-        variants.forEach(v => v.classList.remove('active'));
-        taskContentRef.current?.querySelector(`#variant-${variantIndex}`)?.classList.add('active');
-    }, []);
-
-    useEffect(() => {
-        showVariant(activeVariant);
-    }, [activeVariant, showVariant, taskContent]);
-
-    const addTab = useCallback((title) => {
-        setTabs(prev => {
-            const existingIndex = prev.findIndex(tab => tab === title);
-            if (existingIndex !== -1) return prev;
-            return [...prev, title];
-        });
-        setActiveTab(prev => Math.max(prev, tabs.length));
-    }, [tabs.length]);
-
-    const closeOtherTabs = useCallback((index) => {
-        setTabs(prev => prev.slice(0, index + 1));
-        setActiveTab(index);
-    }, []);
-
-    const handleTheoryClick = useCallback(() => addTab("Теория"), [addTab]);
-    const handleExampleClick = useCallback(() => addTab("Пример"), [addTab]);
-    const handleTasksClick = useCallback(() => {
-        addTab(labFiles[labNumber]?.tasks?.count ? "Задания" : "Задание");
-    }, [addTab, labNumber]);
-
-    const handleVariantClick = useCallback((index) => {
-        const variantIndex = index + 1;
-        if (activeVariant === variantIndex) {
-            setActiveVariant(null);
-            setTimeout(() => setActiveVariant(variantIndex), 0);
-        } else {
-            setActiveVariant(variantIndex);
+        if (currentTab === 'Пример') {
+            return <div className="accordion-container"><Accordion labNumber={labNumber} /></div>;
         }
-        addTab(`Вариант №${variantIndex}`);
-    }, [activeVariant, addTab]);
 
+        if (currentTab === 'Теория') return <TheoryTab theoryContent={theoryContent} />;
 
-    const renderLabButton = useCallback(
-        (number) => (
-            <NumberButton
-                key={number}
-                number={number}
-                text="Лабораторная работа"
-                onClick={() => addTab(`Лабораторная работа №${number}`)}
-            />
-        ),
-        [addTab]
-    );
-
-    const renderContent = useMemo(() => {
-        if (activeTab === 0) return <MainTab renderLabButton={renderLabButton} />;
-
-        const currentTab = tabs[activeTab];
-        if (!currentTab) return null;
-
-        switch(true) {
-            case currentTab.startsWith("Лабораторная работа"):
-                return (
-                    <LabWorkTab
-                        currentTab={currentTab}
-                        handleTheoryClick={handleTheoryClick}
-                        handleExampleClick={handleExampleClick}
-                        handleTasksClick={handleTasksClick}
-                    />
-                );
-
-            case /^Задани([яе])/.test(currentTab):
-                return (
-                    <VariantsTab
-                        labNumber={labNumber}
-                        taskContent={taskContent}
-                        variantsCount={variantsCount}
-                        handleVariantClick={handleVariantClick}
-                    />
-                );
-
-            case currentTab === 'Пример':
-                return <div className="accordion-container"><Accordion labNumber={labNumber}/></div>;
-
-            case currentTab === 'Теория':
-                return <TheoryTab theoryContent={theoryContent} />;
-
-            case currentTab.startsWith("Вариант №"):
-                return <TaskTab taskContent={taskContent} taskContentRef={taskContentRef} />;
-
-            default:
-                return null;
+        if (currentTab.startsWith('Вариант №')) {
+            return <TaskTab taskContent={taskContent} taskContentRef={taskContentRef} />;
         }
-    }, [activeTab, tabs, labNumber, variantsCount, taskContent, theoryContent, renderLabButton, handleTheoryClick, handleExampleClick, handleTasksClick, handleVariantClick]);
+
+        return null;
+    };
 
     return (
         <div className="App">
@@ -187,23 +108,14 @@ function App() {
                     Чтобы масштабировать страницу, используйте сочетание клавиш Ctrl + колесико мыши.
                 </div>
             )}
-            <div className="background" style={{background: COLOR_THEMES[selectedButtonIndex]}}></div>
 
-            <ColorPicker
-                colors={COLOR_THEMES}
-                selectedColorIndex={selectedButtonIndex}
-                onColorChange={setSelectedButtonIndex}
-            />
+            <div className="background" style={{ background: COLOR_THEMES[themeIndex] }} />
 
+            <ColorPicker colors={COLOR_THEMES} selectedColorIndex={themeIndex} onColorChange={setThemeIndex} />
             <InfoModal />
+            <TabNavigation tabs={tabs} activeTab={activeTab} onTabClick={navigateToTab} />
 
-            <TabNavigation
-                tabs={tabs}
-                activeTab={activeTab}
-                closeOtherTabs={closeOtherTabs}
-            />
-
-            {renderContent}
+            {renderContent()}
         </div>
     );
 }

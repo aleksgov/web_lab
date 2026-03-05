@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/TheoryTab.css';
-import SyntaxHighlighter from '../SyntaxHighlighter';
+import SyntaxHighlighter from '../ui/SyntaxHighlighter';
 
 const TheoryTab = ({ theoryContent }) => {
     return (

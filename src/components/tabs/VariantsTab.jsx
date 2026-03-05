@@ -1,9 +1,10 @@
 import React from 'react';
 import '../../styles/TasksTab.css';
-import SyntaxHighlighter from '../SyntaxHighlighter';
+import SyntaxHighlighter from '../ui/SyntaxHighlighter';
+import { LABS_WITHOUT_VARIANTS } from '../../config/labs.config';
 
-const VariantsTab = ({ labNumber, taskContent, variantsCount, handleVariantClick }) => {
-    if (['3', '4'].includes(labNumber)) {
+const VariantsTab = ({ labNumber, taskContent, variantsCount, onVariantClick }) => {
+    if (LABS_WITHOUT_VARIANTS.has(labNumber)) {
         return (
             <div className="theory-container">
                 <SyntaxHighlighter className="theory-content" htmlContent={taskContent} />
@@ -18,7 +19,7 @@ const VariantsTab = ({ labNumber, taskContent, variantsCount, handleVariantClick
                     <button
                         key={index}
                         className={`task-button ${index + 1 >= 10 ? 'two-digit' : ''}`}
-                        onClick={() => handleVariantClick(index)}
+                        onClick={() => onVariantClick(index)}
                     >
                         <span className="task-button-number">{index + 1}</span>
                         <span className="task-button-text">Вариант</span>

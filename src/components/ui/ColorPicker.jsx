@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import '../styles/ColorPicker.css';
+import '../../styles/ColorPicker.css';
 
 const ColorPicker = ({ colors, selectedColorIndex, onColorChange }) => {
     const [menuVisible, setMenuVisible] = useState(false);

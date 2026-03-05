@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/InfoModal.css';
+import '../../styles/InfoModal.css';
 
 const InfoModal = () => {
     const [isOpen, setIsOpen] = useState(false);
