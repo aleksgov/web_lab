@@ -1,23 +1,18 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import hljs from 'highlight.js';
-import '../../styles/SyntaxHighlighter.css';
 import 'highlight.js/styles/atom-one-light.css';
 
 const SyntaxHighlighter = ({ htmlContent, className = '' }) => {
-    const contentRef = useRef(null);
+    const ref = useRef(null);
 
     useLayoutEffect(() => {
-        if (contentRef.current) {
-            const codeElements = contentRef.current.querySelectorAll("code");
-            for (let element of codeElements) {
-                hljs.highlightElement(element);
-            }
-        }
+        if (!ref.current) return;
+        ref.current.querySelectorAll('code').forEach(el => hljs.highlightElement(el));
     }, [htmlContent]);
 
     return (
         <div
-            ref={contentRef}
+            ref={ref}
             className={className}
             dangerouslySetInnerHTML={{ __html: htmlContent }}
         />

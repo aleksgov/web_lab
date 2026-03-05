@@ -1,12 +1,12 @@
 import React from 'react';
-import '../../styles/TabNavigation.css';
+import styles from './TabNavigation.module.css';
 
 const TabNavigation = ({ tabs, activeTab, onTabClick }) => (
-    <div className="tabs-container">
+    <div className={styles.container}>
         {tabs.map((tab, index) => (
             <React.Fragment key={tab}>
                 <div
-                    className={`tab ${activeTab === index ? 'active' : ''}`}
+                    className={`${styles.tab} ${activeTab === index ? styles.tabActive : ''}`}
                     onClick={() => onTabClick(index)}
                     role="button"
                     tabIndex={0}
@@ -14,7 +14,7 @@ const TabNavigation = ({ tabs, activeTab, onTabClick }) => (
                 >
                     {tab}
                 </div>
-                {index !== tabs.length - 1 && <div className="arrow">→</div>}
+                {index !== tabs.length - 1 && <div className={styles.arrow}>→</div>}
             </React.Fragment>
         ))}
     </div>

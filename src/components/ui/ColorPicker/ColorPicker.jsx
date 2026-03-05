@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import '../../styles/ColorPicker.css';
+import styles from './ColorPicker.module.css';
 
 const ColorPicker = ({ colors, selectedColorIndex, onColorChange }) => {
     const [menuVisible, setMenuVisible] = useState(false);
@@ -10,20 +10,19 @@ const ColorPicker = ({ colors, selectedColorIndex, onColorChange }) => {
     }, [onColorChange]);
 
     return (
-        <div className="color-picker-container">
+        <div className={styles.container}>
             <button
-                className="color-picker-button"
+                className={styles.button}
                 style={{ background: colors[selectedColorIndex] }}
                 onClick={() => setMenuVisible(v => !v)}
             />
-
             {menuVisible && (
-                <div className="color-picker-menu">
+                <div className={styles.menu}>
                     {colors.map((color, index) =>
                             index !== selectedColorIndex && (
                                 <button
                                     key={color}
-                                    className="color-picker-button"
+                                    className={styles.button}
                                     style={{ background: color }}
                                     onClick={() => handleButtonClick(index)}
                                 />

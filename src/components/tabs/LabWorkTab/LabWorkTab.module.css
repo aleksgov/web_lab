@@ -1,43 +1,38 @@
-.lab-buttons-container {
+.buttonsRow {
     display: flex;
     gap: 2.2vw;
     margin-top: 2.25vw;
     align-items: flex-end;
 }
 
-.lab-button {
+.button {
     width: 19.2vw;
     aspect-ratio: 325 / 130;
     font-size: 2.13vw;
-    font-family: 'Century Gothic', sans-serif;
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0 0 0.35vw 0.07vw rgba(0, 0, 0, 0.25);
-    border-radius: 1.8vw;
+    font-family: var(--font-main), serif;
+    background: var(--white-full);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius-md);
     border: none;
     cursor: pointer;
     user-select: none;
 }
 
-.lab-button-variants {
+.buttonWide {
     width: 40.5vw;
     aspect-ratio: 685 / 132;
     margin-top: 2vw;
 }
 
-.lab-button:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-}
+.button:hover  { background-color: var(--white-hover); }
+.button:active { background-color: var(--white-press); }
 
-.lab-button:active {
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-.lab-work-title {
+.labTitle {
     color: black;
     text-align: center;
     font-size: 2.84vw;
     margin-top: 5.25vw;
-    font-family: 'Century Gothic', sans-serif;
+    font-family: var(--font-main), serif;
     font-weight: 400;
     line-height: 1.5;
     word-wrap: break-word;

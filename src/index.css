@@ -1,3 +1,45 @@
+:root {
+    --font-main: 'Century Gothic', sans-serif;
+
+    --radius-sm:    0.3vw;
+    --radius-md:    1.8vw;
+    --radius-lg:    3.5vw;
+
+    --shadow-card:  0 0 0.35vw 0.07vw rgba(0, 0, 0, 0.25);
+    --shadow-box:   0 0 0.5vw  0.2vw rgba(0, 0, 0, 0.10);
+    --shadow-modal: 0 0 1vw    0.1vw rgba(0, 0, 0, 0.25);
+
+    --white-full:   rgba(255, 255, 255, 1);
+    --white-hover:  rgba(255, 255, 255, 0.7);
+    --white-press:  rgba(255, 255, 255, 0.4);
+
+    --scrollbar-width:  0.55vw;
+    --scrollbar-thumb:  #888;
+    --scrollbar-thumb-hover: #aaa;
+    --scrollbar-track:  lightgray;
+    --scrollbar-radius: 0.25vw;
+
+    --link-color:         #003366;
+    --link-visited:       #00509e;
+    --link-active:        #b3d9ff;
+    --link-border:        rgba(0, 136, 255, 0.3);
+    --link-border-hover:  rgba(0, 136, 255, 0.8);
+}
+
+@font-face {
+    font-family: "Century Gothic";
+    src: url("/assets/fonts/centurygothic.ttf") format("truetype");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Century Gothic";
+    src: url("/assets/fonts/centurygothic_bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+.variant { display: none; }
+.variant.active { display: block; }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

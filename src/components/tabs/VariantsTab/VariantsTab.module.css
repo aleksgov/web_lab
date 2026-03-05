@@ -1,0 +1,56 @@
+.container {
+    margin-top: 3.8%;
+    margin-left: 1.5%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 87vw;
+    height: 81.5vh;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5.3vh 3.86vw;
+}
+
+.button {
+    width: 13.6vw;
+    height: 5.75vw;
+    background: var(--white-full);
+    font-family: var(--font-main), serif;
+    align-items: flex-start;
+    text-align: center;
+    color: black;
+    box-shadow: var(--shadow-card);
+    border-radius: 1.4vw;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover  { background-color: var(--white-hover); }
+.button:active { background-color: var(--white-press); }
+
+.buttonNumber {
+    margin-right: 0.76vw;
+    font-size: 3.9vw;
+}
+
+.buttonTwoDigit .buttonNumber {
+    margin-left: -0.52vw;
+    margin-right: 0.52vw;
+    letter-spacing: -0.157vw;
+}
+
+.buttonText {
+    position: relative;
+    bottom: 0.85vw;
+    font-size: 1.65vw;
+}
+
+.container::-webkit-scrollbar { width: var(--scrollbar-width); background-color: transparent; }
+.container::-webkit-scrollbar-thumb { background-color: var(--scrollbar-thumb); border-radius: var(--scrollbar-radius); }
+.container::-webkit-scrollbar-thumb:hover { background-color: var(--scrollbar-thumb-hover); }
+.container::-webkit-scrollbar-track { background-color: var(--scrollbar-track); border-radius: var(--scrollbar-radius); }

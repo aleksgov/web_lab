@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { LAB_CONFIG } from '../../config/labs.config';
-import '../../styles/Accordion.css';
-import SyntaxHighlighter from './SyntaxHighlighter';
+import { LAB_CONFIG } from '../../../config/labs.config';
+import styles from './Accordion.module.css';
+import SyntaxHighlighter from '../SyntaxHighlighter';
 
 const Accordion = ({ labNumber }) => {
     const [openIndexes, setOpenIndexes] = useState(new Set());
@@ -11,7 +11,6 @@ const Accordion = ({ labNumber }) => {
 
     useEffect(() => {
         if (!steps.length) return;
-
         Promise.all(
             steps.map(step =>
                 fetch(step.path)
@@ -29,18 +28,18 @@ const Accordion = ({ labNumber }) => {
         });
 
     return (
-        <div className="accordion">
+        <div className={styles.accordion}>
             {steps.map((step, index) => {
                 const isOpen = openIndexes.has(index);
                 return (
-                    <div key={index} className="accordion-item">
+                    <div key={index} className={styles.item}>
                         <div
-                            className={`accordion-title ${isOpen ? 'active' : ''}`}
+                            className={`${styles.title} ${isOpen ? styles.titleOpen : ''}`}
                             onClick={() => toggle(index)}
                         >
-                            <span className="step-counter">{step.counter}</span>
-                            <span className="step-header">{step.header}</span>
-                            <span className="accordion-toggle">
+                            <span className={styles.stepCounter}>{step.counter}</span>
+                            <span className={styles.stepHeader}>{step.header}</span>
+                            <span className={styles.toggle}>
                                 <img
                                     src={isOpen ? 'assets/up_arrow.png' : 'assets/down_arrow.png'}
                                     alt={isOpen ? 'Свернуть' : 'Развернуть'}
@@ -49,8 +48,8 @@ const Accordion = ({ labNumber }) => {
                         </div>
                         {isOpen && (
                             <>
-                                <div className="accordion-line" />
-                                <div className="accordion-content">
+                                <div className={styles.line} />
+                                <div className={styles.content}>
                                     <SyntaxHighlighter htmlContent={contents[index] ?? ''} />
                                 </div>
                             </>

@@ -3,16 +3,16 @@
     margin-top: 0.5vw;
 }
 
-.accordion-item {
+.item {
     width: 68vw;
     border-radius: 1.7vw;
     background-color: white;
     padding-right: 2vw;
     margin-bottom: 4.4vw;
-    box-shadow: 0 0 0.5vw 0.2vw rgba(0, 0, 0, 0.10);
+    box-shadow: var(--shadow-box);
 }
 
-.accordion-title {
+.title {
     height: 7.68vw;
     aspect-ratio: 1152 / 130;
     cursor: pointer;
@@ -20,22 +20,22 @@
     color: #333;
     justify-content: flex-start;
     align-items: center;
-    font-family: 'Century Gothic', serif;
+    font-family: var(--font-main), serif;
     user-select: none;
 }
 
-.accordion-line {
+.titleOpen {
+    border-radius: 1.6vw 1.6vw 0 0;
+}
+
+.line {
     width: 36.4vw;
     height: 0.01vh;
     background-color: #333;
     margin: auto;
 }
 
-.accordion-title.active {
-    border-radius: 1.6vw 1.6vw 0 0;
-}
-
-.step-counter {
+.stepCounter {
     font-size: 2.35vw;
     font-weight: bold;
     padding-left: 4.8vw;
@@ -43,25 +43,25 @@
     line-height: 0;
 }
 
-.step-header {
+.stepHeader {
     font-size: 1.8vw;
     margin-left: 1.5vw;
     margin-top: 0.44vw;
     line-height: 1.42857143;
 }
 
-.accordion-content {
+.content {
     font-size: 1.5rem;
     padding: 0.7vw 0.7vw 1.2vw 5.45vw;
 }
 
-.accordion-toggle {
+.toggle {
     margin-left: auto;
     line-height: 0;
     border: none;
 }
 
-.accordion-toggle img {
+.toggle img {
     cursor: pointer;
     width: 2.4vw;
     aspect-ratio: 1 / 1;

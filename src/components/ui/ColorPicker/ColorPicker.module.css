@@ -1,4 +1,4 @@
-.color-picker-container {
+.container {
     position: absolute;
     min-width: 2.4vw;
     top: 0.9vw;
@@ -15,29 +15,27 @@
     overflow: hidden;
 }
 
-.color-picker-button {
+.button {
     width: 2.4vw;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    box-shadow: 0 .1vw 0.2vw rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.1vw 0.2vw rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease;
     padding: 0;
     user-select: none;
 }
 
-.color-picker-button:hover {
+.button:hover {
     transform: scale(1.1);
 }
 
-
-.color-picker-menu {
+.menu {
     display: flex;
     width: 50%;
     flex-direction: column;
     gap: 0.6vw;
-    transition: max-height 0.3s ease;
     align-items: center;
     justify-content: center;
 }

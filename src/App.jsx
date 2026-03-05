@@ -1,25 +1,25 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import './styles/App.css';
+import styles from './App.module.css';
 
 import { LAB_CONFIG } from './config/labs.config';
 import { COLOR_THEMES, DEFAULT_THEME_INDEX } from './config/theme.config';
 import { useTabs } from './hooks/useTabs';
 import { useLabContent } from './hooks/useLabContent';
 
-import ColorPicker from './components/ui/ColorPicker';
-import InfoModal from './components/ui/InfoModal';
+import ColorPicker   from './components/ui/ColorPicker';
+import InfoModal     from './components/ui/InfoModal';
 import TabNavigation from './components/layout/TabNavigation';
-import Accordion from './components/ui/Accordion';
-import MainTab from './components/tabs/MainTab';
-import LabWorkTab from './components/tabs/LabWorkTab';
-import TheoryTab from './components/tabs/TheoryTab';
-import VariantsTab from './components/tabs/VariantsTab';
-import TaskTab from './components/tabs/TaskTab';
+import Accordion     from './components/ui/Accordion';
+import MainTab       from './components/tabs/MainTab';
+import LabWorkTab    from './components/tabs/LabWorkTab';
+import TheoryTab     from './components/tabs/TheoryTab';
+import VariantsTab   from './components/tabs/VariantsTab';
+import TaskTab       from './components/tabs/TaskTab';
 
 function App() {
-    const [themeIndex, setThemeIndex]         = useState(DEFAULT_THEME_INDEX);
+    const [themeIndex, setThemeIndex]             = useState(DEFAULT_THEME_INDEX);
     const [showNotification, setShowNotification] = useState(false);
-    const [activeVariant, setActiveVariant]   = useState(1);
+    const [activeVariant, setActiveVariant]       = useState(1);
     const taskContentRef = useRef(null);
 
     const { tabs, activeTab, addTab, navigateToTab } = useTabs();
@@ -35,7 +35,6 @@ function App() {
     }, [tabs, activeTab]);
 
     const { theoryContent, taskContent } = useLabContent(labNumber);
-
     const variantsCount = LAB_CONFIG[labNumber]?.tasks?.count ?? 30;
 
     useEffect(() => {
@@ -62,9 +61,7 @@ function App() {
     const openLab = (number) => addTab(`Лабораторная работа №${number}`);
 
     const renderContent = () => {
-        if (activeTab === 0) {
-            return <MainTab onLabClick={openLab} />;
-        }
+        if (activeTab === 0) return <MainTab onLabClick={openLab} />;
 
         if (currentTab.startsWith('Лабораторная работа')) {
             return (
@@ -76,7 +73,6 @@ function App() {
                 />
             );
         }
-
         if (/^Задани[яе]/.test(currentTab)) {
             return (
                 <VariantsTab
@@ -87,29 +83,29 @@ function App() {
                 />
             );
         }
-
         if (currentTab === 'Пример') {
-            return <div className="accordion-container"><Accordion labNumber={labNumber} /></div>;
+            return (
+                <div className={styles.accordionContainer}>
+                    <Accordion labNumber={labNumber} />
+                </div>
+            );
         }
-
         if (currentTab === 'Теория') return <TheoryTab theoryContent={theoryContent} />;
-
         if (currentTab.startsWith('Вариант №')) {
             return <TaskTab taskContent={taskContent} taskContentRef={taskContentRef} />;
         }
-
         return null;
     };
 
     return (
-        <div className="App">
+        <div className={styles.app}>
             {showNotification && (
-                <div className="notification">
+                <div className={styles.notification}>
                     Чтобы масштабировать страницу, используйте сочетание клавиш Ctrl + колесико мыши.
                 </div>
             )}
 
-            <div className="background" style={{ background: COLOR_THEMES[themeIndex] }} />
+            <div className={styles.background} style={{ background: COLOR_THEMES[themeIndex] }} />
 
             <ColorPicker colors={COLOR_THEMES} selectedColorIndex={themeIndex} onColorChange={setThemeIndex} />
             <InfoModal />
