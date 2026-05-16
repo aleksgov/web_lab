@@ -17,7 +17,13 @@ import VariantsTab   from './components/tabs/VariantsTab';
 import TaskTab       from './components/tabs/TaskTab';
 
 function App() {
-    const [themeIndex, setThemeIndex]             = useState(DEFAULT_THEME_INDEX);
+    const [themeIndex, setThemeIndex] = useState(() => {
+        try {
+            const stored = JSON.parse(localStorage.getItem('datalab_theme_index'));
+            if (Number.isInteger(stored) && stored >= 0 && stored < COLOR_THEMES.length) return stored;
+        } catch { /* ignore */ }
+        return DEFAULT_THEME_INDEX;
+    });
     const [showNotification, setShowNotification] = useState(false);
     const [activeVariant, setActiveVariant]       = useState(1);
     const taskContentRef = useRef(null);
@@ -44,10 +50,16 @@ function App() {
 
     useEffect(() => {
         if (currentTab !== 'Теория') { setShowNotification(false); return; }
+        if (sessionStorage.getItem('datalab_scaling_notif_shown')) return;
+        sessionStorage.setItem('datalab_scaling_notif_shown', '1');
         setShowNotification(true);
         const t = setTimeout(() => setShowNotification(false), 2000);
         return () => clearTimeout(t);
     }, [currentTab]);
+
+    useEffect(() => {
+        localStorage.setItem('datalab_theme_index', JSON.stringify(themeIndex));
+    }, [themeIndex]);
 
     useEffect(() => {
         if (!taskContentRef.current || !activeVariant) return;
