@@ -1,0 +1,7 @@
+{
+  "title": "Лабораторная работа №5",
+  "theory": "lab5_theory",
+  "examples": ["lab5_example_1", "lab5_example_2"],
+  "tasks": ["lab5_tasks"],
+  "variantsCount": 22
+}

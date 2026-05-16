@@ -2,10 +2,9 @@ import React from 'react';
 import styles from './VariantsTab.module.css';
 import theoryStyles from '../TheoryTab/TheoryTab.module.css';
 import SyntaxHighlighter from '../../ui/SyntaxHighlighter';
-import { LABS_WITHOUT_VARIANTS } from '../../../config/labs.config';
 
-const VariantsTab = ({ labNumber, taskContent, variantsCount, onVariantClick }) => {
-    if (LABS_WITHOUT_VARIANTS.has(labNumber)) {
+const VariantsTab = ({ hasVariants, taskContent, variantsCount, onVariantClick }) => {
+    if (!hasVariants) {
         return (
             <div className={theoryStyles.container}>
                 <SyntaxHighlighter className={theoryStyles.content} htmlContent={taskContent} />

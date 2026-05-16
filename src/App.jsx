@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import styles from './App.module.css';
 
-import { LAB_CONFIG } from './config/labs.config';
 import { COLOR_THEMES, DEFAULT_THEME_INDEX } from './config/theme.config';
-import { useTabs } from './hooks/useTabs';
+import { useTabs }      from './hooks/useTabs';
+import { useManifest }  from './hooks/useManifest';
 import { useLabContent } from './hooks/useLabContent';
 
 import ColorPicker   from './components/ui/ColorPicker';
@@ -23,7 +23,6 @@ function App() {
     const taskContentRef = useRef(null);
 
     const { tabs, activeTab, addTab, navigateToTab } = useTabs();
-
     const currentTab = tabs[activeTab] ?? '';
 
     const labNumber = useMemo(() => {
@@ -34,8 +33,14 @@ function App() {
         return null;
     }, [tabs, activeTab]);
 
-    const { theoryContent, taskContent } = useLabContent(labNumber);
-    const variantsCount = LAB_CONFIG[labNumber]?.tasks?.count ?? 30;
+    const { manifest, loading: manifestLoading } = useManifest(labNumber);
+
+    const examples = useMemo(() => manifest?.examples ?? [], [manifest]);
+
+    const { theoryContent, taskContent } = useLabContent(
+        manifest?.theory,
+        manifest?.tasks?.[0],
+    );
 
     useEffect(() => {
         if (currentTab !== 'Теория') { setShowNotification(false); return; }
@@ -52,13 +57,17 @@ function App() {
 
     const openTheory  = () => addTab('Теория');
     const openExample = () => addTab('Пример');
-    const openTasks   = () => addTab(LAB_CONFIG[labNumber]?.tasks?.count ? 'Задания' : 'Задание');
+    const openTasks   = () => addTab(manifest?.variantsCount ? 'Задания' : 'Задание');
     const openVariant = (index) => {
         const n = index + 1;
         setActiveVariant(n);
         addTab(`Вариант №${n}`);
     };
     const openLab = (number) => addTab(`Лабораторная работа №${number}`);
+
+    const hasTheory   = manifestLoading || !!manifest?.theory;
+    const hasExamples = manifestLoading || examples.length > 0;
+    const hasTasks    = manifestLoading || (manifest?.tasks?.length ?? 0) > 0;
 
     const renderContent = () => {
         if (activeTab === 0) return <MainTab onLabClick={openLab} />;
@@ -67,6 +76,9 @@ function App() {
             return (
                 <LabWorkTab
                     currentTab={currentTab}
+                    hasTheory={hasTheory}
+                    hasExamples={hasExamples}
+                    hasTasks={hasTasks}
                     onTheoryClick={openTheory}
                     onExampleClick={openExample}
                     onTasksClick={openTasks}
@@ -76,9 +88,9 @@ function App() {
         if (/^Задани[яе]/.test(currentTab)) {
             return (
                 <VariantsTab
-                    labNumber={labNumber}
+                    hasVariants={!!manifest?.variantsCount}
                     taskContent={taskContent}
-                    variantsCount={variantsCount}
+                    variantsCount={manifest?.variantsCount ?? 0}
                     onVariantClick={openVariant}
                 />
             );
@@ -86,7 +98,7 @@ function App() {
         if (currentTab === 'Пример') {
             return (
                 <div className={styles.accordionContainer}>
-                    <Accordion labNumber={labNumber} />
+                    <Accordion examples={examples} />
                 </div>
             );
         }

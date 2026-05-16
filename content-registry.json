@@ -1,0 +1,27 @@
+{
+  "lab1_theory":    "documentation/FirstLab/FirstLabTheory.html",
+  "lab1_example_1": "documentation/FirstLab/FirstLab_Example1.html",
+  "lab1_example_2": "documentation/FirstLab/FirstLab_Example2.html",
+  "lab1_example_3": "documentation/FirstLab/FirstLab_Example3.html",
+  "lab1_tasks":     "documentation/FirstLab/FirstLabVariants.html",
+
+  "lab2_theory":    "documentation/SecondLab/SecondLabTheory.html",
+  "lab2_example_1": "documentation/SecondLab/SecondLab_Example1.html",
+  "lab2_example_2": "documentation/SecondLab/SecondLab_Example2.html",
+  "lab2_tasks":     "documentation/SecondLab/SecondLabVariants.html",
+
+  "lab3_theory":    "documentation/ThirdLab/ThirdLabTheory.html",
+  "lab3_example_1": "documentation/ThirdLab/ThirdLab_Example1.html",
+  "lab3_example_2": "documentation/ThirdLab/ThirdLab_Example2.html",
+  "lab3_tasks":     "documentation/ThirdLab/ThirdLabVariants.html",
+
+  "lab4_theory":    "documentation/FourthLab/FourthLabTheory.html",
+  "lab4_example_1": "documentation/FourthLab/FourthLabExample1.html",
+  "lab4_example_2": "documentation/FourthLab/FourthLabExample2.html",
+  "lab4_tasks":     "documentation/FourthLab/FourthLabVariants.html",
+
+  "lab5_theory":    "documentation/FifthLab/FifthLabTheory.html",
+  "lab5_example_1": "documentation/FifthLab/FifthLab_Example1.html",
+  "lab5_example_2": "documentation/FifthLab/FifthLab_Example2.html",
+  "lab5_tasks":     "documentation/FifthLab/FifthLabVariants.html"
+}

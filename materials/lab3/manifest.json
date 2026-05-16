@@ -1,0 +1,6 @@
+{
+  "title": "Лабораторная работа №3",
+  "theory": "lab3_theory",
+  "examples": ["lab3_example_1", "lab3_example_2"],
+  "tasks": ["lab3_tasks"]
+}
