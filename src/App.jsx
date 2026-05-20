@@ -28,15 +28,15 @@ function App() {
     const [activeVariant, setActiveVariant]       = useState(1);
     const taskContentRef = useRef(null);
 
-    const { tabs, activeTab, addTab, navigateToTab } = useTabs();
-    const currentTab = tabs[activeTab] ?? '';
+    const { tabs, activeTab, addTab, navigateToTab, closeTab } = useTabs();
+    const currentTab = tabs[activeTab]?.title ?? '';
 
     const labNumber = useMemo(() => {
-        for (let i = activeTab; i >= 0; i--) {
-            const match = tabs[i]?.match(/Лабораторная работа №\s*(\d+)/);
-            if (match) return match[1];
-        }
-        return null;
+        const tab = tabs[activeTab];
+        if (!tab) return null;
+        if (tab.labNumber != null) return String(tab.labNumber);
+        const match = tab.title?.match(/Лабораторная работа №\s*(\d+)/);
+        return match?.[1] ?? null;
     }, [tabs, activeTab]);
 
     const { manifest, loading: manifestLoading } = useManifest(labNumber);
@@ -67,15 +67,22 @@ function App() {
         taskContentRef.current.querySelector(`#variant-${activeVariant}`)?.classList.add('active');
     }, [activeVariant, taskContent]);
 
-    const openTheory  = () => addTab('Теория');
-    const openExample = () => addTab('Пример');
-    const openTasks   = () => addTab(manifest?.variantsCount ? 'Задания' : 'Задание');
+    const labNum = labNumber ? Number(labNumber) : null;
+
+    const openTheory  = () => addTab({ title: 'Теория',  labNumber: labNum });
+    const openExample = () => addTab({ title: 'Пример',  labNumber: labNum });
+    const openTasks   = () => addTab({ title: manifest?.variantsCount ? 'Задания' : 'Задание', labNumber: labNum });
     const openVariant = (index) => {
         const n = index + 1;
         setActiveVariant(n);
-        addTab(`Вариант №${n}`);
+        addTab({ title: `Вариант №${n}`, labNumber: labNum });
     };
-    const openLab = (number) => addTab(`Лабораторная работа №${number}`);
+    const openLab = (number) => addTab({ title: `Лабораторная работа №${number}`, labNumber: number });
+
+    useEffect(() => {
+        const match = currentTab.match(/^Вариант №(\d+)$/);
+        if (match) setActiveVariant(Number(match[1]));
+    }, [currentTab]);
 
     const hasTheory   = manifestLoading || !!manifest?.theory;
     const hasExamples = manifestLoading || examples.length > 0;
@@ -133,7 +140,7 @@ function App() {
 
             <ColorPicker colors={COLOR_THEMES} selectedColorIndex={themeIndex} onColorChange={setThemeIndex} />
             <InfoModal />
-            <TabNavigation tabs={tabs} activeTab={activeTab} onTabClick={navigateToTab} />
+            <TabNavigation tabs={tabs} activeTab={activeTab} onTabClick={navigateToTab} onTabClose={closeTab} />
 
             {renderContent()}
         </div>
