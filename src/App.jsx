@@ -21,7 +21,7 @@ function App() {
         try {
             const stored = JSON.parse(localStorage.getItem('datalab_theme_index'));
             if (Number.isInteger(stored) && stored >= 0 && stored < COLOR_THEMES.length) return stored;
-        } catch { /* ignore */ }
+        } catch {}
         return DEFAULT_THEME_INDEX;
     });
     const [showNotification, setShowNotification] = useState(false);
